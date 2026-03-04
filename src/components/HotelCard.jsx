@@ -37,6 +37,21 @@ const HotelCard = ({ hotel, delay }) => {
         setCurrentIndex(idx);
     };
 
+    const swipeConfidenceThreshold = 10000;
+    const swipePower = (offset, velocity) => {
+        return Math.abs(offset) * velocity;
+    };
+
+    const handleDragEnd = (e, { offset, velocity }) => {
+        const swipe = swipePower(offset.x, velocity.x);
+
+        if (swipe < -swipeConfidenceThreshold) {
+            handleNext();
+        } else if (swipe > swipeConfidenceThreshold) {
+            handlePrev();
+        }
+    };
+
     const variants = {
         enter: (direction) => ({
             x: direction > 0 ? '100%' : '-100%',
@@ -111,7 +126,11 @@ const HotelCard = ({ hotel, delay }) => {
                             x: { type: "spring", stiffness: 300, damping: 30 },
                             opacity: { duration: 0.2 }
                         }}
-                        className="absolute top-0 left-0 w-full h-full"
+                        className="absolute top-0 left-0 w-full h-full cursor-grab active:cursor-grabbing"
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 0 }}
+                        dragElastic={1}
+                        onDragEnd={handleDragEnd}
                     >
                         <img
                             src={currentOption.image}
@@ -200,7 +219,7 @@ const HotelCard = ({ hotel, delay }) => {
 
             <div className="mt-auto">
                 <span className="inline-block bg-mist/80 text-blue font-sans font-semibold text-xs px-4 py-2 rounded-full border border-blue/10">
-                    {currentOption.price}   
+                    {currentOption.price}
                 </span>
             </div>
 
