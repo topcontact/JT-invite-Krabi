@@ -16,7 +16,7 @@ const FadeIn = ({ children, delay = 0, className = "" }) => (
 
 const About = () => {
     return (
-        <div id="location" className="bg-white">
+        <div id="location" className="relative w-full z-10 overflow-hidden">
             {/* --- 1. About Railay and our ceremony --- */}
             <section className="relative py-24 px-4 md:px-8 min-h-[80vh] flex items-center justify-center overflow-hidden">
                 {/* Background Image */}

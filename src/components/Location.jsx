@@ -8,12 +8,11 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay, duration: 0.8 }}
-        className={`bg-white relative p-8 rounded-2xl shadow-xl w-full md:w-1/3 text-center border border-sky/30 border-t-4 border-t-${color} m-4 flex flex-col items-center h-full overflow-hidden`}
+        className={`bg-white relative p-8 rounded-2xl shadow-xl w-full md:w-1/3 text-center flex flex-col items-center h-full overflow-hidden`}
         style={bgImage ? {
             backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.95)), url('${bgImage}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
         } : {}}
     >
         <div className="relative z-10 flex flex-col items-center gap-4 text-gray-600 font-sans flex-grow w-full">
@@ -72,7 +71,7 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
 const Location = () => {
 
     return (
-        <section id="events" className="w-full bg-white py-16 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center">
+        <section id="events" className="w-full bg-white py-16 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center rounded-t-[40px] md:rounded-t-[80px] shadow-[0_-10px_30px_rgba(0,0,50,0.05)] relative z-20 -mt-8">
             <motion.h2
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

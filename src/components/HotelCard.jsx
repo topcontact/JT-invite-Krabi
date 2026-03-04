@@ -84,9 +84,9 @@ const HotelCard = ({ hotel, delay }) => {
                         Map and Review
                     </a>
                 </div>
-                <h3 className="text-xl font-serif text-navy mb-4">{currentOption.name}</h3>
+                <h3 className="text-xl font-serif text-navy mb-4 h-12 flex items-center justify-center">{currentOption.name}</h3>
 
-                <div className="flex-grow flex flex-col min-h-[90px] mb-6">
+                <div className="flex-col h-[140px] mb-6 flex justify-start items-center">
                     <p className="text-gray-600 font-sans text-sm flex-grow">
                         {currentOption.description}
                     </p>
@@ -176,7 +176,7 @@ const HotelCard = ({ hotel, delay }) => {
                 </a>
             </div>
 
-            <div className="flex-grow flex flex-col min-h-[90px] mb-6">
+            <div className="flex-col h-[140px] mb-6 flex justify-start items-center">
                 <p className="text-gray-600 font-sans text-sm flex-grow">
                     <AnimatePresence mode="wait">
                         <motion.span
