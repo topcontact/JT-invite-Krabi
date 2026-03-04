@@ -34,7 +34,7 @@ const Envelope = ({ onOpen }) => {
 
                 {/* Hint Text */}
                 <div className="absolute bottom-10 left-0 w-full text-center pointer-events-none">
-                    <p className="text-white/80 md:text-navy/60 font-serif animate-pulse drop-shadow-md">Tap anywhere to open</p>
+                    <p className="text-navy/80 md:text-navy/60 font-serif animate-pulse drop-shadow-md">Tap anywhere to open</p>
                 </div>
             </div>
 
