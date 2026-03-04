@@ -1,0 +1,11 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-sans text-navy bg-mist;
+}
