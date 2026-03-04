@@ -54,7 +54,7 @@ const WhereToStay = () => {
                     mapLink: "https://maps.app.goo.gl/C5YZYhZQxonuouj57",
                     description: "Another fantastic option close to the action. Enjoy a relaxed atmosphere with convenient access to Railay's stunning views.",
                     price: "Est. 6,000 - 10,000+ THB / night",
-                    distance: "600m walk 8 min to wedding venue"        
+                    distance: "600m walk 8 min to wedding venue"
                 }
             ]
         },
@@ -66,28 +66,30 @@ const WhereToStay = () => {
             description: "A 5-star ultra-luxury icon spanning three beaches (East Railay, West Railay, and Phra Nang Cave). Offers high-end service, ultimate privacy, and stunning natural surroundings.",
             note: "*Our Wedding Venue here*",
             price: "Est. 25,000 - 40,000+ THB / night",
-            distance: "Wedding venue onsite" 
+            distance: "Wedding venue onsite"
         }
     ];
 
     return (
-        <section id="where-to-stay" className="max-w-6xl mx-auto px-4 md:px-8 py-20 bg-white">
-            <FadeIn className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-script text-navy mb-4">Where to Stay</h2>
-                <div className="w-16 h-px bg-blue/30 mx-auto"></div>
-                <p className="mt-6 text-gray-500 font-sans max-w-2xl mx-auto">
-                    Railay has beautiful accommodations ranging from luxury resorts to cozy resorts rooms.
-                </p>
-            </FadeIn>
+        <section id="where-to-stay" className="w-full bg-white rounded-b-[40px] md:rounded-b-[80px] shadow-sm relative z-10 pb-8 mb-8">
+            <div className="max-w-6xl mx-auto px-4 md:px-8 pt-20 pb-12">
+                <FadeIn className="text-center mb-16">
+                    <h2 className="text-4xl md:text-5xl font-script text-navy mb-4">Where to Stay</h2>
+                    <div className="w-16 h-px bg-blue/30 mx-auto"></div>
+                    <p className="mt-6 text-gray-500 font-sans max-w-2xl mx-auto">
+                        Railay has beautiful accommodations ranging from luxury resorts to cozy resorts rooms.
+                    </p>
+                </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {hotelData.map((hotel, index) => (
-                    <HotelCard
-                        key={index}
-                        hotel={hotel}
-                        delay={0.2 + (index * 0.2)}
-                    />
-                ))}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {hotelData.map((hotel, index) => (
+                        <HotelCard
+                            key={index}
+                            hotel={hotel}
+                            delay={0.2 + (index * 0.2)}
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );

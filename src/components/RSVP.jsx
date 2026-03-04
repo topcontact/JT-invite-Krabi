@@ -1,24 +1,42 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, User, Phone, Users, Home, Calendar, Baby } from 'lucide-react';
+import { Send, User, Phone, Users, Home, Calendar, Baby, ChevronDown } from 'lucide-react';
 
-const InputField = ({ label, type = "text", value, onChange, placeholder, icon: Icon, required = false, disabled = false, ...props }) => (
+const InputField = ({ label, type = "text", value, onChange, placeholder, icon: Icon, required = false, disabled = false, options = [], ...props }) => (
     <div className={`mb-4 flex flex-col w-full ${disabled ? 'opacity-50' : ''}`}>
         <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider">
             {label} {required && <span className="text-red-500">*</span>}
         </label>
         <div className="relative mt-auto">
             {Icon && <Icon className="absolute left-3 top-3 w-5 h-5 text-blue z-10 pointer-events-none" />}
-            <input
-                type={type}
-                value={value}
-                onChange={onChange}
-                placeholder={placeholder}
-                required={required}
-                disabled={disabled}
-                {...props}
-                className={`w-full p-3 ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
-            />
+            {type === 'select' ? (
+                <>
+                    <select
+                        value={value}
+                        onChange={onChange}
+                        required={required}
+                        disabled={disabled}
+                        {...props}
+                        className={`w-full p-3 ${Icon ? 'pl-10' : ''} pr-10 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm appearance-none cursor-pointer ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+                    >
+                        {options.map(opt => (
+                            <option key={opt} value={opt}>{opt}</option>
+                        ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-3 w-5 h-5 text-navy/50 pointer-events-none" />
+                </>
+            ) : (
+                <input
+                    type={type}
+                    value={value}
+                    onChange={onChange}
+                    placeholder={placeholder}
+                    required={required}
+                    disabled={disabled}
+                    {...props}
+                    className={`w-full p-3 ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+                />
+            )}
         </div>
     </div>
 );
@@ -251,23 +269,23 @@ const RSVP = () => {
                                     icon={Phone}
                                     required
                                 />
-                                <div className="flex gap-4 items-stretch">
-                                    <div className="w-1/2 flex">
+                                <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+                                    <div className="w-full sm:w-1/2 flex">
                                         <InputField
                                             label="Adults"
-                                            type="number"
-                                            min="1"
+                                            type="select"
+                                            options={Array.from({ length: 10 }, (_, i) => i + 1)}
                                             value={formData.krabi.adults}
                                             onChange={(e) => updateKrabi('adults', e.target.value)}
                                             icon={Users}
                                             required
                                         />
                                     </div>
-                                    <div className="w-1/2 flex">
+                                    <div className="w-full sm:w-1/2 flex">
                                         <InputField
                                             label="Children < 7 yrs"
-                                            type="number"
-                                            min="0"
+                                            type="select"
+                                            options={Array.from({ length: 11 }, (_, i) => i)}
                                             value={formData.krabi.children}
                                             onChange={(e) => updateKrabi('children', e.target.value)}
                                             icon={Baby}
@@ -319,8 +337,8 @@ const RSVP = () => {
                                                 />
                                                 <InputField
                                                     label="Number of Rooms"
-                                                    type="number"
-                                                    min="1"
+                                                    type="select"
+                                                    options={Array.from({ length: 5 }, (_, i) => i + 1)}
                                                     value={formData.krabi.rooms}
                                                     onChange={(e) => updateKrabi('rooms', e.target.value)}
                                                     icon={Home}
@@ -338,8 +356,8 @@ const RSVP = () => {
                                                     <option value="Est. 25,000 - 40,000+ THB / night">Est. 25,000 - 40,000+ THB / night</option>
                                                 </select>
                                             </div>
-                                            <div className="flex gap-4 items-stretch">
-                                                <div className="w-1/2 flex">
+                                            <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+                                                <div className="w-full sm:w-1/2 flex">
                                                     <InputField
                                                         label="Check-in"
                                                         type="date"
@@ -347,7 +365,7 @@ const RSVP = () => {
                                                         onChange={(e) => updateKrabi('checkIn', e.target.value)}
                                                     />
                                                 </div>
-                                                <div className="w-1/2 flex">
+                                                <div className="w-full sm:w-1/2 flex">
                                                     <InputField
                                                         label="Check-out"
                                                         type="date"

@@ -8,7 +8,7 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay, duration: 0.8 }}
-        className={`bg-white relative p-8 rounded-2xl shadow-xl w-full md:w-1/3 text-center border-t-4 border-${color} m-4 flex flex-col items-center h-full overflow-hidden`}
+        className={`bg-white relative p-8 rounded-2xl shadow-xl w-full md:w-1/3 text-center border border-sky/30 border-t-4 border-t-${color} m-4 flex flex-col items-center h-full overflow-hidden`}
         style={bgImage ? {
             backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.95)), url('${bgImage}')`,
             backgroundSize: 'cover',
@@ -88,9 +88,9 @@ const Location = () => {
                     date="Friday, December 4, 2026"
                     time="Start at 16:00"
                     location="The Grotto Restaurant"
-                    hotel="Rayawadee Hotel"
+                    hotel="Rayawadee Resort"
                     mapLink="https://maps.google.com/?q=The+Grotto+Rayawadee+Krabi"
-                    color="white"
+                    color="blue"
                     delay={0.2}
                     bgImage="/Grotto pic.jpg"
                 />

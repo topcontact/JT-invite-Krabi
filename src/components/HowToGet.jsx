@@ -27,7 +27,7 @@ const HowToGet = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
                 {/* Connecting line for desktop */}
-                <div className="hidden md:block absolute top-[50px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-blue/10 via-blue/30 to-blue/10 z-0"></div>
+                <div className="hidden md:block absolute top-[64px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-blue/10 via-blue/30 to-blue/10 z-0"></div>
 
                 <FadeIn delay={0.1} className="relative z-10 flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full">
                     <div className="w-20 h-20 rounded-full bg-mist flex items-center justify-center mb-6 shadow-md border-4 border-white">
