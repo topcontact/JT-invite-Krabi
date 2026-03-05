@@ -5,22 +5,36 @@ import { MapPin, Calendar, Bed, Send } from 'lucide-react';
 const FloatingNav = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [activeSection, setActiveSection] = useState('');
+    const [lastScrollY, setLastScrollY] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
             // Show after scrolling past 60% of viewport height (Hero section)
-            if (window.scrollY > window.innerHeight * 0.6) {
-                setIsVisible(true);
+            if (currentScrollY > window.innerHeight * 0.6) {
+                // Determine scroll direction
+                if (currentScrollY > lastScrollY) {
+                    // Scrolling DOWN - Hide Navbar (like Safari)
+                    setIsVisible(false);
+                } else {
+                    // Scrolling UP - Show Navbar
+                    setIsVisible(true);
+                }
             } else {
+                // At the top - Hide Navbar
                 setIsVisible(false);
             }
+
+            // Update last scroll position
+            setLastScrollY(currentScrollY);
 
             // Determine active section for highlighting
             const sections = ['location', 'program', 'where-to-stay', 'rsvp'];
             let current = '';
             for (const section of sections) {
                 const element = document.getElementById(section);
-                if (element && window.scrollY >= element.offsetTop - window.innerHeight / 2) {
+                if (element && currentScrollY >= element.offsetTop - window.innerHeight / 2) {
                     current = section;
                 }
             }

@@ -197,7 +197,7 @@ const RSVP = () => {
 
     if (isSubmitted) {
         return (
-            <section className="py-20 px-4 bg-white/40" id="rsvp">
+            <section className="pt-20 pb-40 md:pb-48 px-4 bg-white/40" id="rsvp">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -221,7 +221,7 @@ const RSVP = () => {
     }
 
     return (
-        <section className="py-20 px-4 bg-white/40" id="rsvp">
+        <section className="pt-20 pb-40 md:pb-48 px-4 bg-white/40" id="rsvp">
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
