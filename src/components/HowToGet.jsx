@@ -41,7 +41,7 @@ const HowToGet = () => {
     ];
 
     return (
-        <section id="getting-there" className="max-w-6xl mx-auto px-4 md:px-8 py-20 bg-white">
+        <section id="getting-there" className="max-w-6xl mx-auto px-12 md:px-20 py-15 bg-white">
             <FadeIn className="text-center mb-16">
                 <h2 className="text-4xl md:text-5xl font-script text-navy mb-4">How to Get There</h2>
                 <div className="w-16 h-px bg-blue/30 mx-auto"></div>

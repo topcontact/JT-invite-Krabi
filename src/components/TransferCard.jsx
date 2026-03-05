@@ -20,10 +20,10 @@ const TransferCard = ({ icon: Icon, title, description, note, delay }) => {
                 <Icon className="w-8 h-8 text-blue" />
             </div>
             <h4 className="text-xl font-serif text-navy mb-3">{title}</h4>
-            <p className="text-gray-500 font-sans text-sm">
+            <p className="text-gray-500 font-sans text-sm h-16 flex items-start justify-center">
                 {description}
             </p>
-            <span className="mt-4 text-xs font-sans text-blue bg-blue/10 px-3 py-1 rounded-full whitespace-pre-line">
+            <span className="mt-auto text-xs font-sans text-blue bg-blue/10 px-3 py-1 rounded-full whitespace-pre-line">
                 {note}
             </span>
         </FadeIn>
