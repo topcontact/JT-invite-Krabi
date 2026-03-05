@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Calendar, Bed, Send } from 'lucide-react';
 
 const FloatingNav = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [activeSection, setActiveSection] = useState('');
-    const [lastScrollY, setLastScrollY] = useState(0);
+    const lastScrollY = useRef(0);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -14,7 +14,7 @@ const FloatingNav = () => {
             // Show after scrolling past 60% of viewport height (Hero section)
             if (currentScrollY > window.innerHeight * 0.6) {
                 // Determine scroll direction
-                if (currentScrollY > lastScrollY) {
+                if (currentScrollY > lastScrollY.current) {
                     // Scrolling DOWN - Hide Navbar (like Safari)
                     setIsVisible(false);
                 } else {
@@ -27,7 +27,7 @@ const FloatingNav = () => {
             }
 
             // Update last scroll position
-            setLastScrollY(currentScrollY);
+            lastScrollY.current = currentScrollY;
 
             // Determine active section for highlighting
             const sections = ['location', 'program', 'where-to-stay', 'rsvp'];
