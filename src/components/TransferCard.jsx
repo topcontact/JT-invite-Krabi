@@ -34,9 +34,9 @@ const TransferCard = ({ icon: Icon, title, description, note, delay, bgImage }) 
                 <p className="text-gray-200 font-sans text-sm h-16 flex items-start justify-center mb-5 whitespace-pre-line">
                     {description}
                 </p>
-                <span className="mt-auto text-xs font-sans text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 rounded-2xl whitespace-pre-line flex text-left">
-                    <Info className="w-4 h-4 text-white" />
-                    <span className="ml-2">{note}</span>
+                <span className="mt-auto text-xs font-sans text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 rounded-2xl whitespace-pre-line flex text-left w-full h-[120px] md:h-[130px] lg:h-[140px] items-center">
+                    <Info className="w-4 h-4 text-white flex-shrink-0" />
+                    <span className="ml-2 w-full">{note}</span>
                 </span>
             </div>
         </FadeIn>

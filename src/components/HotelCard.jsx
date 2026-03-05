@@ -80,7 +80,7 @@ const HotelCard = ({ hotel, delay }) => {
                     <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-300"></div>
                 </a>
 
-                <h3 className="text-xl font-serif text-navy mb-4 h-12 flex items-center justify-center">{currentOption.name}</h3>
+                <h3 className="text-3xl font-serif text-navy mb-4 h-12 flex items-center justify-center">{currentOption.name}</h3>
 
                 <div className="mb-4">
                     <a href={currentOption.mapLink} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue text-white hover:bg-navy transition-colors font-sans font-semibold text-xs md:text-sm rounded-full px-5 py-2 shadow-sm">
@@ -153,7 +153,7 @@ const HotelCard = ({ hotel, delay }) => {
                 </button>
             </div>
 
-            <h3 className="text-xl font-serif text-navy mb-4 h-12 flex items-center justify-center">
+            <h3 className="text-3xl font-serif text-navy mb-4 h-12 flex items-center justify-center">
                 <AnimatePresence mode="wait">
                     <motion.span
                         key={currentOption.name}
