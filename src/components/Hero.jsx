@@ -44,7 +44,7 @@ const Hero = () => {
                     transition={{ delay: 1.8, duration: 1 }}
                     className="mt-12 flex flex-col items-center gap-4 z-10"
                 >
-                    <a href="#rsvp" className="px-6 py-3 md:px-10 md:py-4 bg-navy text-white text-base md:text-lg font-sans uppercase tracking-widest rounded-full hover:bg-blue transition-colors shadow-lg shadow-navy/20 w-fit">
+                    <a href="#rsvp" className="px-6 py-3 md:px-10 md:py-4 bg-navy text-white text-base md:text-lg font-sans uppercase tracking-widest rounded-full hover:bg-blue transition-colors shadow-lg shadow-navy/20 w-fit border border-navy/20 hover:border-blue/20">
                         RSVP
                     </a>
                     <h3 className="text-sm font-sans text-blue uppercase tracking-widest mt-4 mb-2">Kindly RSVP by April 30, 2025.</h3>

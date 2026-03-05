@@ -21,22 +21,25 @@ const HowToGet = () => {
             icon: Plane,
             title: "Flight to Krabi",
             description: "Fly directly to Krabi International Airport (KBV) from Bangkok.",
-            note: "Flights are available from both \nDon Mueang and Suvarnabhumi airports.\nEstimated round-trip fare: 4,000 – 7,000 THB",
-            delay: 0.1
+            note: "Flights are available from both \nDon Mueang and Suvarnabhumi airports.\nEstimated round-trip fare: \n4,000 – 7,000 THB",
+            delay: 0.1,
+            bgImage: "/FlightPic.jpg"
         },
         {
             icon: Car,
             title: "Transfer to Pier",
             description: "Take a taxi or pre-arranged van from the airport to Ao Nam Mao Pier (Short bridge) or Ao Nang.",
-            note: "We provide van transfers \nfrom KBV Airport to the pier \non December 3rd and 4th,\nDeparting before 12:00 PM. \nTravel time: 40 minutes to pier.",
-            delay: 0.3
+            note: "We provide van transfers from KBV Airport to the pier \non December 3rd and 4th,\nDeparting before 12:00 PM. \nTravel time: 40 minutes to pier.",
+            delay: 0.3,
+            bgImage: "/VanTransferpIC.jpg"
         },
         {
             icon: Ship,
             title: "Boat to Railay",
             description: "Longtail boat ride (approx. 15-20 min) from the pier to Railay.",
             note: "Guests using our van transfer can board the boat to Railay directly.",
-            delay: 0.5
+            delay: 0.5,
+            bgImage: "/LongtailPic.jpg"
         }
     ];
 
@@ -62,6 +65,7 @@ const HowToGet = () => {
                         description={step.description}
                         note={step.note}
                         delay={step.delay}
+                        bgImage={step.bgImage}
                     />
                 ))}
             </div>
