@@ -71,87 +71,58 @@ const HotelCard = ({ hotel, delay }) => {
 
     const currentOption = options[currentIndex];
 
-    // Single static card render (like Rayavadee currently)
-    if (!isSlider) {
-        return (
-            <FadeIn delay={delay} className="flex flex-col bg-gradient-to-br from-mist/50 to-white p-6 md:p-8 rounded-3xl border border-sky/30 shadow-lg text-center h-full">
-                <a href={currentOption.mapLink} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-md border border-gray-100 group relative flex-shrink-0">
-                    <img src={currentOption.image} alt={currentOption.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                    <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-300"></div>
-                </a>
+    const imageContent = isSlider ? (
+        <div className="block w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-md border border-gray-100 group relative flex-shrink-0 bg-gray-50">
+            <AnimatePresence initial={false} custom={direction}>
+                <motion.div
+                    key={currentIndex}
+                    custom={direction}
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
+                    }}
+                    className="absolute top-0 left-0 w-full h-full cursor-grab active:cursor-grabbing"
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={1}
+                    onDragEnd={handleDragEnd}
+                >
+                    <img
+                        src={currentOption.image}
+                        alt={currentOption.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                </motion.div>
+            </AnimatePresence>
+            <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none"></div>
 
-                <h3 className="text-3xl font-serif text-navy mb-4 h-12 flex items-center justify-center">{currentOption.name}</h3>
+            <button
+                onClick={handlePrev}
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-navy p-1.5 rounded-full shadow-md backdrop-blur-sm transition-all z-20"
+            >
+                <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+                onClick={handleNext}
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-navy p-1.5 rounded-full shadow-md backdrop-blur-sm transition-all z-20"
+            >
+                <ChevronRight className="w-5 h-5" />
+            </button>
+        </div>
+    ) : (
+        <a href={currentOption.mapLink} target="_blank" rel="noopener noreferrer" className="block w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-md border border-gray-100 group relative flex-shrink-0">
+            <img src={currentOption.image} alt={currentOption.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-300"></div>
+        </a>
+    );
 
-                <div className="mb-4">
-                    <a href={currentOption.mapLink} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue text-white hover:bg-navy transition-colors font-sans font-semibold text-xs md:text-sm rounded-full px-5 py-2 shadow-sm">
-                        Map and Review
-                    </a>
-                </div>
-
-                <div className="flex-col h-[140px] mb-6 flex justify-start items-center">
-                    <p className="text-gray-600 font-sans text-sm flex-grow">
-                        {currentOption.description}
-                    </p>
-                </div>
-
-                <div className="mt-auto">
-                    <span className="inline-block bg-mist/80 text-blue font-sans font-semibold text-xs px-4 py-2 rounded-full border border-blue/10">
-                        {currentOption.price}
-                    </span>
-                    <span className="inline-block text-blue font-sans font-semibold text-xs px-4 py-2">
-                        {currentOption.distance}
-                    </span>
-                </div>
-            </FadeIn>
-        );
-    }
-
-    // Slider render
     return (
         <FadeIn delay={delay} className="flex flex-col bg-gradient-to-br from-mist/50 to-white p-6 md:p-8 rounded-3xl border border-sky/30 shadow-lg text-center h-full relative overflow-hidden">
-            {/* Image Slider */}
-            <div className="block w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-md border border-gray-100 group relative flex-shrink-0 bg-gray-50">
-                <AnimatePresence initial={false} custom={direction}>
-                    <motion.div
-                        key={currentIndex}
-                        custom={direction}
-                        variants={variants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{
-                            x: { type: "spring", stiffness: 300, damping: 30 },
-                            opacity: { duration: 0.2 }
-                        }}
-                        className="absolute top-0 left-0 w-full h-full cursor-grab active:cursor-grabbing"
-                        drag="x"
-                        dragConstraints={{ left: 0, right: 0 }}
-                        dragElastic={1}
-                        onDragEnd={handleDragEnd}
-                    >
-                        <img
-                            src={currentOption.image}
-                            alt={currentOption.name}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        />
-                    </motion.div>
-                </AnimatePresence>
-                <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-300 z-10 pointer-events-none"></div>
-
-                {/* Arrows */}
-                <button
-                    onClick={handlePrev}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-navy p-1.5 rounded-full shadow-md backdrop-blur-sm transition-all z-20"
-                >
-                    <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                    onClick={handleNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-navy p-1.5 rounded-full shadow-md backdrop-blur-sm transition-all z-20"
-                >
-                    <ChevronRight className="w-5 h-5" />
-                </button>
-            </div>
+            {imageContent}
 
             <h3 className="text-3xl font-serif text-navy mb-4 h-12 flex items-center justify-center">
                 <AnimatePresence mode="wait">
@@ -204,15 +175,17 @@ const HotelCard = ({ hotel, delay }) => {
             </div>
 
             {/* Dots Indicator */}
-            <div className="flex justify-center gap-2 mb-4">
-                {options.map((_, idx) => (
-                    <button
-                        key={idx}
-                        onClick={() => handleDotClick(idx)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-navy w-4' : 'bg-gray-300 hover:bg-gray-400'}`}
-                    />
-                ))}
-            </div>
+            {isSlider && (
+                <div className="flex justify-center gap-2 mb-4">
+                    {options.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => handleDotClick(idx)}
+                            className={`w-2 h-2 rounded-full transition-all duration-300 ${currentIndex === idx ? 'bg-navy w-4' : 'bg-gray-300 hover:bg-gray-400'}`}
+                        />
+                    ))}
+                </div>
+            )}
 
             <div className="mt-auto">
                 <span className="inline-block bg-mist/80 text-blue font-sans font-semibold text-xs px-4 py-2 rounded-full border border-blue/10">
