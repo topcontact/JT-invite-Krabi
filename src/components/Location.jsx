@@ -71,7 +71,7 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
 const Location = () => {
 
     return (
-        <section id="events" className="w-full bg-white py-16 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center rounded-t-[40px] md:rounded-t-[80px] shadow-[0_-10px_30px_rgba(0,0,50,0.05)] relative z-20 -mt-8">
+        <section id="events" className="max-w-6xl mx-auto bg-white py-16 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center rounded-t-[40px] md:rounded-t-[80px] shadow-[0_-10px_30px_rgba(0,0,50,0.05)] relative z-20 -mt-8">
             <motion.h2
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -87,7 +87,7 @@ const Location = () => {
                     date="Friday, December 4, 2026"
                     time="Start at 16:00"
                     location="The Grotto Restaurant"
-                    hotel="Rayawadee Resort"
+                    hotel="Rayavadee Resort"
                     mapLink="https://maps.google.com/?q=The+Grotto+Rayawadee+Krabi"
                     color="blue"
                     delay={0.2}

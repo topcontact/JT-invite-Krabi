@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Plane, Ship, Car } from 'lucide-react';
+import TransferCard from './TransferCard';
 
 const FadeIn = ({ children, delay = 0, className = "" }) => (
     <motion.div
@@ -15,6 +16,30 @@ const FadeIn = ({ children, delay = 0, className = "" }) => (
 );
 
 const HowToGet = () => {
+    const travelSteps = [
+        {
+            icon: Plane,
+            title: "Flight to Krabi",
+            description: "Fly directly to Krabi International Airport (KBV) from Bangkok.",
+            note: "Flights are available from both Don Mueang and Suvarnabhumi airports.\nEstimated round-trip fare: 4,000 – 7,000 THB",
+            delay: 0.1
+        },
+        {
+            icon: Car,
+            title: "Transfer to Pier",
+            description: "Take a taxi or pre-arranged van from the airport to Ao Nam Mao Pier (Short bridge) or Ao Nang.",
+            note: "We provide van transfers from KBV Airport to the pier on December 3rd and 4th,\ndeparting before 12:00 PM. EST: 40 minutes",
+            delay: 0.3
+        },
+        {
+            icon: Ship,
+            title: "Boat to Railay",
+            description: "Longtail boat ride (approx. 15-20 min) from the pier to Railay.",
+            note: "Guests traveling by our van transfer can directly board the provided boat to Railay.",
+            delay: 0.5
+        }
+    ];
+
     return (
         <section id="getting-there" className="max-w-6xl mx-auto px-4 md:px-8 py-20 bg-white">
             <FadeIn className="text-center mb-16">
@@ -29,38 +54,16 @@ const HowToGet = () => {
                 {/* Connecting line for desktop */}
                 <div className="hidden md:block absolute top-[64px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-blue/10 via-blue/30 to-blue/10 z-0"></div>
 
-                <FadeIn delay={0.1} className="relative z-10 flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full">
-                    <div className="w-20 h-20 rounded-full bg-mist flex items-center justify-center mb-6 shadow-md border-4 border-white">
-                        <Plane className="w-8 h-8 text-blue" />
-                    </div>
-                    <h4 className="text-xl font-serif text-navy mb-3">Flight to Krabi</h4>
-                    <p className="text-gray-500 font-sans text-sm">
-                        Fly directly to Krabi International Airport (KBV) from Bangkok.
-                    </p>
-                    <span className="mt-4 text-xs font-sans text-blue bg-blue/10 px-3 py-1 rounded-full"> Flights are available from both Don Mueang and Suvarnabhumi airports.
-                        <br />Estimated round-trip fare: 4,000 – 7,000 THB </span>
-                </FadeIn>
-
-                <FadeIn delay={0.3} className="relative z-10 flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full">
-                    <div className="w-20 h-20 rounded-full bg-mist flex items-center justify-center mb-6 shadow-md border-4 border-white">
-                        <Car className="w-8 h-8 text-blue" />
-                    </div>
-                    <h4 className="text-xl font-serif text-navy mb-3">Transfer to Pier</h4>
-                    <p className="text-gray-500 font-sans text-sm">
-                        Take a taxi or pre-arranged van from the airport to Ao Nam Mao Pier (Short bridge) or Ao Nang.
-                    </p>
-                    <span className="mt-4 text-xs font-sans text-blue bg-blue/10 px-3 py-1 rounded-full"> We provide van transfers from KBV Airport to the pier on December 3rd and 4th,<br /> departing before 12:00 PM. EST: 40 minutes</span>
-                </FadeIn>
-                <FadeIn delay={0.5} className="relative z-10 flex flex-col items-center text-center bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full">
-                    <div className="w-20 h-20 rounded-full bg-mist flex items-center justify-center mb-6 shadow-md border-4 border-white">
-                        <Ship className="w-8 h-8 text-blue" />
-                    </div>
-                    <h4 className="text-xl font-serif text-navy mb-3">Boat to Railay</h4>
-                    <p className="text-gray-500 font-sans text-sm">
-                        Longtail boat ride (approx. 15-20 min) from the pier to Railay.
-                    </p>
-                    <span className="mt-4 text-xs font-sans text-blue bg-blue/10 px-3 py-1 rounded-full"> Guests traveling by our van transfer can directly board the provided boat to Railay. </span>
-                </FadeIn>
+                {travelSteps.map((step, index) => (
+                    <TransferCard
+                        key={index}
+                        icon={step.icon}
+                        title={step.title}
+                        description={step.description}
+                        note={step.note}
+                        delay={step.delay}
+                    />
+                ))}
             </div>
         </section>
     );

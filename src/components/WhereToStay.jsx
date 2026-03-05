@@ -71,7 +71,7 @@ const WhereToStay = () => {
     ];
 
     return (
-        <section id="where-to-stay" className="w-full bg-white rounded-b-[40px] md:rounded-b-[80px] shadow-sm relative z-10 pb-8 mb-8">
+        <section id="where-to-stay" className="max-w-6xl mx-auto bg-white rounded-b-[40px] md:rounded-b-[80px] shadow-sm relative z-10 pb-8 mb-8">
             <div className="max-w-6xl mx-auto px-4 md:px-8 pt-20 pb-12">
                 <FadeIn className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-script text-navy mb-4">Where to Stay</h2>
