@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send, User, Phone, Users, Home, Calendar, Baby, ChevronDown } from 'lucide-react';
+import TicketModal from './TicketModal';
 
 const InputField = ({ label, type = "text", value, onChange, placeholder, icon: Icon, required = false, disabled = false, options = [], ...props }) => (
     <div className={`mb-4 flex flex-col w-full ${disabled ? 'opacity-50' : ''}`}>
@@ -93,8 +94,8 @@ const formatPhoneNumber = (value) => {
 
 const RSVP = () => {
     const [isSubmitted, setIsSubmitted] = useState(false);
-
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [showReview, setShowReview] = useState(false);
 
     const [formData, setFormData] = useState({
         krabi: {
@@ -102,13 +103,18 @@ const RSVP = () => {
             name: '',
             phone: '',
             adults: 1,
-            children: 0,
+            hasChildren: '',
+            childrenOver12: 0,
+            children7To12: 0,
+            childrenUnder7: 0,
             dietary: '',
             waitGroupRate: '',
             firstName: '',
             lastName: '',
             rooms: 1,
-            roomRange: '',
+            shareWith: '',
+            isShareNotSure: false,
+            roomRange: [],
             checkIn: '',
             checkOut: '',
         }
@@ -137,11 +143,41 @@ const RSVP = () => {
 
     const SCRIPT_URL = "/api/rsvp";
 
-    const handleSubmit = async (e) => {
+    const handleReview = (e) => {
         e.preventDefault();
 
         if (isSubmitting) return;
 
+        const submissions = [];
+
+        // Validate children input if bringing children
+        if (formData.krabi.attending === 'yes' && formData.krabi.hasChildren === 'yes') {
+            const totalChildren = parseInt(formData.krabi.childrenOver12 || 0) +
+                parseInt(formData.krabi.children7To12 || 0) +
+                parseInt(formData.krabi.childrenUnder7 || 0);
+
+            if (totalChildren === 0) {
+                alert("Please select the number of children in the respective age groups.");
+                setIsSubmitting(false);
+                return;
+            }
+        }
+
+        // Validate Share Room input
+        if (formData.krabi.attending === 'yes' && formData.krabi.waitGroupRate === 'yes' && formData.krabi.rooms === 'Share room') {
+            if (!formData.krabi.isShareNotSure && !formData.krabi.shareWith.trim()) {
+                alert("Please specify who you are sharing the room with, or select 'Not sure now'.");
+                setIsSubmitting(false);
+                return;
+            }
+        }
+
+        // All validations passed, show the review ticket
+        setShowReview(true);
+    };
+
+    const confirmSubmit = async () => {
+        setIsSubmitting(true);
         const submissions = [];
 
         // Prepare Krabi Data
@@ -156,13 +192,17 @@ const RSVP = () => {
                 name: formData.krabi.name,
                 phone: `'${formData.krabi.phone}'`, // Prepend ' to force Google Sheets to treat as string
                 adults: formData.krabi.adults,
-                children: formData.krabi.children,
+                children: formData.krabi.hasChildren === 'yes'
+                    ? `12+: ${formData.krabi.childrenOver12}, 7-12: ${formData.krabi.children7To12}, <7: ${formData.krabi.childrenUnder7}`
+                    : '0',
                 dietary: formData.krabi.dietary,
                 waitGroupRate: formData.krabi.waitGroupRate,
                 firstName: formData.krabi.firstName,
                 lastName: formData.krabi.lastName,
-                rooms: formData.krabi.rooms,
-                roomRange: formData.krabi.roomRange,
+                rooms: formData.krabi.rooms === 'Share room'
+                    ? `Share room (With: ${formData.krabi.isShareNotSure ? 'Not sure now' : formData.krabi.shareWith})`
+                    : formData.krabi.rooms,
+                roomRange: Array.isArray(formData.krabi.roomRange) ? formData.krabi.roomRange.join(', ') : '',
                 checkIn: formData.krabi.checkIn,
                 checkOut: formData.krabi.checkOut,
                 nightStay: nights > 0 ? nights : '', // Add calculated nights
@@ -188,6 +228,7 @@ const RSVP = () => {
             ));
 
             setIsSubmitted(true);
+            setShowReview(false);
         } catch (error) {
             console.error("Error!", error.message);
             alert("Something went wrong. Please try again.");
@@ -233,7 +274,7 @@ const RSVP = () => {
                     <p className="font-sans uppercase tracking-widest text-sm text-white">Please respond by <br /> April 30th, 2026</p>
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-8 md:p-12 space-y-12">
+                <form onSubmit={handleReview} className="p-8 md:p-12 space-y-12">
 
                     {/* Krabi Section */}
                     <div>
@@ -281,17 +322,56 @@ const RSVP = () => {
                                             required
                                         />
                                     </div>
-                                    <div className="w-full sm:w-1/2 flex">
-                                        <InputField
-                                            label="Children < 7 yrs"
-                                            type="select"
-                                            options={Array.from({ length: 11 }, (_, i) => i)}
-                                            value={formData.krabi.children}
-                                            onChange={(e) => updateKrabi('children', e.target.value)}
-                                            icon={Baby}
-                                            disabled={!formData.krabi.adults || parseInt(formData.krabi.adults) < 1}
-                                        />
-                                    </div>
+                                </div>
+                                <div className="mt-6 p-6 bg-mist/30 rounded-xl border border-blue/10">
+                                    <h4 className="font-serif text-xl text-navy mb-4">Children</h4>
+                                    <RadioGroup
+                                        label="Will you be bringing children?"
+                                        name="krabi_hasChildren"
+                                        value={formData.krabi.hasChildren}
+                                        onChange={(val) => updateKrabi('hasChildren', val)}
+                                        options={[
+                                            { label: "Yes", value: "yes" },
+                                            { label: "No", value: "no" }
+                                        ]}
+                                    />
+
+                                    {formData.krabi.hasChildren === 'yes' && (
+                                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-4 pt-2">
+                                            <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+                                                <div className="w-full sm:w-1/3 flex">
+                                                    <InputField
+                                                        label="Under 7 yrs"
+                                                        type="select"
+                                                        options={Array.from({ length: 11 }, (_, i) => i)}
+                                                        value={formData.krabi.childrenUnder7}
+                                                        onChange={(e) => updateKrabi('childrenUnder7', e.target.value)}
+                                                        icon={Baby}
+                                                    />
+                                                </div>
+                                                <div className="w-full sm:w-1/3 flex">
+                                                    <InputField
+                                                        label="7 - 12 yrs"
+                                                        type="select"
+                                                        options={Array.from({ length: 11 }, (_, i) => i)}
+                                                        value={formData.krabi.children7To12}
+                                                        onChange={(e) => updateKrabi('children7To12', e.target.value)}
+                                                        icon={Baby}
+                                                    />
+                                                </div>
+                                                <div className="w-full sm:w-1/3 flex">
+                                                    <InputField
+                                                        label="Over 12 yrs"
+                                                        type="select"
+                                                        options={Array.from({ length: 11 }, (_, i) => i)}
+                                                        value={formData.krabi.childrenOver12}
+                                                        onChange={(e) => updateKrabi('childrenOver12', e.target.value)}
+                                                        icon={Baby}
+                                                    />
+                                                </div>
+                                            </div>
+                                        </motion.div>
+                                    )}
                                 </div>
 
                                 <div className="mt-4">
@@ -338,23 +418,64 @@ const RSVP = () => {
                                                 <InputField
                                                     label="Number of Rooms"
                                                     type="select"
-                                                    options={Array.from({ length: 5 }, (_, i) => i + 1)}
+                                                    options={[...Array.from({ length: 5 }, (_, i) => i + 1), 'Share room']}
                                                     value={formData.krabi.rooms}
                                                     onChange={(e) => updateKrabi('rooms', e.target.value)}
                                                     icon={Home}
                                                     required
                                                 />
-                                                <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider">Room Preference price range</label>
-                                                <select
-                                                    className="w-full p-3 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm"
-                                                    value={formData.krabi.roomRange}
-                                                    onChange={(e) => updateKrabi('roomRange', e.target.value)}
-                                                >
-                                                    <option value="">Select a range...</option>
-                                                    <option value="Est. 4,000 - 6,000+ THB / night">Est. 4,000 - 6,000+ THB / night</option>
-                                                    <option value="Est. 6,000 - 10,000+ THB / night">Est. 6,000 - 10,000+ THB / night</option>
-                                                    <option value="Est. 25,000 - 40,000+ THB / night">Est. 25,000 - 40,000+ THB / night</option>
-                                                </select>
+                                                {formData.krabi.rooms === 'Share room' && (
+                                                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mb-4 space-y-3">
+                                                        <InputField
+                                                            label="Share with"
+                                                            placeholder="Enter name"
+                                                            value={formData.krabi.shareWith}
+                                                            onChange={(e) => updateKrabi('shareWith', e.target.value)}
+                                                            icon={Users}
+                                                            disabled={formData.krabi.isShareNotSure}
+                                                            required={!formData.krabi.isShareNotSure}
+                                                        />
+                                                        <label className="flex items-center gap-2 cursor-pointer pt-1">
+                                                            <input
+                                                                type="checkbox"
+                                                                checked={formData.krabi.isShareNotSure}
+                                                                onChange={(e) => {
+                                                                    updateKrabi('isShareNotSure', e.target.checked);
+                                                                    if (e.target.checked) {
+                                                                        updateKrabi('shareWith', '');
+                                                                    }
+                                                                }}
+                                                                className="rounded text-navy focus:ring-navy w-4 h-4"
+                                                            />
+                                                            <span className="font-sans text-sm text-navy/80">Not sure now</span>
+                                                        </label>
+                                                    </motion.div>
+                                                )}
+                                                <label className="block text-navy font-sans mb-3 text-sm uppercase tracking-wider">Room Preference price range (Select all that apply)</label>
+                                                <div className="space-y-3">
+                                                    {[
+                                                        "Est. 4,000 - 6,000+ THB / night",
+                                                        "Est. 6,000 - 10,000+ THB / night",
+                                                        "Est. 25,000 - 40,000+ THB / night"
+                                                    ].map((range) => (
+                                                        <label key={range} className="flex items-center gap-3 cursor-pointer">
+                                                            <input
+                                                                type="checkbox"
+                                                                checked={formData.krabi.roomRange.includes(range)}
+                                                                onChange={(e) => {
+                                                                    const currentRanges = formData.krabi.roomRange || [];
+                                                                    if (e.target.checked) {
+                                                                        updateKrabi('roomRange', [...currentRanges, range]);
+                                                                    } else {
+                                                                        updateKrabi('roomRange', currentRanges.filter(r => r !== range));
+                                                                    }
+                                                                }}
+                                                                className="rounded text-navy focus:ring-navy w-4 h-4"
+                                                            />
+                                                            <span className="font-sans text-navy">{range}</span>
+                                                        </label>
+                                                    ))}
+                                                </div>
                                             </div>
                                             <div className="flex flex-col sm:flex-row gap-4 items-stretch">
                                                 <div className="w-full sm:w-1/2 flex">
@@ -409,17 +530,26 @@ const RSVP = () => {
                         {isSubmitting ? (
                             <>
                                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                                Sending...
+                                Processing...
                             </>
                         ) : (
                             <>
                                 <Send className="w-5 h-5" />
-                                Send RSVP
+                                Review RSVP
                             </>
                         )}
                     </button>
                 </form>
             </motion.div>
+
+            {/* Confirmation Ticket Modal */}
+            <TicketModal
+                isOpen={showReview}
+                onClose={() => setShowReview(false)}
+                onConfirm={confirmSubmit}
+                data={formData.krabi}
+                isSubmitting={isSubmitting}
+            />
         </section>
     );
 };
