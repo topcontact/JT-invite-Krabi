@@ -37,11 +37,11 @@ const TimelineItem = ({ time, title, description, icon: Icon, isLast }) => (
     </div>
 );
 
-const OurTimeline = () => {
+const CeremonyProgram = () => {
     return (
         <section id="timeline" className="max-w-6xl mx-auto px-10 md:px-8 py-20 bg-white">
             <FadeIn className="text-center mb-16">
-                <h2 className="text-5xl md:text-6xl font-ballet text-navy mb-4">Our Timeline</h2>
+                <h2 className="text-5xl md:text-6xl font-ballet text-navy mb-4">Ceremony Program</h2>
                 <div className="w-16 h-px bg-blue/30 mx-auto"></div>
                 <p className="mt-4 text-gray-500 font-sans font-medium uppercase tracking-widest text-sm">
                     Friday, December 4, 2026
@@ -87,4 +87,4 @@ const OurTimeline = () => {
     );
 };
 
-export default OurTimeline;
+export default CeremonyProgram;

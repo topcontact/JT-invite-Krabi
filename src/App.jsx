@@ -3,7 +3,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Location from './components/Location';
 import HowToGet from './components/HowToGet';
-import OurTimeline from './components/OurTimeline';
+import CeremonyProgram from './components/CeremonyProgram';
 import WhereToStay from './components/WhereToStay';
 import RSVP from './components/RSVP';
 import Envelope from './components/Envelope';
@@ -23,7 +23,7 @@ function App() {
         <About />
         <Location />
         <HowToGet />
-        <OurTimeline />
+        <CeremonyProgram />
         <WhereToStay />
         <RSVP />
       </div>
