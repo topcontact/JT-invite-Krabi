@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Info } from 'lucide-react';
 
 const FadeIn = ({ children, delay = 0, className = "" }) => (
     <motion.div
@@ -20,10 +21,11 @@ const TransferCard = ({ icon: Icon, title, description, note, delay }) => {
                 <Icon className="w-8 h-8 text-blue" />
             </div>
             <h4 className="text-xl font-serif text-navy mb-3">{title}</h4>
-            <p className="text-gray-500 font-sans text-sm h-16 flex items-start justify-center">
+            <p className="text-gray-500 font-sans text-sm h-16 flex items-start justify-center mb-5 whitespace-pre-line">
                 {description}
             </p>
-            <span className="mt-auto text-xs font-sans text-blue bg-blue/10 px-3 py-1 rounded-full whitespace-pre-line">
+            <span className="mt-auto text-xs font-sans text-blue bg-blue/10 p-5 rounded-2xl whitespace-pre-line flex items-start">
+                <Info className="w-4 h-4 text-blue pb-0.5" />
                 {note}
             </span>
         </FadeIn>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Info } from 'lucide-react';
+
 
 const FadeIn = ({ children, delay = 0, className = "" }) => (
     <motion.div

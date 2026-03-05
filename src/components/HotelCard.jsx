@@ -79,22 +79,19 @@ const HotelCard = ({ hotel, delay }) => {
                     <img src={currentOption.image} alt={currentOption.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-navy/10 group-hover:bg-transparent transition-colors duration-300"></div>
                 </a>
+
+                <h3 className="text-xl font-serif text-navy mb-4 h-12 flex items-center justify-center">{currentOption.name}</h3>
+
                 <div className="mb-4">
                     <a href={currentOption.mapLink} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue text-white hover:bg-navy transition-colors font-sans font-semibold text-xs md:text-sm rounded-full px-5 py-2 shadow-sm">
                         Map and Review
                     </a>
                 </div>
-                <h3 className="text-xl font-serif text-navy mb-4 h-12 flex items-center justify-center">{currentOption.name}</h3>
 
                 <div className="flex-col h-[140px] mb-6 flex justify-start items-center">
                     <p className="text-gray-600 font-sans text-sm flex-grow">
                         {currentOption.description}
                     </p>
-                    {currentOption.note && (
-                        <p className="text-gray-600 font-sans mt-2 text-sm">
-                            {currentOption.note}
-                        </p>
-                    )}
                 </div>
 
                 <div className="mt-auto">

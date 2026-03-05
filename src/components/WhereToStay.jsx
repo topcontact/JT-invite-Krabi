@@ -64,7 +64,6 @@ const WhereToStay = () => {
             image: "/rayavadee.jpg",
             mapLink: "https://maps.app.goo.gl/goey75aq786LVDrq7",
             description: "A 5-star ultra-luxury icon spanning three beaches (East Railay, West Railay, and Phra Nang Cave). Offers high-end service, ultimate privacy, and stunning natural surroundings.",
-            note: "*Our Wedding Venue here*",
             price: "Est. 25,000 - 40,000+ THB / night",
             distance: "Wedding venue onsite"
         }
