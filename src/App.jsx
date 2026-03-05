@@ -7,6 +7,7 @@ import CeremonyProgram from './components/CeremonyProgram';
 import WhereToStay from './components/WhereToStay';
 import RSVP from './components/RSVP';
 import Envelope from './components/Envelope';
+import FloatingNav from './components/FloatingNav';
 
 function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
@@ -27,6 +28,7 @@ function App() {
         <WhereToStay />
         <RSVP />
       </div>
+      <FloatingNav />
     </div>
   );
 }
