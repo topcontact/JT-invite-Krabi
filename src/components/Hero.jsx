@@ -53,11 +53,11 @@ const Hero = () => {
                         <a href="#location" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
                             Location
                         </a>
-                        <a href="#timeline" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
+                        <a href="#program" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
                             Program
                         </a>
-                        <a href="#events" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
-                            Events
+                        <a href="#where-to-stay" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
+                            Where to Stay
                         </a>
                     </div>
                 </motion.div>

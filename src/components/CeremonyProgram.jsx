@@ -39,7 +39,7 @@ const TimelineItem = ({ time, title, description, icon: Icon, isLast }) => (
 
 const CeremonyProgram = () => {
     return (
-        <section id="timeline" className="max-w-6xl mx-auto px-10 md:px-8 py-20 bg-white">
+        <section id="program" className="max-w-6xl mx-auto px-10 md:px-8 py-20 bg-white">
             <FadeIn className="text-center mb-16">
                 <h2 className="text-5xl md:text-6xl font-ballet text-navy mb-4">Ceremony Program</h2>
                 <div className="w-16 h-px bg-blue/30 mx-auto"></div>
