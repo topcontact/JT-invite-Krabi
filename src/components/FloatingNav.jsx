@@ -77,8 +77,8 @@ const FloatingNav = () => {
                                     href={`#${item.id}`}
                                     className={`flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 ${isActive ? 'text-blue bg-white/50 shadow-sm scale-105' : 'text-navy/80 hover:text-blue hover:bg-white/30 hover:scale-105'}`}
                                 >
-                                    <Icon className={`w-5 h-5 md:w-6 md:h-6 ${isActive ? 'text-blue' : ''}`} />
-                                    <span className="text-[10px] md:text-xs font-sans tracking-widest uppercase">{item.label}</span>
+                                    <Icon className={`w-4 h-4 md:w-5 md:h-5 ${isActive ? 'text-blue' : ''}`} />
+                                    <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">{item.label}</span>
                                 </a>
                             );
                         })}
