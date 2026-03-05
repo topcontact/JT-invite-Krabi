@@ -15,11 +15,15 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
     const thumbWidth = 52;
     const [containerWidth, setContainerWidth] = useState(280);
 
-    const maxDrag = containerWidth - thumbWidth - 8; // 8 for padding
-    const bgOpacity = useTransform(x, [0, maxDrag], [0.3, 1]);
-    const textOpacity = useTransform(x, [0, maxDrag * 0.5], [1, 0]);
+    const maxDrag = containerWidth - thumbWidth - 8;
+    // Glass effect: as you slide, the track becomes more translucent
+    const trackBlur = useTransform(x, [0, maxDrag], [8, 20]);
+    const trackBgOpacity = useTransform(x, [0, maxDrag], [0.15, 0.05]);
+    const trackBorderOpacity = useTransform(x, [0, maxDrag], [0.3, 0.6]);
+    const textOpacity = useTransform(x, [0, maxDrag * 0.4], [1, 0]);
+    const thumbGlow = useTransform(x, [0, maxDrag], [0, 20]);
 
-    const handleDragEnd = (_, info) => {
+    const handleDragEnd = () => {
         if (x.get() >= maxDrag * 0.85) {
             setConfirmed(true);
             onConfirm();
@@ -32,12 +36,30 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
                 containerRef.current = el;
                 if (el) setContainerWidth(el.offsetWidth);
             }}
-            className="relative h-14 rounded-full bg-navy/10 border border-navy/20 overflow-hidden select-none"
+            className="relative h-14 rounded-full overflow-hidden select-none"
+            style={{
+                background: 'linear-gradient(135deg, rgba(255,255,255,0.25) 0%, rgba(255,255,255,0.08) 100%)',
+                border: '1px solid rgba(255,255,255,0.4)',
+                boxShadow: '0 4px 30px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.5)',
+            }}
         >
-            {/* Background fill */}
+            {/* Liquid glass backdrop blur layer */}
             <motion.div
-                className="absolute inset-0 rounded-full bg-navy"
-                style={{ opacity: bgOpacity }}
+                className="absolute inset-0 rounded-full"
+                style={{
+                    backdropFilter: useTransform(trackBlur, v => `blur(${v}px) saturate(180%)`),
+                    WebkitBackdropFilter: useTransform(trackBlur, v => `blur(${v}px) saturate(180%)`),
+                    backgroundColor: useTransform(trackBgOpacity, v => `rgba(255,255,255,${v})`),
+                    borderColor: useTransform(trackBorderOpacity, v => `rgba(255,255,255,${v})`),
+                    borderWidth: '1px',
+                    borderStyle: 'solid',
+                }}
+            />
+
+            {/* Inner highlight (top edge) */}
+            <div
+                className="absolute inset-x-0 top-0 h-[1px] rounded-full pointer-events-none"
+                style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent)' }}
             />
 
             {/* Text label */}
@@ -45,7 +67,7 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
                 style={{ opacity: textOpacity }}
             >
-                <span className="text-xs font-bold uppercase tracking-wider text-navy/60 ml-10">
+                <span className="text-xs font-bold uppercase tracking-wider text-navy/50 ml-10 drop-shadow-sm">
                     Slide to send
                 </span>
             </motion.div>
@@ -58,27 +80,51 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
                     dragElastic={0}
                     dragMomentum={false}
                     onDragEnd={handleDragEnd}
-                    style={{ x }}
-                    className="absolute top-1 left-1 w-12 h-12 rounded-full bg-navy shadow-lg flex items-center justify-center cursor-grab active:cursor-grabbing z-10"
+                    style={{
+                        x,
+                        boxShadow: useTransform(thumbGlow, v =>
+                            `0 2px 10px rgba(42,77,105,0.3), 0 0 ${v}px rgba(75,134,180,0.4)`
+                        ),
+                    }}
+                    className="absolute top-1 left-1 w-12 h-12 rounded-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10"
                     whileTap={{ scale: 0.95 }}
                 >
-                    {isSubmitting || isFolding ? (
-                        <div className="w-5 h-5 border-2 border-mist/30 border-t-mist rounded-full animate-spin" />
-                    ) : (
-                        <ArrowRight size={20} className="text-mist" />
-                    )}
+                    {/* Thumb glass */}
+                    <div
+                        className="absolute inset-0 rounded-full"
+                        style={{
+                            background: 'linear-gradient(145deg, rgba(42,77,105,0.95), rgba(42,77,105,0.8))',
+                            backdropFilter: 'blur(10px) saturate(200%)',
+                            WebkitBackdropFilter: 'blur(10px) saturate(200%)',
+                            border: '1px solid rgba(255,255,255,0.15)',
+                        }}
+                    />
+                    <div className="relative z-10">
+                        {isSubmitting || isFolding ? (
+                            <div className="w-5 h-5 border-2 border-mist/30 border-t-mist rounded-full animate-spin" />
+                        ) : (
+                            <ArrowRight size={20} className="text-white/90 drop-shadow-sm" />
+                        )}
+                    </div>
                 </motion.div>
             ) : (
                 <motion.div
                     initial={{ x: 0 }}
                     animate={{ x: maxDrag }}
                     transition={{ duration: 0.2 }}
-                    className="absolute top-1 left-1 w-12 h-12 rounded-full bg-green-600 shadow-lg flex items-center justify-center z-10"
+                    className="absolute top-1 left-1 w-12 h-12 rounded-full flex items-center justify-center z-10"
+                    style={{
+                        background: 'linear-gradient(145deg, rgba(22,163,74,0.95), rgba(22,163,74,0.8))',
+                        backdropFilter: 'blur(10px) saturate(200%)',
+                        WebkitBackdropFilter: 'blur(10px) saturate(200%)',
+                        border: '1px solid rgba(255,255,255,0.2)',
+                        boxShadow: '0 2px 10px rgba(22,163,74,0.4), 0 0 20px rgba(22,163,74,0.3)',
+                    }}
                 >
                     {isSubmitting || isFolding ? (
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     ) : (
-                        <Check size={20} className="text-white" />
+                        <Check size={20} className="text-white drop-shadow-sm" />
                     )}
                 </motion.div>
             )}
@@ -203,15 +249,39 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                             initial={{ y: 50, opacity: 0 }}
                             animate={isFolding ? { rotateX: 90, y: -50, opacity: 0, originY: "top" } : { rotateX: 0, y: 0, opacity: 1, originY: "top" }}
                             transition={{ duration: 0.4, ease: "easeIn" }}
-                            className="bg-mist vintage-mask-bottom pb-6 pt-1 px-4 relative drop-shadow-2xl z-10"
+                            className="vintage-mask-bottom pb-6 pt-1 px-4 relative drop-shadow-2xl z-10 overflow-hidden"
+                            style={{ backgroundColor: '#e7eff6' }}
                         >
-                            <div className="border-b-2 border-l-2 border-r-2 border-navy/30 rounded-b-xl relative p-5 bg-mist">
+                            {/* Background image with fade-to-white upward */}
+                            <div className="absolute inset-0 z-0">
+                                <img
+                                    src="/ModalTicketPic.jpg"
+                                    alt=""
+                                    className="w-full h-full object-cover object-center"
+                                />
+                                {/* Fade overlay: white fading from top to transparent at bottom */}
+                                <div
+                                    className="absolute inset-0"
+                                    style={{
+                                        background: 'linear-gradient(to bottom, #e7eff6 0%, rgba(231,239,246,0.85) 30%, rgba(231,239,246,0.4) 60%, rgba(231,239,246,0.15) 100%)',
+                                    }}
+                                />
+                            </div>
+
+                            <div className="border-b-2 border-l-2 border-r-2 border-navy/30 rounded-b-xl relative p-5">
                                 <div className="absolute bottom-[4px] left-[4px] right-[4px] top-0 border-b border-l border-r border-navy/20 rounded-b-lg pointer-events-none"></div>
 
                                 <div className="relative z-10">
                                     {/* Extra Details */}
                                     {data?.attending === 'yes' && (totalChildren > 0 || data?.waitGroupRate === 'yes' || data?.dietary || data?.firstName) && (
-                                        <div className="mb-5 bg-white/40 p-4 rounded-lg border border-navy/10">
+                                        <div className="mb-5 p-4 rounded-lg border border-white/40"
+                                            style={{
+                                                background: 'rgba(255,255,255,0.45)',
+                                                backdropFilter: 'blur(12px) saturate(180%)',
+                                                WebkitBackdropFilter: 'blur(12px) saturate(180%)',
+                                                boxShadow: '0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.5)',
+                                            }}
+                                        >
                                             <div className="space-y-4 text-sm text-navy font-sans">
                                                 <p className="text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5 text-center pb-4">Wait for Group Rate</p>
                                                 {(data?.firstName || data?.lastName) && (
@@ -289,7 +359,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                     <button
                                         onClick={onClose}
                                         disabled={isSubmitting || isFolding}
-                                        className="w-full flex items-center justify-center gap-1.5 py-2.5 mb-3 rounded-lg font-sans text-xs font-bold uppercase tracking-wider text-navy/70 hover:text-navy hover:bg-navy/5 transition-colors disabled:opacity-50"
+                                        className="w-full flex items-center justify-center gap-1.5 py-2.5 mb-3 rounded-lg font-sans text-xs font-bold uppercase tracking-wider text-navy/70 hover:text-navy hover:bg-white/30 transition-colors disabled:opacity-50"
                                     >
                                         <Pencil size={12} />
                                         Edit Details
