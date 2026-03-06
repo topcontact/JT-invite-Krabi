@@ -191,21 +191,24 @@ const RSVP = () => {
                 attending: formData.krabi.attending,
                 name: formData.krabi.name,
                 phone: `'${formData.krabi.phone}'`, // Prepend ' to force Google Sheets to treat as string
-                adults: formData.krabi.adults,
-                children: formData.krabi.hasChildren === 'yes'
+                adults: formData.krabi.attending === 'yes' ? formData.krabi.adults : '',
+                children: formData.krabi.attending === 'yes' && formData.krabi.hasChildren === 'yes'
                     ? `12+: ${formData.krabi.childrenOver12}, 7-12: ${formData.krabi.children7To12}, <7: ${formData.krabi.childrenUnder7}`
-                    : '0',
-                dietary: formData.krabi.dietary,
-                waitGroupRate: formData.krabi.waitGroupRate,
-                firstName: formData.krabi.firstName,
-                lastName: formData.krabi.lastName,
-                rooms: formData.krabi.rooms === 'Share room'
-                    ? `Share room (With: ${formData.krabi.isShareNotSure ? 'Not sure now' : formData.krabi.shareWith})`
-                    : formData.krabi.rooms,
-                roomRange: Array.isArray(formData.krabi.roomRange) ? formData.krabi.roomRange.join(', ') : '',
-                checkIn: formData.krabi.checkIn,
-                checkOut: formData.krabi.checkOut,
-                nightStay: nights > 0 ? nights : '', // Add calculated nights
+                    : (formData.krabi.attending === 'yes' ? '0' : ''),
+                dietary: formData.krabi.attending === 'yes' ? formData.krabi.dietary : '',
+                waitGroupRate: formData.krabi.attending === 'yes' ? formData.krabi.waitGroupRate : '',
+                firstName: formData.krabi.attending === 'yes' ? formData.krabi.firstName : '',
+                lastName: formData.krabi.attending === 'yes' ? formData.krabi.lastName : '',
+                rooms: formData.krabi.attending === 'yes'
+                    ? (formData.krabi.rooms === 'Share room'
+                        ? `Share room (With: ${formData.krabi.isShareNotSure ? 'Not sure now' : formData.krabi.shareWith})`
+                        : formData.krabi.rooms)
+                    : '',
+                roomRange: formData.krabi.attending === 'yes' ? (Array.isArray(formData.krabi.roomRange) ? formData.krabi.roomRange.join(', ') : '') : '',
+                checkIn: formData.krabi.attending === 'yes' ? formData.krabi.checkIn : '',
+                checkOut: formData.krabi.attending === 'yes' ? formData.krabi.checkOut : '',
+                nightStay: formData.krabi.attending === 'yes' && nights > 0 ? nights : '',
+                message: formData.krabi.attending === 'no' ? (formData.krabi.message || '') : ''
             });
         }
 
@@ -293,8 +296,8 @@ const RSVP = () => {
                             ]}
                         />
 
-                        {formData.krabi.attending === 'yes' && (
-                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-4">
+                        {formData.krabi.attending && (
+                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-4 mb-4">
                                 <InputField
                                     label="Nickname"
                                     value={formData.krabi.name}
@@ -310,6 +313,11 @@ const RSVP = () => {
                                     icon={Phone}
                                     required
                                 />
+                            </motion.div>
+                        )}
+
+                        {formData.krabi.attending === 'yes' && (
+                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-4">
                                 <div className="flex flex-col sm:flex-row gap-4 items-stretch">
                                     <div className="w-full sm:w-1/2 flex">
                                         <InputField
@@ -510,7 +518,7 @@ const RSVP = () => {
                             </motion.div>
                         )}
                         {formData.krabi.attending === 'no' && (
-                            <div className="mt-4">
+                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-4">
                                 <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider">Message</label>
                                 <textarea
                                     className="w-full p-3 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm"
@@ -519,7 +527,7 @@ const RSVP = () => {
                                     value={formData.krabi.message || ''}
                                     onChange={(e) => updateKrabi('message', e.target.value)}
                                 ></textarea>
-                            </div>
+                            </motion.div>
                         )}
                     </div>
                     <button

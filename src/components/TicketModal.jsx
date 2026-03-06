@@ -23,6 +23,11 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
     const textOpacity = useTransform(x, [0, maxDrag * 0.4], [1, 0]);
     const thumbGlow = useTransform(x, [0, maxDrag], [0, 20]);
 
+    const backdropFilter = useTransform(trackBlur, v => `blur(${v}px) saturate(180%)`);
+    const backgroundColor = useTransform(trackBgOpacity, v => `rgba(255,255,255,${v})`);
+    const borderColor = useTransform(trackBorderOpacity, v => `rgba(255,255,255,${v})`);
+    const boxShadow = useTransform(thumbGlow, v => `0 2px 10px rgba(42,77,105,0.3), 0 0 ${v}px rgba(75,134,180,0.4)`);
+
     const handleDragEnd = () => {
         if (x.get() >= maxDrag * 0.85) {
             setConfirmed(true);
@@ -47,10 +52,10 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
             <motion.div
                 className="absolute inset-0 rounded-full"
                 style={{
-                    backdropFilter: useTransform(trackBlur, v => `blur(${v}px) saturate(180%)`),
-                    WebkitBackdropFilter: useTransform(trackBlur, v => `blur(${v}px) saturate(180%)`),
-                    backgroundColor: useTransform(trackBgOpacity, v => `rgba(255,255,255,${v})`),
-                    borderColor: useTransform(trackBorderOpacity, v => `rgba(255,255,255,${v})`),
+                    backdropFilter,
+                    WebkitBackdropFilter: backdropFilter,
+                    backgroundColor,
+                    borderColor,
                     borderWidth: '1px',
                     borderStyle: 'solid',
                 }}
@@ -82,9 +87,7 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
                     onDragEnd={handleDragEnd}
                     style={{
                         x,
-                        boxShadow: useTransform(thumbGlow, v =>
-                            `0 2px 10px rgba(42,77,105,0.3), 0 0 ${v}px rgba(75,134,180,0.4)`
-                        ),
+                        boxShadow
                     }}
                     className="absolute top-1 left-1 w-12 h-12 rounded-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10"
                     whileTap={{ scale: 0.95 }}
