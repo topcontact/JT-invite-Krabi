@@ -189,6 +189,15 @@ const RSVP = () => {
             }
         }
 
+        // Validate Room Range selection
+        if (formData.krabi.attending === 'yes' && formData.krabi.waitGroupRate === 'yes') {
+            if (!formData.krabi.roomRange || formData.krabi.roomRange.length === 0) {
+                alert("Please select at least one Room Preference price range.");
+                setIsSubmitting(false);
+                return;
+            }
+        }
+
         // All validations passed, show the review ticket
         setShowReview(true);
     };
