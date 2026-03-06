@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Send, User, Phone, Users, Home, Calendar, Baby, ChevronDown } from 'lucide-react';
 import TicketModal from './TicketModal';
 
@@ -119,6 +119,23 @@ const RSVP = () => {
             checkOut: '',
         }
     });
+
+    const [nameShake, setNameShake] = useState(0);
+    const [englishWarning, setEnglishWarning] = useState(false);
+    const warningTimer = useRef(null);
+
+    const handleNameChange = (field, value) => {
+        const hasNonEnglish = /[^a-zA-Z\s.-]/.test(value);
+        if (hasNonEnglish) {
+            setNameShake(prev => prev + 1); // trigger shake
+            setEnglishWarning(true);
+            // Auto-hide warning after 2.5s
+            if (warningTimer.current) clearTimeout(warningTimer.current);
+            warningTimer.current = setTimeout(() => setEnglishWarning(false), 2500);
+        }
+        const filtered = value.replace(/[^a-zA-Z\s.-]/g, '');
+        updateKrabi(field, filtered);
+    };
 
     const updateKrabi = (field, value) => {
         let finalValue = value;
@@ -418,20 +435,39 @@ const RSVP = () => {
                                     {formData.krabi.waitGroupRate === 'yes' && (
                                         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
                                             <div className="mb-4">
-                                                <InputField
-                                                    label="First Name (English)"
-                                                    value={formData.krabi.firstName}
-                                                    onChange={(e) => updateKrabi('firstName', e.target.value.replace(/[^a-zA-Z\s.-]/g, ''))}
-                                                    icon={User}
-                                                    required
-                                                />
-                                                <InputField
-                                                    label="Last Name (English)"
-                                                    value={formData.krabi.lastName}
-                                                    onChange={(e) => updateKrabi('lastName', e.target.value.replace(/[^a-zA-Z\s.-]/g, ''))}
-                                                    icon={User}
-                                                    required
-                                                />
+                                                <motion.div
+                                                    key={nameShake}
+                                                    animate={nameShake > 0 ? { x: [0, -8, 8, -6, 6, -3, 3, 0] } : {}}
+                                                    transition={{ duration: 0.4, ease: 'easeInOut' }}
+                                                >
+                                                    <InputField
+                                                        label="First Name (English)"
+                                                        value={formData.krabi.firstName}
+                                                        onChange={(e) => handleNameChange('firstName', e.target.value)}
+                                                        icon={User}
+                                                        required
+                                                    />
+                                                    <InputField
+                                                        label="Last Name (English)"
+                                                        value={formData.krabi.lastName}
+                                                        onChange={(e) => handleNameChange('lastName', e.target.value)}
+                                                        icon={User}
+                                                        required
+                                                    />
+                                                </motion.div>
+                                                <AnimatePresence>
+                                                    {englishWarning && (
+                                                        <motion.p
+                                                            initial={{ opacity: 0, y: -5 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            exit={{ opacity: 0, y: -5 }}
+                                                            transition={{ duration: 0.25 }}
+                                                            className="text-red-500 text-xs mt-1.5 ml-1 flex items-center gap-1"
+                                                        >
+                                                            <span>⚠️</span> Please enter English characters only
+                                                        </motion.p>
+                                                    )}
+                                                </AnimatePresence>
                                                 <InputField
                                                     label="Number of Rooms"
                                                     type="select"
