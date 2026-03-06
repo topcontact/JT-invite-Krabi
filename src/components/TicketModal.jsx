@@ -391,6 +391,22 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                         </motion.div>
 
                     </motion.div>
+
+                    {/* Loading Spinner Overlay - shown after fold animation while API submits */}
+                    <AnimatePresence>
+                        {isFolding && (
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ delay: 0.5, duration: 0.3 }}
+                                className="absolute inset-0 z-50 flex flex-col items-center justify-center"
+                            >
+                                <div className="w-12 h-12 border-3 border-white/30 border-t-white rounded-full animate-spin mb-4" />
+                                <p className="font-sans text-sm text-white/90 uppercase tracking-widest">Sending...</p>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </motion.div>
             )}
         </AnimatePresence>
