@@ -192,9 +192,9 @@ const RSVP = () => {
                 name: formData.krabi.name,
                 phone: `'${formData.krabi.phone}'`, // Prepend ' to force Google Sheets to treat as string
                 adults: formData.krabi.attending === 'yes' ? formData.krabi.adults : '',
-                children: formData.krabi.attending === 'yes' && formData.krabi.hasChildren === 'yes'
-                    ? `12+: ${formData.krabi.childrenOver12}, 7-12: ${formData.krabi.children7To12}, <7: ${formData.krabi.childrenUnder7}`
-                    : (formData.krabi.attending === 'yes' ? '0' : ''),
+                childrenUnder7: formData.krabi.attending === 'yes' && formData.krabi.hasChildren === 'yes' ? formData.krabi.childrenUnder7 : (formData.krabi.attending === 'yes' ? '0' : ''),
+                children7To12: formData.krabi.attending === 'yes' && formData.krabi.hasChildren === 'yes' ? formData.krabi.children7To12 : (formData.krabi.attending === 'yes' ? '0' : ''),
+                childrenOver12: formData.krabi.attending === 'yes' && formData.krabi.hasChildren === 'yes' ? formData.krabi.childrenOver12 : (formData.krabi.attending === 'yes' ? '0' : ''),
                 dietary: formData.krabi.attending === 'yes' ? formData.krabi.dietary : '',
                 waitGroupRate: formData.krabi.attending === 'yes' ? formData.krabi.waitGroupRate : '',
                 firstName: formData.krabi.attending === 'yes' ? formData.krabi.firstName : '',
@@ -204,7 +204,9 @@ const RSVP = () => {
                         ? `Share room (With: ${formData.krabi.isShareNotSure ? 'Not sure now' : formData.krabi.shareWith})`
                         : formData.krabi.rooms)
                     : '',
-                roomRange: formData.krabi.attending === 'yes' ? (Array.isArray(formData.krabi.roomRange) ? formData.krabi.roomRange.join(', ') : '') : '',
+                roomRange4kTo6k: formData.krabi.attending === 'yes' && Array.isArray(formData.krabi.roomRange) && formData.krabi.roomRange.includes("Est. 4,000 - 6,000+ THB / night") ? 'Yes' : '',
+                roomRange6kTo10k: formData.krabi.attending === 'yes' && Array.isArray(formData.krabi.roomRange) && formData.krabi.roomRange.includes("Est. 6,000 - 10,000+ THB / night") ? 'Yes' : '',
+                roomRange25kTo40k: formData.krabi.attending === 'yes' && Array.isArray(formData.krabi.roomRange) && formData.krabi.roomRange.includes("Est. 25,000 - 40,000+ THB / night") ? 'Yes' : '',
                 checkIn: formData.krabi.attending === 'yes' ? formData.krabi.checkIn : '',
                 checkOut: formData.krabi.attending === 'yes' ? formData.krabi.checkOut : '',
                 nightStay: formData.krabi.attending === 'yes' && nights > 0 ? nights : '',
