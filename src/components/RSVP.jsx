@@ -513,7 +513,8 @@ const RSVP = () => {
                                                         </label>
                                                     </motion.div>
                                                 )}
-                                                <label className="block text-navy font-sans mb-3 text-sm uppercase tracking-wider">Room Preference price range (Select all that apply)</label>
+                                                <label className="block text-navy font-sans mb-3 text-sm uppercase tracking-wider">Room Preference price range </label>
+                                                <label className="block text-navy font-sans mb-3 text-sm tracking-wider">(You can select more than one option)</label>
                                                 <div className="space-y-3">
                                                     {[
                                                         "Est. 4,000 - 6,000+ THB / night",
