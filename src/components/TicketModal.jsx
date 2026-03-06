@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { Check, X, BedDouble, Utensils, Baby, ArrowRight, User, Phone, Pencil } from 'lucide-react';
+import { Check, X, BedDouble, Utensils, MessageSquare, Baby, ArrowRight, User, Phone, Pencil } from 'lucide-react';
 
 const Diamond = () => (
     <svg width="6" height="6" viewBox="0 0 10 10" className="fill-blue opacity-80 inline-block mx-2">
@@ -221,7 +221,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                             </div>
                                         )}
 
-                                        <div className="grid grid-cols-2 gap-4 mt-4 pt-3 border-t border-navy/10">
+                                        <div className={`grid ${data?.attending === 'yes' ? 'grid-cols-2' : 'grid-cols-1'} gap-4 mt-4 pt-3 border-t border-navy/10`}>
                                             <div>
                                                 <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Status</p>
                                                 <p className="font-serif text-base text-navy flex items-center gap-1.5">
@@ -229,11 +229,33 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                                     {status}
                                                 </p>
                                             </div>
-                                            <div>
-                                                <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Party Size</p>
-                                                <p className="font-serif text-base text-navy">{partySize} <span className="text-xs font-sans text-navy/60">total</span></p>
-                                            </div>
+                                            {data?.attending === 'yes' && (
+                                                <div>
+                                                    <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Party Size</p>
+                                                    <p className="font-serif text-base text-navy">{partySize} <span className="text-xs font-sans text-navy/60">total</span></p>
+                                                </div>
+                                            )}
                                         </div>
+
+                                        {/* Dietary / Message in upper box */}
+                                        {data?.attending === 'yes' && data?.dietary && (
+                                            <div className="flex items-start gap-3 mt-4 pt-3 border-t border-navy/10">
+                                                <Utensils className="w-4 h-4 text-blue mt-0.5 shrink-0" />
+                                                <div>
+                                                    <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Dietary / Needs</p>
+                                                    <span className="font-sans text-sm text-navy italic leading-snug">"{data.dietary}"</span>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {data?.attending === 'no' && data?.message && (
+                                            <div className="flex items-start gap-3 mt-4 pt-3 border-t border-navy/10">
+                                                <MessageSquare className="w-4 h-4 text-blue mt-0.5 shrink-0" />
+                                                <div>
+                                                    <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Message</p>
+                                                    <span className="font-sans text-sm text-navy italic leading-snug">"{data.message}"</span>
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
 
                                 </div>
@@ -340,15 +362,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                                     </div>
                                                 )}
 
-                                                {data?.dietary && (
-                                                    <div className="flex items-start gap-3">
-                                                        <Utensils className="w-4 h-4 text-blue mt-0.5 shrink-0" />
-                                                        <div>
-                                                            <p className="text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Dietary Requirements</p>
-                                                            <span className="italic leading-snug">"{data.dietary}"</span>
-                                                        </div>
-                                                    </div>
-                                                )}
+
 
                                             </div>
                                         </div>
