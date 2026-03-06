@@ -222,15 +222,22 @@ const RSVP = () => {
         setIsSubmitting(true);
 
         try {
-            await Promise.all(submissions.map(data =>
-                fetch(SCRIPT_URL, {
+            await Promise.all(submissions.map(async (data) => {
+                const response = await fetch(SCRIPT_URL, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                     },
-                    body: JSON.stringify(data)
-                })
-            ));
+                    body: JSON.stringify(data),
+                    redirect: "follow",
+                });
+                // Google Apps Script returns 302 redirect after successful write.
+                // Via Vite proxy, we may receive the 302 directly (not followed).
+                // Both 2xx and 3xx mean the data was saved successfully.
+                if (!response.ok && response.status >= 400) {
+                    throw new Error(`Server returned ${response.status}`);
+                }
+            }));
 
             setIsSubmitted(true);
             setShowReview(false);
