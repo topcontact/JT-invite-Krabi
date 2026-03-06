@@ -421,14 +421,14 @@ const RSVP = () => {
                                                 <InputField
                                                     label="First Name (English)"
                                                     value={formData.krabi.firstName}
-                                                    onChange={(e) => updateKrabi('firstName', e.target.value)}
+                                                    onChange={(e) => updateKrabi('firstName', e.target.value.replace(/[^a-zA-Z\s.-]/g, ''))}
                                                     icon={User}
                                                     required
                                                 />
                                                 <InputField
                                                     label="Last Name (English)"
                                                     value={formData.krabi.lastName}
-                                                    onChange={(e) => updateKrabi('lastName', e.target.value)}
+                                                    onChange={(e) => updateKrabi('lastName', e.target.value.replace(/[^a-zA-Z\s.-]/g, ''))}
                                                     icon={User}
                                                     required
                                                 />
