@@ -1,18 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FadeInUp as FadeIn } from './animations/Motion';
 import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
-
-const FadeIn = ({ children, delay = 0, className = "" }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ delay, duration: 0.8 }}
-        className={className}
-    >
-        {children}
-    </motion.div>
-);
 
 const HotelCard = ({ hotel, delay }) => {
     // If hotel has 'options' array, it's a slider. Otherwise, it's a single static card (represented as a 1-item array for consistency).

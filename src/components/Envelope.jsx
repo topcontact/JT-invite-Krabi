@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import envelopeImg from '../assets/envelope.png';
 
+
 const Envelope = ({ onOpen }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [isHidden, setIsHidden] = useState(false);

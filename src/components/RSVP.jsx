@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Send, User, Phone, Users, Home, Calendar, Baby, ChevronDown } from 'lucide-react';
+import { FadeInExpand, FadeInScale, FadeInView, FadeIn, Shake, SlideInWarning } from './animations/Motion';
 import TicketModal from './TicketModal';
 
 const InputField = ({ label, type = "text", value, onChange, placeholder, icon: Icon, required = false, disabled = false, options = [], ...props }) => (
@@ -277,11 +277,7 @@ const RSVP = () => {
     if (isSubmitted) {
         return (
             <section className="pt-20 pb-40 md:pb-48 px-4 bg-white/40" id="rsvp">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl p-12 text-center"
-                >
+                <FadeInScale className="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl p-12 text-center">
                     <div className="mb-6 flex justify-center">
                         <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
                             <Send className="w-10 h-10 text-green-600" />
@@ -294,19 +290,14 @@ const RSVP = () => {
                     <p className="text-blue font-sans font-medium uppercase tracking-wider">
                         Supicha & Teerawat
                     </p>
-                </motion.div>
+                </FadeInScale>
             </section>
         );
     }
 
     return (
         <section className="pt-20 pb-40 md:pb-48 px-4 bg-white/40" id="rsvp">
-            <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden"
-            >
+            <FadeInView className="max-w-4xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden">
                 <div className="p-10 bg-navy text-white text-center">
                     <h2 className="text-4xl md:text-5xl font-script mb-2">RSVP</h2>
                     <p className="font-sans uppercase tracking-widest text-sm text-white">Please respond by <br /> April 30th, 2026</p>
@@ -332,7 +323,7 @@ const RSVP = () => {
                         />
 
                         {formData.krabi.attending && (
-                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-4 mb-4">
+                            <FadeInExpand className="space-y-4 mb-4">
                                 <InputField
                                     label="Nickname"
                                     value={formData.krabi.name}
@@ -348,11 +339,11 @@ const RSVP = () => {
                                     icon={Phone}
                                     required
                                 />
-                            </motion.div>
+                            </FadeInExpand>
                         )}
 
                         {formData.krabi.attending === 'yes' && (
-                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-4">
+                            <FadeInExpand className="space-y-4">
                                 <div className="flex flex-col sm:flex-row gap-4 items-stretch">
                                     <div className="w-full sm:w-1/2 flex">
                                         <InputField
@@ -380,7 +371,7 @@ const RSVP = () => {
                                     />
 
                                     {formData.krabi.hasChildren === 'yes' && (
-                                        <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="space-y-4 pt-2">
+                                        <FadeInExpand className="space-y-4 pt-2">
                                             <div className="flex flex-col sm:flex-row gap-4 items-stretch">
                                                 <div className="w-full sm:w-1/3 flex">
                                                     <InputField
@@ -413,7 +404,7 @@ const RSVP = () => {
                                                     />
                                                 </div>
                                             </div>
-                                        </motion.div>
+                                        </FadeInExpand>
                                     )}
                                 </div>
 
@@ -442,13 +433,9 @@ const RSVP = () => {
                                     />
 
                                     {formData.krabi.waitGroupRate === 'yes' && (
-                                        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
+                                        <FadeIn className="space-y-4">
                                             <div className="mb-4">
-                                                <motion.div
-                                                    key={nameShake}
-                                                    animate={nameShake > 0 ? { x: [0, -8, 8, -6, 6, -3, 3, 0] } : {}}
-                                                    transition={{ duration: 0.4, ease: 'easeInOut' }}
-                                                >
+                                                <Shake trigger={nameShake}>
                                                     <InputField
                                                         label="First Name (English)"
                                                         value={formData.krabi.firstName}
@@ -463,20 +450,10 @@ const RSVP = () => {
                                                         icon={User}
                                                         required
                                                     />
-                                                </motion.div>
-                                                <AnimatePresence>
-                                                    {englishWarning && (
-                                                        <motion.p
-                                                            initial={{ opacity: 0, y: -5 }}
-                                                            animate={{ opacity: 1, y: 0 }}
-                                                            exit={{ opacity: 0, y: -5 }}
-                                                            transition={{ duration: 0.25 }}
-                                                            className="text-red-500 text-xs mt-1.5 ml-1 flex items-center gap-1"
-                                                        >
-                                                            <span>⚠️</span> Please enter English characters only
-                                                        </motion.p>
-                                                    )}
-                                                </AnimatePresence>
+                                                </Shake>
+                                                <SlideInWarning isVisible={englishWarning}>
+                                                    <span>⚠️</span> Please enter English characters only
+                                                </SlideInWarning>
                                                 <InputField
                                                     label="Number of Rooms"
                                                     type="select"
@@ -487,7 +464,7 @@ const RSVP = () => {
                                                     required
                                                 />
                                                 {formData.krabi.rooms === 'Share room' && (
-                                                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mb-4 space-y-3">
+                                                    <FadeInExpand className="mb-4 space-y-3">
                                                         <InputField
                                                             label="Share with"
                                                             placeholder="Enter name"
@@ -511,7 +488,7 @@ const RSVP = () => {
                                                             />
                                                             <span className="font-sans text-sm text-navy/80">Not sure now</span>
                                                         </label>
-                                                    </motion.div>
+                                                    </FadeInExpand>
                                                 )}
                                                 <label className="block text-navy font-sans mb-3 text-sm uppercase tracking-wider">Room Preference price range </label>
                                                 <label className="block text-navy font-sans mb-3 text-sm tracking-wider">(You can select more than one option)</label>
@@ -567,13 +544,13 @@ const RSVP = () => {
                                                     </span>
                                                 </div>
                                             )}
-                                        </motion.div>
+                                        </FadeIn>
                                     )}
                                 </div>
-                            </motion.div>
+                            </FadeInExpand>
                         )}
                         {formData.krabi.attending === 'no' && (
-                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="mt-4">
+                            <FadeInExpand className="mt-4">
                                 <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider">Message</label>
                                 <textarea
                                     className="w-full p-3 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm"
@@ -582,7 +559,7 @@ const RSVP = () => {
                                     value={formData.krabi.message || ''}
                                     onChange={(e) => updateKrabi('message', e.target.value)}
                                 ></textarea>
-                            </motion.div>
+                            </FadeInExpand>
                         )}
                     </div>
                     <button
@@ -603,7 +580,7 @@ const RSVP = () => {
                         )}
                     </button>
                 </form>
-            </motion.div>
+            </FadeInView>
 
             {/* Confirmation Ticket Modal */}
             <TicketModal

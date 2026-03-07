@@ -1,13 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FadeInUp, FadeInView } from './animations/Motion';
 import { Calendar, MapPin } from 'lucide-react';
 
 const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, bgImage }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay, duration: 0.8 }}
+    <FadeInUp
+        delay={delay}
+        duration={0.8}
         className={`bg-white relative p-8 rounded-2xl shadow-xl w-full md:w-1/3 text-center flex flex-col items-center h-full overflow-hidden`}
         style={bgImage ? {
             backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.95)), url('${bgImage}')`,
@@ -65,21 +64,18 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
                 </div>
             )}
         </div>
-    </motion.div>
+    </FadeInUp>
 );
 
 const Location = () => {
 
     return (
         <section id="location" className="max-w-6xl mx-auto bg-white py-16 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center rounded-t-[40px] md:rounded-t-[80px] shadow-[0_-10px_30px_rgba(0,0,50,0.05)] relative z-20 -mt-8">
-            <motion.h2
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                className="text-5xl md:text-6xl font-script text-blue mb-16"
-            >
-                Location
-            </motion.h2>
+            <FadeInView>
+                <h2 className="text-5xl md:text-6xl font-script text-blue mb-16 text-center">
+                    Location
+                </h2>
+            </FadeInView>
 
             <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-6xl gap-8 px-4">
                 <EventCard

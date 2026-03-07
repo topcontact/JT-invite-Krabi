@@ -1,18 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { FadeInUp as FadeIn } from './animations/Motion';
 import { Clock, CalendarHeart, Camera, Sparkles, Utensils } from 'lucide-react';
-
-const FadeIn = ({ children, delay = 0, className = "" }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ delay, duration: 0.8 }}
-        className={className}
-    >
-        {children}
-    </motion.div>
-);
 
 const TimelineItem = ({ time, title, description, icon: Icon, isLast }) => (
     <div className="flex relative pb-8 md:pb-12">
