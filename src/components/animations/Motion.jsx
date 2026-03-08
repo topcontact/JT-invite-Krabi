@@ -44,10 +44,22 @@ export const FadeInView = ({ children, className }) => (
     </motion.div>
 );
 
-export const FadeIn = ({ children, className }) => (
+export const FadeIn = ({ children, delay = 0, duration = 0.8, className = "" }) => (
     <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ delay, duration }}
+        className={className}
+    >
+        {children}
+    </motion.div>
+);
+
+export const FadeInUpOnLoad = ({ children, delay = 0, duration = 0.8, yOffset = 20, className = "" }) => (
+    <motion.div
+        initial={{ opacity: 0, y: yOffset }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay, duration }}
         className={className}
     >
         {children}

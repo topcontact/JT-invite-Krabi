@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { FadeIn, FadeInUpOnLoad } from './animations/Motion';
 
 const Hero = () => {
 
@@ -9,12 +9,7 @@ const Hero = () => {
             <div className="absolute top-0 left-0 w-64 h-64 bg-sky/20 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                className="text-center z-10 px-4"
-            >
+            <FadeInUpOnLoad duration={1} yOffset={20} className="text-center z-10 px-4">
                 <h1 className="text-5xl md:text-7xl lg:text-9xl tracking-widest font-serif leading-none text-navy">
                     SUPICHA
                 </h1>
@@ -27,23 +22,13 @@ const Hero = () => {
                     Wedding
                 </div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5, duration: 1 }}
-                    className="mt-12 text-sm md:text-lg font-sans text-navy/70 tracking-widest uppercase flex flex-col gap-2"
-                >
+                <FadeIn delay={1.5} duration={1} className="mt-12 text-sm md:text-lg font-sans text-navy/70 tracking-widest uppercase flex flex-col gap-2">
                     <p>December 4, 2026</p>
                     <p>Rayavadee, Railay Beach, Krabi</p>
-                </motion.div>
+                </FadeIn>
 
                 {/* Action Buttons */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.8, duration: 1 }}
-                    className="mt-12 flex flex-col items-center gap-4 z-10"
-                >
+                <FadeInUpOnLoad delay={1.8} duration={1} yOffset={20} className="mt-12 flex flex-col items-center gap-4 z-10">
                     <a href="#rsvp" className="px-6 py-3 md:px-10 md:py-4 bg-navy text-white text-base md:text-lg font-sans uppercase tracking-widest rounded-full hover:bg-blue transition-colors shadow-lg shadow-navy/20 w-fit border border-navy/20 hover:border-blue/20">
                         RSVP
                     </a>
@@ -60,21 +45,16 @@ const Hero = () => {
                             Where to Stay
                         </a>
                     </div>
-                </motion.div>
-            </motion.div>
+                </FadeInUpOnLoad>
+            </FadeInUpOnLoad>
 
             {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-10 animate-bounce text-navy/50"
-            >
+            <FadeIn delay={2} duration={1} className="absolute bottom-10 animate-bounce text-navy/50">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 13l5 5 5-5" />
                     <path d="M7 6l5 5 5-5" />
                 </svg>
-            </motion.div>
+            </FadeIn>
         </section>
     );
 };
