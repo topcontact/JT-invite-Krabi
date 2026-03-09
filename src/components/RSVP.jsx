@@ -331,8 +331,16 @@ const RSVP = () => {
                                                     <InputField
                                                         label="Check-in"
                                                         type="date"
+                                                        max="2026-12-04"
                                                         value={formData.krabi.checkIn}
                                                         onChange={(e) => updateKrabi('checkIn', e.target.value)}
+                                                        onFocus={(e) => {
+                                                            if (!e.target.value) {
+                                                                // Set default view to Nov 2026 when opening the calendar if no date is selected
+                                                                e.target.value = '2026-11-01';
+                                                                e.target.value = ''; // Reset to show placeholder but calendar opens to Nov 2026
+                                                            }
+                                                        }}
                                                     />
                                                 </div>
                                                 <div className="w-full sm:w-1/2 flex min-w-0">
