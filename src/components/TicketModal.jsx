@@ -363,8 +363,14 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                                                     {(() => {
                                                                         const eventDate = new Date('2026-12-04');
                                                                         const checkInDate = new Date(data.checkIn);
-                                                                        const daysBefore = Math.round((eventDate - checkInDate) / (1000 * 60 * 60 * 24));
-                                                                        return daysBefore > 0 ? <p>Arrive before event {daysBefore} night{daysBefore > 1 ? 's' : ''}</p> : null;
+                                                                        const daysBefore = Math.round((eventDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
+
+                                                                        if (daysBefore === 0) {
+                                                                            return <p className="text-blue mt-1 font-medium">You'll be arriving right on our wedding day!</p>;
+                                                                        } else if (daysBefore > 0) {
+                                                                            return <p className="text-blue mt-1 font-medium">You will arrive {daysBefore} day{daysBefore > 1 ? 's' : ''} before our wedding.</p>;
+                                                                        }
+                                                                        return null;
                                                                     })()}
                                                                 </div>
                                                             )}
