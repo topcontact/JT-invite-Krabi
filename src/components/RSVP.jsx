@@ -347,10 +347,23 @@ const RSVP = () => {
                                                 </div>
                                             </div>
                                             {formData.krabi.checkIn && formData.krabi.checkOut && (
-                                                <div className="mt-2 text-center">
+                                                <div className="mt-2 text-center flex flex-col gap-1">
                                                     <span className="text-navy font-serif text-lg">
                                                         Night Stay: <span className="font-bold">{calculateNights(formData.krabi.checkIn, formData.krabi.checkOut)}</span> {calculateNights(formData.krabi.checkIn, formData.krabi.checkOut) === 1 ? 'night' : 'nights'}
                                                     </span>
+                                                    {(() => {
+                                                        const eventDate = new Date('2026-12-04');
+                                                        const checkInDate = new Date(formData.krabi.checkIn);
+                                                        // Get the difference in days without accounting for timezone offsets
+                                                        const daysBefore = Math.round((eventDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
+
+                                                        if (daysBefore === 0) {
+                                                            return <span className="text-sm font-sans text-blue">You'll be arriving right on our wedding day!</span>;
+                                                        } else if (daysBefore > 0) {
+                                                            return <span className="text-sm font-sans text-blue">You will arrive {daysBefore} day{daysBefore > 1 ? 's' : ''} before our wedding.</span>;
+                                                        }
+                                                        return null;
+                                                    })()}
                                                 </div>
                                             )}
                                         </FadeIn>
