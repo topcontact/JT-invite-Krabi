@@ -124,10 +124,15 @@ export const useRSVPForm = () => {
             }
         }
 
-        // Validate Room Range selection
+        // Validate Room Range and Dates if waiting for group rate
         if (formData.krabi.attending === 'yes' && formData.krabi.waitGroupRate === 'yes') {
             if (!formData.krabi.roomRange || formData.krabi.roomRange.length === 0) {
                 alert("Please select at least one Room Preference price range.");
+                setIsSubmitting(false);
+                return;
+            }
+            if (!formData.krabi.checkIn || !formData.krabi.checkOut) {
+                alert("Please select both Check-in and Check-out dates.");
                 setIsSubmitting(false);
                 return;
             }
