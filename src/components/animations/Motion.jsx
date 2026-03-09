@@ -11,13 +11,14 @@ export const FadeInExpand = ({ children, className }) => (
     </motion.div>
 );
 
-export const FadeInUp = ({ children, delay = 0, duration = 0.8, className = "", once = true, margin = "0px" }) => (
+export const FadeInUp = ({ children, delay = 0, duration = 0.8, className = "", once = true, margin = "0px", style }) => (
     <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once, margin }}
         transition={{ delay, duration }}
         className={className}
+        style={style}
     >
         {children}
     </motion.div>
