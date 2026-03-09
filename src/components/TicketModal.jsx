@@ -193,6 +193,16 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                             <div className="border-t-2 border-l-2 border-r-2 border-navy/30 rounded-t-xl relative p-5 bg-mist">
                                 <div className="absolute top-[4px] left-[4px] right-[4px] bottom-0 border-t border-l border-r border-navy/20 rounded-t-lg pointer-events-none"></div>
 
+                                {/* Close Button */}
+                                <button
+                                    onClick={onClose}
+                                    disabled={isSubmitting || isFolding}
+                                    className="absolute top-2 right-2 z-20 text-navy/40 hover:text-navy transition-colors p-2 disabled:opacity-50"
+                                    aria-label="Close modal"
+                                >
+                                    <X size={20} />
+                                </button>
+
                                 <div className="relative z-10 text-center">
                                     <div className="mb-4 flex justify-center items-center">
                                         <Diamond />
