@@ -343,7 +343,7 @@ const RSVP = () => {
                                                         }}
                                                     />
                                                 </div>
-                                                <div className="w-full sm:w-1/2 flex min-w-0">
+                                                <div className="w-full sm:w-1/2 flex min-w-0 flex-col">
                                                     <InputField
                                                         label="Check-out"
                                                         type="date"
@@ -352,6 +352,9 @@ const RSVP = () => {
                                                         onChange={(e) => updateKrabi('checkOut', e.target.value)}
                                                         disabled={!formData.krabi.checkIn}
                                                     />
+                                                    <p className="font-sans text-[10px] text-navy/60 font-bold uppercase tracking-widest text-right -mt-2">
+                                                        Our Wedding Day | December 4, 2026
+                                                    </p>
                                                 </div>
                                             </div>
                                             {formData.krabi.checkIn && formData.krabi.checkOut && (
