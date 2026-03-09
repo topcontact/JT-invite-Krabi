@@ -4,11 +4,11 @@ import { FadeInExpand, FadeInScale, FadeInView, FadeIn, Shake, SlideInWarning } 
 import TicketModal from './TicketModal';
 
 const InputField = ({ label, type = "text", value, onChange, placeholder, icon: Icon, required = false, disabled = false, options = [], ...props }) => (
-    <div className={`mb-4 flex flex-col w-full ${disabled ? 'opacity-50' : ''}`}>
-        <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider">
+    <div className={`mb-4 flex flex-col w-full min-w-0 ${disabled ? 'opacity-50' : ''}`}>
+        <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider truncate">
             {label} {required && <span className="text-red-500">*</span>}
         </label>
-        <div className="relative mt-auto">
+        <div className="relative mt-auto w-full min-w-0">
             {Icon && <Icon className="absolute left-3 top-3 w-5 h-5 text-blue z-10 pointer-events-none" />}
             {type === 'select' ? (
                 <>
@@ -18,7 +18,7 @@ const InputField = ({ label, type = "text", value, onChange, placeholder, icon: 
                         required={required}
                         disabled={disabled}
                         {...props}
-                        className={`w-full p-3 ${Icon ? 'pl-10' : ''} pr-10 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm appearance-none cursor-pointer ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+                        className={`w-full min-w-0 p-3 ${Icon ? 'pl-10' : ''} pr-10 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm appearance-none cursor-pointer ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
                     >
                         {options.map(opt => (
                             <option key={opt} value={opt}>{opt}</option>
@@ -35,7 +35,7 @@ const InputField = ({ label, type = "text", value, onChange, placeholder, icon: 
                     required={required}
                     disabled={disabled}
                     {...props}
-                    className={`w-full p-3 ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+                    className={`w-full min-w-0 p-3 ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${type === 'date' ? 'appearance-none' : ''} ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
                 />
             )}
         </div>
@@ -153,8 +153,8 @@ const RSVP = () => {
 
                         {formData.krabi.attending === 'yes' && (
                             <FadeInExpand className="space-y-4">
-                                <div className="flex flex-col sm:flex-row gap-4 items-stretch">
-                                    <div className="w-full sm:w-1/2 flex">
+                                <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full min-w-0">
+                                    <div className="w-full sm:w-1/2 flex min-w-0">
                                         <InputField
                                             label="Adults"
                                             type="select"
@@ -181,8 +181,8 @@ const RSVP = () => {
 
                                     {formData.krabi.hasChildren === 'yes' && (
                                         <FadeInExpand className="space-y-4 pt-2">
-                                            <div className="flex flex-col sm:flex-row gap-4 items-stretch">
-                                                <div className="w-full sm:w-1/3 flex">
+                                            <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full min-w-0">
+                                                <div className="w-full sm:w-1/3 flex min-w-0">
                                                     <InputField
                                                         label="Under 7 yrs"
                                                         type="select"
@@ -192,7 +192,7 @@ const RSVP = () => {
                                                         icon={Baby}
                                                     />
                                                 </div>
-                                                <div className="w-full sm:w-1/3 flex">
+                                                <div className="w-full sm:w-1/3 flex min-w-0">
                                                     <InputField
                                                         label="7 - 12 yrs"
                                                         type="select"
@@ -202,7 +202,7 @@ const RSVP = () => {
                                                         icon={Baby}
                                                     />
                                                 </div>
-                                                <div className="w-full sm:w-1/3 flex">
+                                                <div className="w-full sm:w-1/3 flex min-w-0">
                                                     <InputField
                                                         label="Over 12 yrs"
                                                         type="select"
@@ -326,8 +326,8 @@ const RSVP = () => {
                                                     ))}
                                                 </div>
                                             </div>
-                                            <div className="flex flex-col sm:flex-row gap-4 items-stretch">
-                                                <div className="w-full sm:w-1/2 flex">
+                                            <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full min-w-0">
+                                                <div className="w-full sm:w-1/2 flex min-w-0">
                                                     <InputField
                                                         label="Check-in"
                                                         type="date"
@@ -335,7 +335,7 @@ const RSVP = () => {
                                                         onChange={(e) => updateKrabi('checkIn', e.target.value)}
                                                     />
                                                 </div>
-                                                <div className="w-full sm:w-1/2 flex">
+                                                <div className="w-full sm:w-1/2 flex min-w-0">
                                                     <InputField
                                                         label="Check-out"
                                                         type="date"
