@@ -14,7 +14,7 @@ export default {
         azure: '#63ace5',
       },
       fontFamily: {
-        serif: ['"Instrument Serif"', 'serif'],
+        serif: ['"source-serif-pro"', 'serif'],
         ballet: ['"Ballet"', 'cursive'],
         krub: ['"Krub"', 'sans-serif'],
       },
