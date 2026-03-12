@@ -96,7 +96,7 @@ const RSVP = () => {
                     <p className="text-lg text-gray-600 font-sans mb-8">
                         Your RSVP has been sent successfully. We are so excited to celebrate with you!
                     </p>
-                    <p className="text-blue font-sans font-medium uppercase tracking-wider">
+                    <p className="text-blue font-instrument font-medium uppercase tracking-wider">
                         Supicha & Teerawat
                     </p>
                 </FadeInScale>

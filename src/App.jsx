@@ -8,6 +8,7 @@ import WhereToStay from './components/WhereToStay';
 import RSVP from './components/RSVP';
 import Envelope from './components/Envelope';
 import FloatingNav from './components/FloatingNav';
+import LanguageSwitcher from './components/LanguageSwitcher';
 
 function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-mist relative">
+      <LanguageSwitcher />
       <Envelope onOpen={() => setIsEnvelopeOpen(true)} />
 
       {/* Main Content - can be hidden or just behind the envelope */}

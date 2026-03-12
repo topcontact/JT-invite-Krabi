@@ -17,6 +17,7 @@ export default {
         serif: ['"source-serif-pro"', 'serif'],
         ballet: ['"Ballet"', 'cursive'],
         krub: ['"Krub"', 'sans-serif'],
+        instrument: ['"Instrument Serif"', 'serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

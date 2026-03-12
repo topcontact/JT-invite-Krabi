@@ -1,7 +1,17 @@
 import React from 'react';
 import { FadeIn, FadeInUpOnLoad } from './animations/Motion';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Hero = () => {
+    const { language } = useLanguage();
+
+    const t = {
+        location: language === 'th' ? "รายาวดี, หาดไร่เลย์, กระบี่" : "Rayavadee, Railay Beach, Krabi",
+        rsvpBy: language === 'th' ? "กรุณาตอบกลับภายในวันที่ 30 เมษายน 2568" : "Kindly RSVP by April 30, 2025.",
+        menuLocation: language === 'th' ? "สถานที่" : "Location",
+        menuProgram: language === 'th' ? "กำหนดการ" : "Program",
+        menuStay: language === 'th' ? "ที่พักแนะนำ" : "Where to Stay"
+    };
 
     return (
         <section className="h-screen w-full flex flex-col items-center justify-center bg-mist text-navy relative overflow-hidden">
@@ -10,11 +20,11 @@ const Hero = () => {
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
 
             <FadeInUpOnLoad duration={1} yOffset={20} className="text-center z-10 px-4">
-                <h1 className="text-5xl md:text-7xl lg:text-9xl tracking-widest font-serif leading-none text-navy">
+                <h1 className="text-5xl md:text-7xl lg:text-9xl tracking-widest font-instrument leading-none text-navy">
                     SUPICHA
                 </h1>
 
-                <h1 className="text-5xl md:text-7xl lg:text-9xl tracking-widest font-serif leading-none mt-2 text-navy">
+                <h1 className="text-5xl md:text-7xl lg:text-9xl tracking-widest font-instrument leading-none mt-2 text-navy">
                     TEERAWAT
                 </h1>
 
@@ -42,17 +52,17 @@ const Hero = () => {
                         
                         <span className="relative z-10 drop-shadow-lg font-semibold">RSVP</span>
                     </a>
-                    <h3 className="text-sm font-sans text-blue uppercase tracking-widest mt-4 mb-2">Kindly RSVP by April 30, 2025.</h3>
+                    <h3 className="text-sm font-sans text-blue uppercase tracking-widest mt-4 mb-2">{t.rsvpBy}</h3>
 
                     <div className="flex flex-wrap justify-center gap-3 mt-2">
                         <a href="#location" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
-                            Location
+                            {t.menuLocation}
                         </a>
                         <a href="#program" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
-                            Program
+                            {t.menuProgram}
                         </a>
                         <a href="#where-to-stay" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
-                            Where to Stay
+                            {t.menuStay}
                         </a>
                     </div>
                 </FadeInUpOnLoad>
