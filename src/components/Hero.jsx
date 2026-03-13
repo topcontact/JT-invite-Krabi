@@ -39,18 +39,8 @@ const Hero = () => {
 
                 {/* Action Buttons */}
                 <FadeInUpOnLoad delay={1.8} duration={1} yOffset={20} className="mt-12 flex flex-col items-center gap-4 z-10">
-                    <a href="#rsvp" className="relative group px-8 py-3 md:px-12 md:py-4 bg-navy/80 backdrop-blur-md text-white text-base md:text-lg font-sans uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:scale-[1.02] shadow-[0_8px_32px_rgba(42,77,105,0.4)] hover:shadow-[0_16px_32px_rgba(42,77,105,0.6)] border border-white/20 hover:border-white/40 w-fit overflow-hidden">
-                        {/* Liquid/Glass inner glare */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-black/20 opacity-80 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                        {/* Top highlight reflection */}
-                        <div className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/10 to-transparent rounded-t-full pointer-events-none"></div>
-                        {/* Glow effect on hover */}
-                        <div className="absolute inset-0 opacity-0 group-hover:opacity-30 bg-blue/50 transition-opacity duration-300 rounded-full pointer-events-none blur-md"></div>
-                        {/* Edge highlights */}
-                        <div className="absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none"></div>
-                        <div className="absolute inset-x-4 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"></div>
-
-                        <span className="relative z-10 drop-shadow-lg font-semibold">RSVP</span>
+                    <a href="#rsvp" className="px-8 py-3 md:px-12 md:py-4 bg-navy text-white text-base md:text-lg font-sans uppercase tracking-[0.2em] rounded-full transition-all duration-300 hover:bg-navy/90 hover:scale-[1.02] shadow-md hover:shadow-lg w-fit">
+                        <span className="font-semibold">RSVP</span>
                     </a>
                     <h3 className="text-sm font-sans text-blue uppercase tracking-widest mt-4 mb-2">{t.rsvpBy}</h3>
 
