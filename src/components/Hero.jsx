@@ -49,7 +49,7 @@ const Hero = () => {
                         {/* Edge highlights */}
                         <div className="absolute inset-x-4 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none"></div>
                         <div className="absolute inset-x-4 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none"></div>
-                        
+
                         <span className="relative z-10 drop-shadow-lg font-semibold">RSVP</span>
                     </a>
                     <h3 className="text-sm font-sans text-blue uppercase tracking-widest mt-4 mb-2">{t.rsvpBy}</h3>

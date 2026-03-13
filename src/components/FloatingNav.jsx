@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MapPin, Calendar, Bed, Send } from 'lucide-react';
+import { MapPin, Calendar, Bed, Send, Globe } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const FloatingNav = () => {
+    const { language, setLanguage } = useLanguage();
     const [isVisible, setIsVisible] = useState(false);
     const [activeSection, setActiveSection] = useState('');
     const lastScrollY = useRef(0);
@@ -82,6 +84,16 @@ const FloatingNav = () => {
                                 </a>
                             );
                         })}
+                        <button
+                            onClick={() => setLanguage(language === 'en' ? 'th' : 'en')}
+                            className="flex flex-col items-center justify-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-navy/80 hover:text-blue hover:bg-white/30 hover:scale-105 cursor-pointer border-none bg-transparent"
+                            aria-label="Toggle Language"
+                        >
+                            <Globe className="w-4 h-4 md:w-5 md:h-5" />
+                            <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">
+                                {language === 'en' ? 'TH' : 'EN'}
+                            </span>
+                        </button>
                     </div>
                 </motion.nav>
             )}
