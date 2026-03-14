@@ -2,8 +2,10 @@ import React from 'react';
 import HotelCard from './HotelCard';
 import { FadeInUp as FadeIn } from './animations/Motion';
 import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const WhereToStay = () => {
+    const { language } = useLanguage();
     const hotelData = [
         {
             options: [
@@ -11,8 +13,8 @@ const WhereToStay = () => {
                     name: "Avatar Railay",
                     image: "/avatar-railay.webp",
                     mapLink: "https://maps.app.goo.gl/ZC8G6qj3oLhG7jaD8",
-                    description: "The most cost-effective option. Perfect for travelers who spend the day exploring and need a comfortable, budget-friendly place to rest.",
-                    note: "*Adults-Only*",
+                    description: language === 'th' ? "ตัวเลือกที่คุ้มค่าที่สุด เหมาะสำหรับนักเดินทางที่ใช้เวลาทั้งวันท่องเที่ยวและต้องการที่พักที่สะดวกสบายในราคาประหยัดเพื่อพักผ่อน" : "The most cost-effective option. Perfect for travelers who spend the day exploring and need a comfortable, budget-friendly place to rest.",
+                    note: language === 'th' ? "*สำหรับผู้ใหญ่เท่านั้น*" : "*Adults-Only*",
                     price: "Est. 4,000 - 6,000+ THB / night",
                     distance: "450m walk 6 min to wedding venue"
                 },
