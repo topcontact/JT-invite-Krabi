@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FadeIn, FadeInUpOnLoad } from './animations/Motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { MapPin, Calendar, Bed, Send, Globe } from 'lucide-react';
 
 const Hero = () => {
-    const { language } = useLanguage();
+    const { language, setLanguage } = useLanguage();
+    const [navOpacity, setNavOpacity] = useState(1);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            const newOpacity = Math.max(0, 1 - currentScrollY / 250);
+            setNavOpacity(newOpacity);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navItems = [
+        { id: 'location', label: 'Location', icon: MapPin },
+        { id: 'program', label: 'Program', icon: Calendar },
+        { id: 'where-to-stay', label: 'Hotels', icon: Bed },
+        { id: 'rsvp', label: 'RSVP', icon: Send },
+    ];
 
     const t = {
         location: language === 'th' ? "รายาวดี, หาดไร่เลย์, กระบี่" : "Rayavadee, Railay Beach, Krabi",
@@ -44,16 +64,33 @@ const Hero = () => {
                     </a>
                     <h3 className="text-sm font-sans text-blue uppercase tracking-widest mt-4 mb-2">{t.rsvpBy}</h3>
 
-                    <div className="flex flex-wrap justify-center gap-3 mt-2">
-                        <a href="#location" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
-                            {t.menuLocation}
-                        </a>
-                        <a href="#program" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
-                            {t.menuProgram}
-                        </a>
-                        <a href="#where-to-stay" className="px-5 py-2 underline text-navy font-sans text-xs md:text-sm uppercase tracking-wider rounded-full hover:bg-navy/10 transition-colors">
-                            {t.menuStay}
-                        </a>
+                    <div 
+                        style={{ opacity: navOpacity, pointerEvents: navOpacity > 0.1 ? 'auto' : 'none', transition: 'opacity 0.1s ease-out' }}
+                        className="flex items-center justify-around bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.6)] rounded-full px-2 py-3 md:px-4 md:py-4 mt-2 w-[95%] max-w-sm md:max-w-[480px]"
+                    >
+                        {navItems.map((item) => {
+                            const Icon = item.icon;
+                            return (
+                                <a
+                                    key={item.id}
+                                    href={`#${item.id}`}
+                                    className="flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-navy/80 hover:text-blue hover:bg-white/30 hover:scale-105"
+                                >
+                                    <Icon className="w-4 h-4 md:w-5 md:h-5" />
+                                    <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">{item.label}</span>
+                                </a>
+                            );
+                        })}
+                        <button
+                            onClick={() => setLanguage(language === 'en' ? 'th' : 'en')}
+                            className="flex flex-col items-center justify-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-navy/80 hover:text-blue hover:bg-white/30 hover:scale-105 cursor-pointer border-none bg-transparent"
+                            aria-label="Toggle Language"
+                        >
+                            <Globe className="w-4 h-4 md:w-5 md:h-5" />
+                            <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">
+                                {language === 'en' ? 'TH' : 'EN'}
+                            </span>
+                        </button>
                     </div>
                 </FadeInUpOnLoad>
             </FadeInUpOnLoad>
