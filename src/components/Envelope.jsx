@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import envelopeImg from '../assets/envelope.png';
+import envelopeImg from '../assets/upscaleEnvelope.png';
 
 
 const Envelope = ({ onOpen }) => {
@@ -24,17 +24,19 @@ const Envelope = ({ onOpen }) => {
             {/* Full Screen Envelope Image */}
             {/* Using object-cover to ensure it fills the screen as requested ("paper full page") */}
             <div
-                className="relative w-full h-full cursor-pointer flex items-center justify-center overflow-hidden"
+                className="relative cursor-pointer flex items-center justify-center overflow-hidden w-full h-full md:p-8"
                 onClick={handleOpen}
             >
-                <img
-                    src={envelopeImg}
-                    alt="Wedding Envelope"
-                    className="w-full h-full object-cover object-[center_60%] md:object-[center_75%] md:scale-[1.25] transition-transform"
-                />
+                <div className="relative w-full h-full md:aspect-[4/3] md:h-auto md:max-h-[80vh] md:max-w-[106vh] flex items-center justify-center overflow-hidden md:rounded-3xl md:shadow-2xl md:-translate-y-6">
+                    <img
+                        src={envelopeImg}
+                        alt="Wedding Envelope"
+                        className="w-full h-full object-cover object-[center_65%] transition-transform hover:scale-105 duration-700"
+                    />
+                </div>
 
                 {/* Hint Text */}
-                <div className="absolute bottom-10 left-0 w-full text-center pointer-events-none z-10">
+                <div className="absolute bottom-8 left-0 w-full text-center pointer-events-none z-10">
                     <p className="text-navy/80 md:text-navy/60 font-serif animate-pulse drop-shadow-md bg-white/30 backdrop-blur-sm inline-block px-4 py-1 rounded-full">Tap anywhere to open</p>
                 </div>
             </div>
