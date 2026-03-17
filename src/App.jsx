@@ -9,13 +9,16 @@ import RSVP from './components/RSVP';
 import Envelope from './components/Envelope';
 import FloatingNav from './components/FloatingNav';
 
+import { useLanguage } from './contexts/LanguageContext';
+
 function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
+  const { language } = useLanguage();
 
   // For Krabi Standalone project, we don't need URL parsing.
 
   return (
-    <div className="min-h-screen bg-mist relative">
+    <div className={`min-h-screen bg-mist relative ${language === 'th' ? 'font-krub' : ''}`}>
       <Envelope onOpen={() => setIsEnvelopeOpen(true)} />
 
       {/* Main Content - can be hidden or just behind the envelope */}
