@@ -26,8 +26,8 @@ const Hero = () => {
     ];
 
     const t = {
-        location: language === 'th' ? "รายาวดี, หาดไร่เลย์, กระบี่" : "Rayavadee, Railay Beach, Krabi",
-        rsvpBy: language === 'th' ? "กรุณาตอบกลับภายในวันที่ 30 เมษายน 2568" : "Kindly RSVP by April 30, 2025.",
+        location: language === 'th' ? "โรงแรม รายาวดี, หาดไร่เลย์, กระบี่" : "Rayavadee, Railay Beach, Krabi",
+        rsvpBy: language === 'th' ? "กรุณาตอบกลับภายในวันที่ 30 เมษายน 2569" : "Kindly RSVP by April 30, 2026.",
         menuLocation: language === 'th' ? "สถานที่" : "Location",
         menuProgram: language === 'th' ? "กำหนดการ" : "Program",
         menuStay: language === 'th' ? "ที่พักแนะนำ" : "Where to Stay"
@@ -64,7 +64,7 @@ const Hero = () => {
                     </a>
                     <h3 className="text-sm font-sans text-blue uppercase tracking-widest mt-4 mb-2">{t.rsvpBy}</h3>
 
-                    <div 
+                    <div
                         style={{ opacity: navOpacity, pointerEvents: navOpacity > 0.1 ? 'auto' : 'none', transition: 'opacity 0.1s ease-out' }}
                         className="flex items-center justify-around bg-white/40 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.1),inset_0_1px_0_rgba(255,255,255,0.6)] rounded-full px-2 py-3 md:px-4 md:py-4 mt-2 w-[95%] max-w-sm md:max-w-[480px]"
                     >
