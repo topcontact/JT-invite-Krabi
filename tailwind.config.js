@@ -12,12 +12,16 @@ export default {
         sky: '#adcbe3',
         mist: '#e7eff6',
         azure: '#63ace5',
+        'hero-bg': '#0f79a6',
+        'hero-line': '#3db15b',
       },
       fontFamily: {
         serif: ['"source-serif-pro"', 'serif'],
         ballet: ['"Ballet"', 'cursive'],
         krub: ['"Krub"', 'sans-serif'],
         instrument: ['"Instrument Serif"', 'serif'],
+        chloe: ['"Chloe"', 'serif'],
+        'source-serif': ['"source-serif-4-variable"', '"source-serif-pro"', 'serif'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
