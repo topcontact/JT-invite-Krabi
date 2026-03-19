@@ -6,7 +6,7 @@ const About = () => {
     const { language } = useLanguage();
 
     const t = {
-        titleRailay: "About Railay",
+        titleVenue: "VENUE",
         titleAnd: "and",
         titleCeremony: "Our Ceremony",
         descRailay: language === 'th'
@@ -33,18 +33,17 @@ const About = () => {
 
                 <div className="relative z-10 w-full max-w-6xl mx-auto">
                     <FadeIn className="text-center mb-12">
-                        <h2 className="text-6xl md:text-7xl font-ballet text-white mb-4 drop-shadow-lg">{t.titleRailay}</h2>
-                        <h3 className="text-3xl font-serif text-sky mb-8 drop-shadow-md">{t.titleAnd}</h3>
-                        <h3 className="text-3xl font-serif text-sky mb-8 drop-shadow-md">{t.titleCeremony}</h3>
-                        <div className="w-24 h-px bg-white/40 mx-auto"></div>
+                        <h2 className="text-[50pt] md:text-[84pt] font-chloe text-white mb-4 drop-shadow-lg leading-tight uppercase">{t.titleVenue}</h2>
+                        <div className="w-24 h-px bg-white/40 mx-auto mt-8"></div>
                     </FadeIn>
 
                     <div className="flex justify-center">
-                        <FadeIn delay={0.2} className="w-full max-w-3xl text-center space-y-8">
-                            <p className="text-white font-sans leading-relaxed text-lg md:text-xl drop-shadow-md">
+                        <FadeIn delay={0.2} className="w-full max-w-4xl text-center space-y-12">
+                            <p className="text-white font-source-serif font-extralight leading-relaxed text-[11.5pt] md:text-[13.5pt] drop-shadow-md">
                                 {t.descRailay}
                             </p>
-                            <div className="bg-navy/60 rounded-2xl border border-white/20 backdrop-blur-md mx-auto text-left relative overflow-hidden shadow-2xl w-full max-w-4xl flex flex-col md:flex-row mt-12">
+                            
+                            <div className="bg-navy/60 rounded-2xl border border-white/20 backdrop-blur-md mx-auto text-left relative overflow-hidden shadow-2xl w-full max-w-5xl flex flex-col md:flex-row mt-16">
                                 {/* Subtle gleam effect */}
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sky/50 to-transparent z-10"></div>
 
@@ -54,14 +53,14 @@ const About = () => {
                                 </div>
 
                                 {/* Text Section */}
-                                <div className="p-6 md:p-8 w-full md:w-1/2 flex flex-col justify-center">
-                                    <h4 className="font-serif text-2xl text-white mb-3 flex items-center gap-3">
+                                <div className="p-8 md:p-10 w-full md:w-1/2 flex flex-col justify-center">
+                                    <h4 className="font-source-serif font-extralight text-[28pt] md:text-[42pt] text-white mb-6 flex items-center gap-3 leading-none">
                                         {t.titleCeremony}
                                     </h4>
-                                    <p className="text-sky/90 font-sans text-sm md:text-base leading-relaxed mb-4">
+                                    <p className="text-sky/90 font-source-serif font-extralight text-[11.5pt] md:text-[13.5pt] leading-relaxed mb-6">
                                         {t.descCeremony1}
                                     </p>
-                                    <p className="text-sky/90 font-sans text-sm md:text-base leading-relaxed">
+                                    <p className="text-sky/90 font-source-serif font-extralight text-[11.5pt] md:text-[13.5pt] leading-relaxed">
                                         {t.descCeremony2}
                                     </p>
                                 </div>
