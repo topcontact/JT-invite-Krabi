@@ -33,7 +33,7 @@ const About = () => {
 
                 <div className="relative z-10 w-full max-w-6xl mx-auto">
                     <FadeIn className="text-center mb-12">
-                        <h2 className="text-[50pt] md:text-[84pt] font-chloe text-white mb-4 drop-shadow-lg leading-tight uppercase">{t.titleVenue}</h2>
+                        <h2 className="text-[10.5vw] md:text-[92pt] lg:text-[119pt] font-chloe text-white mb-4 drop-shadow-lg leading-tight uppercase">{t.titleVenue}</h2>
                         <div className="w-24 h-px bg-white/40 mx-auto mt-8"></div>
                     </FadeIn>
 
