@@ -71,12 +71,6 @@ const Location = () => {
 
     return (
         <section id="location" className="max-w-6xl mx-auto bg-white py-16 px-4 md:px-8 lg:px-16 flex flex-col items-center justify-center rounded-t-[40px] md:rounded-t-[80px] shadow-[0_-10px_30px_rgba(0,0,50,0.05)] relative z-20 -mt-8">
-            <FadeInView>
-                <h2 className="text-5xl md:text-6xl font-script text-blue mb-16 text-center">
-                    Location
-                </h2>
-            </FadeInView>
-
             <div className="flex flex-col md:flex-row justify-center items-center w-full max-w-6xl gap-8 px-4">
                 <EventCard
                     title="Wedding Ceremony and Reception"
