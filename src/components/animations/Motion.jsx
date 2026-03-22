@@ -24,6 +24,18 @@ export const FadeInUp = ({ children, delay = 0, duration = 0.8, className = "", 
     </motion.div>
 );
 
+export const ElegantReveal = ({ children, delay = 0, duration = 1.2, className = "", yOffset = 40 }) => (
+    <motion.div
+        initial={{ opacity: 0, y: yOffset, filter: 'blur(8px)' }}
+        whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true, margin: "-10%" }}
+        transition={{ duration, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+        className={className}
+    >
+        {children}
+    </motion.div>
+);
+
 export const FadeInScale = ({ children, className }) => (
     <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
