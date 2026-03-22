@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Hero from './components/Hero';
+import Ceremonies from './components/Ceremonies';
 import About from './components/About';
 import Location from './components/Location';
 import HowToGet from './components/HowToGet';
@@ -21,9 +22,10 @@ function App() {
     <div className={`min-h-screen bg-mist relative ${language === 'th' ? 'font-krub' : ''}`}>
       <Envelope onOpen={() => setIsEnvelopeOpen(true)} />
 
-      {/* Main Content - can be hidden or just behind the envelope */}
+      {/* Main Content - hidden behind envelope until opened */}
       <div className={`transition-opacity duration-1000 ${isEnvelopeOpen ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
         <Hero />
+        <Ceremonies />
         <About />
         <Location />
         <HowToGet />

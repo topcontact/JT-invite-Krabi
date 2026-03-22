@@ -39,10 +39,10 @@ const About = () => {
 
                     <div className="flex justify-center">
                         <FadeIn delay={0.2} className="w-full max-w-4xl text-center space-y-12">
-                            <p className="text-white font-source-serif font-extralight leading-relaxed text-[11.5pt] md:text-[13.5pt] drop-shadow-md">
+                            <p className="text-white font-source-serif font-[300] antialiased leading-relaxed text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] drop-shadow-md">
                                 {t.descRailay}
                             </p>
-                            
+
                             <div className="bg-[#1079a6]/60 rounded-2xl border border-white/20 backdrop-blur-md mx-auto text-left relative overflow-hidden shadow-2xl w-full max-w-5xl flex flex-col md:flex-row mt-16">
                                 {/* Subtle gleam effect */}
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sky/50 to-transparent z-10"></div>
@@ -54,13 +54,13 @@ const About = () => {
 
                                 {/* Text Section */}
                                 <div className="p-8 md:p-10 w-full md:w-1/2 flex flex-col justify-center">
-                                    <h4 className="font-source-serif font-extralight text-[28pt] md:text-[42pt] text-white mb-6 flex items-center gap-3 leading-none">
+                                    <h4 className="font-source-serif font-[300] antialiased text-[5.25vw] md:text-[46pt] lg:text-[59.5pt] text-white mb-6 flex items-center gap-3 leading-none">
                                         {t.titleCeremony}
                                     </h4>
-                                    <p className="text-sky/90 font-source-serif font-extralight text-[11.5pt] md:text-[13.5pt] leading-relaxed mb-6">
+                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] leading-relaxed mb-6">
                                         {t.descCeremony1}
                                     </p>
-                                    <p className="text-sky/90 font-source-serif font-extralight text-[11.5pt] md:text-[13.5pt] leading-relaxed">
+                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] leading-relaxed">
                                         {t.descCeremony2}
                                     </p>
                                 </div>
