@@ -1,6 +1,7 @@
 import React from 'react';
 import { FadeInUp as FadeIn } from './animations/Motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import EventCard from './EventCard';
 
 const About = () => {
     const { language } = useLanguage();
@@ -60,9 +61,24 @@ const About = () => {
                                     <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] leading-relaxed mb-6">
                                         {t.descCeremony1}
                                     </p>
-                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] leading-relaxed">
+                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] leading-relaxed mb-10">
                                         {t.descCeremony2}
                                     </p>
+
+                                    {/* Location Card explicitly placed AFTER "celebration" paragraph */}
+                                    <div id="location" className="w-full h-full mb-8 lg:mb-0">
+                                        <EventCard
+                                            title="Wedding Ceremony and Reception"
+                                            date="Friday, December 4, 2026"
+                                            time="Start at 16:00"
+                                            location="The Grotto Restaurant"
+                                            hotel="Rayavadee Resort"
+                                            mapLink="https://maps.google.com/?q=The+Grotto+Rayawadee+Krabi"
+                                            color="blue"
+                                            delay={0.2}
+                                            bgImage="/Grotto pic.jpg"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </FadeIn>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { FadeInUp as FadeIn } from './animations/Motion';
-import { Info } from 'lucide-react';
 
 const TransferCard = ({ icon: Icon, title, description, note, delay, bgImage }) => {
     return (
@@ -18,14 +17,13 @@ const TransferCard = ({ icon: Icon, title, description, note, delay, bgImage }) 
                 <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center mb-6 shadow-lg border-2 border-white/20">
                     <Icon className="w-8 h-8 text-white" />
                 </div>
-                <h4 className="text-xl font-serif text-white mb-3">{title}</h4>
-                <p className="text-gray-200 font-sans text-sm h-16 flex items-start justify-center mb-5 whitespace-pre-line">
+                <h4 className="text-2xl font-source-serif font-[500] antialiased text-white mb-4 tracking-wide">{title}</h4>
+                <p className="text-gray-100 font-source-serif font-[300] antialiased text-base md:text-lg flex items-start justify-center mb-6 whitespace-pre-line leading-relaxed">
                     {description}
                 </p>
-                <span className="mt-auto text-xs font-sans text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 rounded-2xl whitespace-pre-line flex text-left w-full h-[120px] md:h-[130px] lg:h-[140px] items-center">
-                    <Info className="w-4 h-4 text-white flex-shrink-0" />
-                    <span className="ml-2 w-full">{note}</span>
-                </span>
+                <div className="mt-auto text-sm md:text-base font-source-serif font-[300] antialiased text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 rounded-3xl whitespace-pre-line flex text-left w-full items-center justify-center leading-relaxed">
+                    <span className="w-full text-center">{note}</span>
+                </div>
             </div>
         </FadeIn>
     );

@@ -13,26 +13,8 @@ const FloatingNav = () => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
 
-            // Show after scrolling past 60% of viewport height (Hero section)
-            if (currentScrollY > window.innerHeight * 0.6) {
-                // Determine scroll direction
-                if (currentScrollY > lastScrollY.current) {
-                    // Scrolling DOWN - Hide Navbar (like Safari)
-                    setIsVisible(false);
-                } else {
-                    // Scrolling UP - Show Navbar
-                    setIsVisible(true);
-                }
-            } else {
-                // At the top - Hide Navbar
-                setIsVisible(false);
-            }
-
-            // Update last scroll position
-            lastScrollY.current = currentScrollY;
-
             // Determine active section for highlighting
-            const sections = ['location', 'program', 'where-to-stay', 'rsvp'];
+            const sections = ['ceremonies', 'about', 'location', 'getting-there', 'program', 'where-to-stay', 'rsvp'];
             let current = '';
             for (const section of sections) {
                 const element = document.getElementById(section);
@@ -41,6 +23,31 @@ const FloatingNav = () => {
                 }
             }
             setActiveSection(current);
+
+            // Check if we are still within the Hero or Ceremonies section by checking the bottom of the viewport
+            // against the top of the About section (which is right below Ceremonies).
+            const aboutElement = document.getElementById('about');
+            const aboutTop = aboutElement ? aboutElement.offsetTop : window.innerHeight * 2;
+            
+            // To prevent overlap with Ceremonies inline navbar, hide if the viewport bottom is above About section + 100px.
+            const isTouchingCeremoniesNavbar = (currentScrollY + window.innerHeight) <= (aboutTop + 80);
+
+            // Show after scrolling past 60% of viewport height (Hero section)
+            if (currentScrollY > window.innerHeight * 0.6 && !isTouchingCeremoniesNavbar) {
+                if (currentScrollY > lastScrollY.current) {
+                    // Scrolling DOWN - Hide Navbar (like Safari)
+                    setIsVisible(false);
+                } else {
+                    // Scrolling UP - Show Navbar
+                    setIsVisible(true);
+                }
+            } else {
+                // At the top or inside Ceremonies - Hide Navbar
+                setIsVisible(false);
+            }
+
+            // Update last scroll position
+            lastScrollY.current = currentScrollY;
         };
 
         window.addEventListener('scroll', handleScroll);

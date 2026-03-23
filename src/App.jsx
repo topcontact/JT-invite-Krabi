@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Hero from './components/Hero';
 import Ceremonies from './components/Ceremonies';
 import About from './components/About';
-import Location from './components/Location';
 import HowToGet from './components/HowToGet';
 import CeremonyProgram from './components/CeremonyProgram';
 import WhereToStay from './components/WhereToStay';
@@ -27,7 +26,6 @@ function App() {
         <Hero />
         <Ceremonies />
         <About />
-        <Location />
         <HowToGet />
         <CeremonyProgram />
         <WhereToStay />
