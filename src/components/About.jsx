@@ -22,9 +22,9 @@ const About = () => {
     };
 
     return (
-        <div id="about" className="relative w-full z-10 overflow-hidden">
+        <div id="location" className="relative w-full z-10 overflow-hidden">
             {/* --- 1. About Railay and our ceremony --- */}
-            <section className="relative py-24 px-4 md:px-8 min-h-[80vh] flex items-center justify-center overflow-hidden">
+            <section className="relative pt-24 pb-36 md:pb-48 px-4 md:px-8 min-h-[80vh] flex items-center justify-center overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 bg-[#1079a6]">
                     <img src="/railay-bg.jpg" alt="Railay Background" className="w-full h-full object-cover object-[center_30%] opacity-60" />
@@ -66,7 +66,7 @@ const About = () => {
                                     </p>
 
                                     {/* Location Card explicitly placed AFTER "celebration" paragraph */}
-                                    <div id="location" className="w-full h-full mb-8 lg:mb-0">
+                                    <div className="w-full h-full mb-8 lg:mb-0">
                                         <EventCard
                                             title="Wedding Ceremony and Reception"
                                             date="Friday, December 4, 2026"

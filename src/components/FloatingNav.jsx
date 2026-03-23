@@ -14,30 +14,33 @@ const FloatingNav = () => {
             const currentScrollY = window.scrollY;
 
             // Determine active section for highlighting
-            const sections = ['ceremonies', 'about', 'location', 'getting-there', 'program', 'where-to-stay', 'rsvp'];
+            const sections = ['ceremonies', 'location', 'getting-there', 'program', 'where-to-stay', 'rsvp'];
             let current = '';
             for (const section of sections) {
                 const element = document.getElementById(section);
-                if (element && currentScrollY >= element.offsetTop - window.innerHeight / 2) {
-                    current = section;
+                if (element) {
+                    const absoluteTop = element.getBoundingClientRect().top + window.scrollY;
+                    if (currentScrollY >= absoluteTop - window.innerHeight / 2) {
+                        current = section;
+                    }
                 }
             }
             setActiveSection(current);
 
             // Check if we are still within the Hero or Ceremonies section by checking the bottom of the viewport
-            // against the top of the About section (which is right below Ceremonies).
-            const aboutElement = document.getElementById('about');
-            const aboutTop = aboutElement ? aboutElement.offsetTop : window.innerHeight * 2;
+            // against the top of the Location/Venue section (which is right below Ceremonies).
+            const locationElement = document.getElementById('location');
+            const locationTop = locationElement ? (locationElement.getBoundingClientRect().top + window.scrollY) : window.innerHeight * 2;
             
-            // To prevent overlap with Ceremonies inline navbar, hide if the viewport bottom is above About section + 100px.
-            const isTouchingCeremoniesNavbar = (currentScrollY + window.innerHeight) <= (aboutTop + 80);
+            // To prevent overlap with Ceremonies inline navbar, hide if the viewport bottom is above Location section + 80px.
+            const isTouchingCeremoniesNavbar = (currentScrollY + window.innerHeight) <= (locationTop + 80);
 
             // Show after scrolling past 60% of viewport height (Hero section)
             if (currentScrollY > window.innerHeight * 0.6 && !isTouchingCeremoniesNavbar) {
-                if (currentScrollY > lastScrollY.current) {
-                    // Scrolling DOWN - Hide Navbar (like Safari)
+                if (currentScrollY > lastScrollY.current + 2) {
+                    // Scrolling DOWN - Hide Navbar (like Safari) - add a 2px buffer to prevent jitter
                     setIsVisible(false);
-                } else {
+                } else if (currentScrollY < lastScrollY.current - 2) {
                     // Scrolling UP - Show Navbar
                     setIsVisible(true);
                 }
@@ -78,15 +81,13 @@ const FloatingNav = () => {
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             // Check if active (rough check)
-                            const isActive = activeSection === item.id;
-
                             return (
                                 <a
                                     key={item.id}
                                     href={`#${item.id}`}
-                                    className={`flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 ${isActive ? 'text-blue bg-white/50 shadow-sm scale-105' : 'text-navy/80 hover:text-blue hover:bg-white/30 hover:scale-105'}`}
+                                    className="flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-navy/80 hover:text-blue hover:bg-white/30 hover:scale-105"
                                 >
-                                    <Icon className={`w-4 h-4 md:w-5 md:h-5 ${isActive ? 'text-blue' : ''}`} />
+                                    <Icon className="w-4 h-4 md:w-5 md:h-5" />
                                     <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">{item.label}</span>
                                 </a>
                             );
