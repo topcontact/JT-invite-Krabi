@@ -1,9 +1,44 @@
-import React from 'react';
-import { ElegantReveal } from './animations/Motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { ElegantReveal, FadeInUpOnLoad } from './animations/Motion';
+import { MapPin, Calendar, Bed, Send, Globe } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Ceremonies = () => {
+    const { language, setLanguage } = useLanguage();
+    const [navOpacity, setNavOpacity] = useState(1);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!sectionRef.current) return;
+            const top = sectionRef.current.getBoundingClientRect().top;
+            
+            // Calculate opacity based on how far we've scrolled past the top of the section
+            if (top <= 0) {
+                const scrolledPast = -top;
+                const newOpacity = Math.max(0, 1 - scrolledPast / 250);
+                setNavOpacity(newOpacity);
+            } else {
+                setNavOpacity(1);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        // Initial check
+        handleScroll();
+        
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const navItems = [
+        { id: 'location', label: 'Location', icon: MapPin },
+        { id: 'program', label: 'Program', icon: Calendar },
+        { id: 'where-to-stay', label: 'Hotels', icon: Bed },
+        { id: 'rsvp', label: 'RSVP', icon: Send },
+    ];
+
     return (
-        <section className="min-h-screen w-full bg-hero-bg bg-cover bg-center text-white relative overflow-hidden snap-start shrink-0">
+        <section ref={sectionRef} id="ceremonies" className="min-h-screen w-full bg-hero-bg bg-cover bg-center text-white relative overflow-hidden snap-start shrink-0">
             {/* Background Image / Overlay (if needed to match Hero, otherwise transparent/ocean) */}
             
             {/* --- Extended Content: Krabi & Bangkok Ceremonies (Single Viewport) --- */}
@@ -58,6 +93,38 @@ const Ceremonies = () => {
                     </div>
                 </ElegantReveal>
             </div>
+
+            {/* Navigation Pill - Sticky/Absolute at bottom, fades on scroll down */}
+            <ElegantReveal delay={0.7} duration={1} yOffset={20} className="z-30 w-full flex justify-center pb-8 absolute bottom-0">
+                <div
+                    style={{ opacity: navOpacity, pointerEvents: navOpacity > 0.1 ? 'auto' : 'none', transition: 'opacity 0.1s ease-out' }}
+                    className="flex items-center justify-around bg-white/20 backdrop-blur-xl border border-white/30 shadow-lg rounded-full px-2 py-3 md:px-4 md:py-4 w-[95%] max-w-sm md:max-w-[480px]"
+                >
+                    {navItems.map((item) => {
+                        const Icon = item.icon;
+                        return (
+                            <a
+                                key={item.id}
+                                href={`#${item.id}`}
+                                className="flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-white/90 hover:text-white hover:bg-white/30 hover:scale-105"
+                            >
+                                <Icon className="w-4 h-4 md:w-5 md:h-5" />
+                                <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">{item.label}</span>
+                            </a>
+                        );
+                    })}
+                    <button
+                        onClick={() => setLanguage(language === 'en' ? 'th' : 'en')}
+                        className="flex flex-col items-center justify-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-white/90 hover:text-white hover:bg-white/30 hover:scale-105 cursor-pointer border-none bg-transparent"
+                        aria-label="Toggle Language"
+                    >
+                        <Globe className="w-4 h-4 md:w-5 md:h-5" />
+                        <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">
+                            {language === 'en' ? 'TH' : 'EN'}
+                        </span>
+                    </button>
+                </div>
+            </ElegantReveal>
         </section>
     );
 };
