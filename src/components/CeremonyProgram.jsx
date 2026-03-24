@@ -17,10 +17,10 @@ const TimelineItem = ({ time, title, description, icon: Icon, isLast }) => (
         {/* Content */}
         <div className="ml-6 md:ml-8 pt-2 md:pt-3">
             <div className="flex flex-col md:flex-row md:items-baseline gap-1 md:gap-4 mb-2">
-                <span className="text-xl md:text-2xl font-serif text-navy">{time}</span>
-                <h4 className="text-lg font-sans text-gray-800 font-medium">{title}</h4>
+                <span className="text-xl md:text-2xl font-source-serif font-[500] text-navy antialiased">{time}</span>
+                <h4 className="text-lg font-source-serif font-[500] text-gray-800 antialiased">{title}</h4>
             </div>
-            <p className="text-gray-500 font-sans text-sm md:text-base">{description}</p>
+            <p className="text-gray-500 font-source-serif font-[300] antialiased text-sm md:text-base leading-relaxed">{description}</p>
         </div>
     </div>
 );
@@ -31,7 +31,7 @@ const CeremonyProgram = () => {
             <FadeIn className="text-center mb-16">
                 <h2 className="text-[10.5vw] md:text-[92pt] lg:text-[119pt] font-chloe text-navy mb-4 drop-shadow-lg leading-tight uppercase">Ceremony Program</h2>
                 <div className="w-16 h-px bg-blue/30 mx-auto"></div>
-                <p className="mt-4 text-gray-500 font-sans font-medium uppercase tracking-widest text-sm">
+                <p className="mt-4 text-gray-500 font-source-serif font-[500] antialiased uppercase tracking-widest text-sm">
                     Friday, December 4, 2026
                 </p>
             </FadeIn>
