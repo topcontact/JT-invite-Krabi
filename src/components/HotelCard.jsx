@@ -113,7 +113,7 @@ const HotelCard = ({ hotel, delay }) => {
         <FadeIn delay={delay} className="flex flex-col bg-gradient-to-br from-mist/50 to-white p-6 md:p-8 rounded-3xl border border-sky/30 shadow-lg text-center h-full relative overflow-hidden">
             {imageContent}
 
-            <h3 className="text-3xl font-serif text-navy mb-4 h-12 flex items-center justify-center">
+            <h3 className="text-3xl font-source-serif font-[300] antialiased text-navy mb-4 h-12 flex items-center justify-center">
                 <AnimatePresence mode="wait">
                     <motion.span
                         key={currentOption.name}
@@ -134,7 +134,7 @@ const HotelCard = ({ hotel, delay }) => {
             </div>
 
             <div className="flex-col h-[140px] mb-6 flex justify-start items-center">
-                <p className="text-gray-600 font-sans text-sm flex-grow">
+                <p className="text-gray-600 font-source-serif font-[300] antialiased text-sm flex-grow">
                     <AnimatePresence mode="wait">
                         <motion.span
                             key={currentOption.description}
@@ -155,7 +155,7 @@ const HotelCard = ({ hotel, delay }) => {
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="text-gray-600 font-sans mt-2 text-sm"
+                            className="text-gray-600 font-source-serif font-[300] antialiased mt-2 text-sm"
                         >
                             {currentOption.note}
                         </motion.p>
