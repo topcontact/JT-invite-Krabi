@@ -456,7 +456,7 @@ const RSVP = () => {
                                         Processing...
                                     </>
                                 ) : (
-                                     <>
+                                    <>
                                         <Send className="w-5 h-5 mb-1" />
                                         <span className="font-chloe text-xl uppercase tracking-[0.12em]" style={{ fontFeatureSettings: '"salt", "swsh", "ss01", "liga"' }}>
                                             RSVP
