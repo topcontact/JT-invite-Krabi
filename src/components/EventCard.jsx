@@ -16,7 +16,7 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
         <div className="relative z-10 flex flex-col items-center gap-4 md:gap-6 font-source-serif font-[500] antialiased flex-grow w-full">
             
             {/* Title */}
-            <h3 className="text-navy text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] uppercase tracking-widest leading-snug">
+            <h3 className="text-navy text-[4.26vw] md:text-[24px] lg:text-[32px] uppercase tracking-widest leading-snug">
                 {title}
             </h3>
 
@@ -24,19 +24,19 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
             <div className="flex flex-col items-center gap-1 text-navy leading-tight mt-2">
                 <div className="flex items-center gap-2">
                     <MapPin className="w-5 h-5 md:w-8 md:h-8 text-blue" />
-                    <span className="text-[4.26vw] md:text-[37.33pt] lg:text-[48pt]">{location}</span>
+                    <span className="text-[4.26vw] md:text-[24px] lg:text-[32px]">{location}</span>
                 </div>
-                <span className="text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] opacity-80">{hotel}</span>
+                <span className="text-[4.26vw] md:text-[24px] lg:text-[32px] opacity-80">{hotel}</span>
             </div>
 
             {/* Date & Time */}
             <div className="flex flex-col items-center gap-1 mt-2">
                 <div className="flex items-center gap-2 text-navy">
                     <Calendar className="w-5 h-5 md:w-8 md:h-8 text-navy" />
-                    <span className="text-[4.26vw] md:text-[37.33pt] lg:text-[48pt]">{date}</span>
+                    <span className="text-[4.26vw] md:text-[24px] lg:text-[32px]">{date}</span>
                 </div>
                 {time && (
-                    <div className="text-navy text-[4.26vw] md:text-[37.33pt] lg:text-[48pt]">
+                    <div className="text-navy text-[4.26vw] md:text-[24px] lg:text-[32px]">
                         {time}
                     </div>
                 )}

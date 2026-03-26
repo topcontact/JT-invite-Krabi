@@ -63,7 +63,7 @@ const WhereToStay = () => {
         <section id="where-to-stay" className="max-w-6xl mx-auto bg-white rounded-b-[40px] md:rounded-b-[80px] shadow-sm relative z-10 pb-8 mb-8 px-4">
             <div className="max-w-6xl mx-auto px-4 md:px-8 pt-20 pb-12">
                 <FadeIn className="text-center mb-16">
-                    <h2 className="text-[10.5vw] md:text-[92pt] lg:text-[119pt] font-chloe text-navy mb-4 drop-shadow-lg leading-tight uppercase">Where to Stay</h2>
+                    <h2 className="text-[10.5vw] md:text-[64px] lg:text-[80px] font-chloe text-navy mb-4 drop-shadow-lg leading-tight uppercase">Where to Stay</h2>
                     <div className="w-16 h-px bg-blue/30 mx-auto"></div>
                     <p className="mt-6 text-gray-500 font-source-serif font-[300] antialiased max-w-2xl mx-auto text-lg md:text-xl">
                         Railay has beautiful accommodations ranging from luxury resorts to cozy resorts rooms.

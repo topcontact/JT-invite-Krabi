@@ -116,7 +116,7 @@ const RSVP = () => {
 
                     {/* Event Details */}
                     <div className="px-8 md:px-12 pb-8">
-                        <h3 className="font-chloe text-[12vw] md:text-[72pt] leading-[0.85] uppercase mb-8">
+                        <h3 className="font-chloe text-[12vw] md:text-[56px] lg:text-[72px] leading-[0.85] uppercase mb-8">
                             <span className="block">Krabi</span>
                             <span className="block">Ceremony</span>
                         </h3>

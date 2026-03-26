@@ -42,51 +42,60 @@ const Ceremonies = () => {
             {/* Background Image / Overlay (if needed to match Hero, otherwise transparent/ocean) */}
             
             {/* --- Extended Content: Krabi & Bangkok Ceremonies (Single Viewport) --- */}
-            <div className="min-h-[100dvh] w-full max-w-6xl mx-auto px-6 md:px-20 pt-8 pb-[10vh] md:pb-[15vh] flex flex-col justify-center gap-6 md:gap-8 relative z-10 overflow-hidden -translate-y-[2vh] md:-translate-y-[4vh]">
+            <div className="min-h-[100dvh] w-full max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-[10vh] md:pb-[15vh] flex flex-col md:flex-row justify-center md:justify-between items-center gap-6 md:gap-0 relative z-10 overflow-hidden -translate-y-[2vh] md:-translate-y-[4vh]">
                 {/* Krabi Ceremony Block */}
-                <ElegantReveal delay={0.1} className="w-full flex flex-col items-start text-left pl-0 md:pl-[2%]">
-                    <h2 className="font-chloe text-[13vw] md:text-[95pt] lg:text-[120pt] leading-[0.85] uppercase flex flex-col">
+                <ElegantReveal delay={0.1} className="w-full md:w-[45%] flex flex-col items-start md:items-end text-left md:text-right pl-0">
+                    <h2 className="font-chloe text-[13vw] md:text-[72px] lg:text-[90px] leading-[0.85] uppercase flex flex-col">
                         <span>KRABI</span>
-                        <span className="mt-1">CEREMONY</span>
-                        <span className="mt-3 text-[12vw] md:text-[85pt] lg:text-[110pt]">04 . 12 . 26</span>
+                        <span className="mt-1 md:mt-2">CEREMONY</span>
+                        <span className="mt-3 md:mt-4 text-[12vw] md:text-[64px] lg:text-[80px]">04 . 12 . 26</span>
                     </h2>
 
-                    <div className="mt-6 md:mt-10 flex flex-col items-start gap-6 md:gap-10 w-full pl-0">
-                        <p className="font-source-serif font-[300] antialiased text-[4.5vw] md:text-[34pt] lg:text-[42pt] uppercase tracking-widest leading-none">
+                    <div className="mt-6 md:mt-10 flex flex-col items-start md:items-end gap-6 md:gap-10 w-full pl-0">
+                        <p className="font-source-serif font-[300] antialiased text-[4.5vw] md:text-[24px] lg:text-[28px] xl:text-[32px] uppercase tracking-widest leading-none text-left md:text-right">
                             KINDLY RESPOND BY APRIL 30, 2026
                         </p>
 
                         <a href="#rsvp" className="inline-block px-11 md:px-14 py-0 border border-white/50 rounded-full hover:bg-white/10 transition-all">
-                            <span className="font-chloe text-[9.7vw] md:text-[85pt] lg:text-[110pt] leading-[1] uppercase block py-[0.08em] text-white text-center tracking-[0.12em]" style={{ fontFeatureSettings: '"salt", "swsh", "ss01", "liga"' }}>
+                            <span className="font-chloe text-[9.7vw] md:text-[64px] lg:text-[80px] leading-[1] uppercase block py-[0.08em] text-white text-center tracking-[0.12em]" style={{ fontFeatureSettings: '"salt", "swsh", "ss01", "liga"' }}>
                                 RSVP
                             </span>
                         </a>
                     </div>
                 </ElegantReveal>
 
-                {/* Divider Line & Ampersand */}
-                <ElegantReveal delay={0.3} yOffset={20} className="w-full relative py-2 md:py-6 flex items-center justify-between pointer-events-none pl-0 md:pl-[2%] pr-[2%] md:pr-4">
+                {/* Divider Line & Ampersand (Mobile) */}
+                <ElegantReveal delay={0.3} yOffset={20} className="md:hidden w-full relative py-2 flex items-center justify-between pointer-events-none pl-0 pr-[2%]">
                     <div className="w-[75%] h-[0.5px] bg-white/40"></div>
-                    <div className="font-chloe text-[14vw] md:text-[110pt] lg:text-[140pt] leading-none opacity-80 select-none mr-[5%] md:mr-10 -translate-y-[10%]">
+                    <div className="font-chloe text-[14vw] leading-none opacity-80 select-none mr-[5%] -translate-y-[10%]">
                         &
                     </div>
                 </ElegantReveal>
 
+                {/* Divider (Desktop) */}
+                <ElegantReveal delay={0.3} yOffset={20} className="hidden md:flex flex-col items-center justify-center pointer-events-none w-[10%]">
+                    <div className="w-px h-24 lg:h-32 bg-gradient-to-b from-transparent to-white/40"></div>
+                    <div className="font-chloe md:text-[72px] lg:text-[90px] leading-none opacity-80 select-none my-8">
+                        &
+                    </div>
+                    <div className="w-px h-24 lg:h-32 bg-gradient-to-t from-transparent to-white/40"></div>
+                </ElegantReveal>
+
                 {/* Bangkok Ceremony Block */}
-                <ElegantReveal delay={0.5} className="w-full flex flex-col items-start text-left pl-0 md:pl-[2%]">
-                    <h2 className="font-chloe text-[13vw] md:text-[95pt] lg:text-[120pt] leading-[0.85] uppercase flex flex-col">
+                <ElegantReveal delay={0.5} className="w-full md:w-[45%] flex flex-col items-start text-left pl-0">
+                    <h2 className="font-chloe text-[13vw] md:text-[72px] lg:text-[90px] leading-[0.85] uppercase flex flex-col">
                         <span>BANGKOK</span>
-                        <span className="mt-1">CEREMONY</span>
-                        <span className="mt-3 text-[12vw] md:text-[85pt] lg:text-[110pt]">20 . 11 . 26</span>
+                        <span className="mt-1 md:mt-2">CEREMONY</span>
+                        <span className="mt-3 md:mt-4 text-[12vw] md:text-[64px] lg:text-[80px]">20 . 11 . 26</span>
                     </h2>
 
                     <div className="mt-6 md:mt-10 flex flex-col items-start gap-6 md:gap-10 w-full pl-0">
-                        <p className="font-source-serif font-[300] antialiased text-[4.5vw] md:text-[34pt] lg:text-[42pt] uppercase tracking-widest leading-none">
+                        <p className="font-source-serif font-[300] antialiased text-[4.5vw] md:text-[24px] lg:text-[28px] xl:text-[32px] uppercase tracking-widest leading-none">
                             (MORE DETAILS TO FOLLOW)
                         </p>
 
                         <a href="#rsvp" className="inline-block px-11 md:px-14 py-0 border border-white/50 rounded-full hover:bg-white/10 transition-all">
-                            <span className="font-chloe text-[9.7vw] md:text-[85pt] lg:text-[110pt] leading-[1] uppercase block py-[0.08em] text-white text-center tracking-[0.12em]" style={{ fontFeatureSettings: '"salt", "swsh", "ss01", "liga"' }}>
+                            <span className="font-chloe text-[9.7vw] md:text-[64px] lg:text-[80px] leading-[1] uppercase block py-[0.08em] text-white text-center tracking-[0.12em]" style={{ fontFeatureSettings: '"salt", "swsh", "ss01", "liga"' }}>
                                 RSVP
                             </span>
                         </a>

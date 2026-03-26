@@ -34,13 +34,13 @@ const About = () => {
 
                 <div className="relative z-10 w-full max-w-6xl mx-auto">
                     <FadeIn className="text-center mb-12">
-                        <h2 className="text-[10.5vw] md:text-[92pt] lg:text-[119pt] font-chloe text-white mb-4 drop-shadow-lg leading-tight uppercase">{t.titleVenue}</h2>
+                        <h2 className="text-[10.5vw] md:text-[64px] lg:text-[80px] font-chloe text-white mb-4 drop-shadow-lg leading-tight uppercase">{t.titleVenue}</h2>
                         <div className="w-24 h-px bg-white/40 mx-auto mt-8"></div>
                     </FadeIn>
 
                     <div className="flex justify-center">
                         <FadeIn delay={0.2} className="w-full max-w-4xl text-center space-y-12">
-                            <p className="text-white font-source-serif font-[300] antialiased leading-relaxed text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] drop-shadow-md">
+                            <p className="text-white font-source-serif font-[300] antialiased leading-relaxed text-[4.26vw] md:text-[24px] lg:text-[32px] drop-shadow-md">
                                 {t.descRailay}
                             </p>
 
@@ -55,13 +55,13 @@ const About = () => {
 
                                 {/* Text Section */}
                                 <div className="p-8 md:p-10 w-full md:w-1/2 flex flex-col justify-center">
-                                    <h4 className="font-source-serif font-[300] antialiased text-[5.25vw] md:text-[46pt] lg:text-[59.5pt] text-white mb-6 flex items-center gap-3 leading-none">
+                                    <h4 className="font-source-serif font-[300] antialiased text-[5.25vw] md:text-[32px] lg:text-[40px] text-white mb-6 flex items-center gap-3 leading-none">
                                         {t.titleCeremony}
                                     </h4>
-                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] leading-relaxed mb-6">
+                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-6">
                                         {t.descCeremony1}
                                     </p>
-                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] leading-relaxed mb-10">
+                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-10">
                                         {t.descCeremony2}
                                     </p>
 

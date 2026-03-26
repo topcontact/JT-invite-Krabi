@@ -42,12 +42,12 @@ const Hero = () => {
                 {/* Names Section */}
                 <FadeInUpOnLoad duration={1} yOffset={20} className="w-full relative flex flex-col justify-center items-center z-10 -translate-y-16 md:-translate-y-24">
                     <div className="relative w-full flex justify-center">
-                        <h1 className="font-chloe text-[16vw] md:text-[140pt] lg:text-[180pt] leading-[0.8] mb-2 text-center text-white relative z-10 bg-hero-bg px-4 md:px-8">
+                        <h1 className="font-chloe text-[16vw] md:text-[80px] lg:text-[120px] leading-[0.8] mb-2 text-center text-white relative z-10 bg-hero-bg px-4 md:px-8">
                             SUPICHA
                         </h1>
                     </div>
 
-                    <h1 className="font-chloe text-[16vw] md:text-[140pt] lg:text-[180pt] leading-[0.8] text-center text-white ml-0 md:ml-12 relative z-10">
+                    <h1 className="font-chloe text-[16vw] md:text-[80px] lg:text-[120px] leading-[0.8] text-center text-white ml-0 md:ml-12 relative z-10">
                         TEERAWAT
                     </h1>
                 </FadeInUpOnLoad>
@@ -75,7 +75,7 @@ const Hero = () => {
                             <circle cx="60" cy="40" r="25" fill="white" mask="url(#right-ring)" />
                             <circle cx="40" cy="60" r="25" fill="white" mask="url(#left-ring)" clipPath="url(#bottom-overlap)" />
                         </svg>
-                        <p className="font-source-serif font-[300] antialiased text-[4.26vw] md:text-[37.33pt] lg:text-[48pt] uppercase tracking-widest leading-none text-white">
+                        <p className="font-source-serif font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] uppercase tracking-widest leading-none text-white">
                             SAVE THE DATE
                         </p>
                     </div>
