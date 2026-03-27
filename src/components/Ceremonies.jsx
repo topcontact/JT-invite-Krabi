@@ -52,9 +52,11 @@ const Ceremonies = () => {
                     </h2>
 
                     <div className="mt-6 md:mt-10 flex flex-col items-start md:items-end gap-6 md:gap-10 w-full pl-0">
-                        <p className="font-source-serif font-[300] antialiased text-[4.5vw] md:text-[24px] lg:text-[28px] xl:text-[32px] uppercase tracking-widest leading-none text-left md:text-right">
-                            KINDLY RESPOND BY APRIL 30, 2026
-                        </p>
+                        <div className="md:h-[80px] flex items-end md:justify-end">
+                            <p className="font-source-serif font-[300] antialiased text-[4.5vw] md:text-[24px] lg:text-[28px] xl:text-[32px] uppercase tracking-widest leading-none text-left md:text-right">
+                                KINDLY RESPOND BY APRIL 30, 2026
+                            </p>
+                        </div>
 
                         <a href="#rsvp" className="inline-block px-11 md:px-14 py-0 border border-white/50 rounded-full hover:bg-white/10 transition-all">
                             <span className="font-chloe text-[9.7vw] md:text-[64px] lg:text-[80px] leading-[1] uppercase block py-[0.08em] text-white text-center tracking-[0.12em]" style={{ fontFeatureSettings: '"salt", "swsh", "ss01", "liga"' }}>
@@ -90,9 +92,11 @@ const Ceremonies = () => {
                     </h2>
 
                     <div className="mt-6 md:mt-10 flex flex-col items-start gap-6 md:gap-10 w-full pl-0">
-                        <p className="font-source-serif font-[300] antialiased text-[4.5vw] md:text-[24px] lg:text-[28px] xl:text-[32px] uppercase tracking-widest leading-none">
-                            (MORE DETAILS TO FOLLOW)
-                        </p>
+                        <div className="md:h-[80px] flex items-end">
+                            <p className="font-source-serif font-[300] antialiased text-[4.5vw] md:text-[24px] lg:text-[28px] xl:text-[32px] uppercase tracking-widest leading-none">
+                                (MORE DETAILS TO FOLLOW)
+                            </p>
+                        </div>
 
                         <a href="#rsvp" className="inline-block px-11 md:px-14 py-0 border border-white/50 rounded-full hover:bg-white/10 transition-all">
                             <span className="font-chloe text-[9.7vw] md:text-[64px] lg:text-[80px] leading-[1] uppercase block py-[0.08em] text-white text-center tracking-[0.12em]" style={{ fontFeatureSettings: '"salt", "swsh", "ss01", "liga"' }}>
