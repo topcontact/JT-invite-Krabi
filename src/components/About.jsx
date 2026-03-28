@@ -44,17 +44,17 @@ const About = () => {
                                 {t.descRailay}
                             </p>
 
-                            <div className="bg-[#1079a6]/60 rounded-2xl border border-white/20 backdrop-blur-md mx-auto text-left relative overflow-hidden shadow-2xl w-full max-w-5xl flex flex-col md:flex-row mt-16">
+                            <div className="bg-[#1079a6]/60 rounded-2xl border border-white/20 backdrop-blur-md mx-auto text-left relative overflow-hidden shadow-2xl w-full max-w-5xl flex flex-col mt-16">
                                 {/* Subtle gleam effect */}
                                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-sky/50 to-transparent z-10"></div>
 
                                 {/* Image Section */}
-                                <div className="w-full md:w-1/2 aspect-video md:aspect-auto">
+                                <div className="w-full aspect-video md:aspect-[21/9]">
                                     <img src="/ceremony-note.jpg" alt="Ceremony Note" className="w-full h-full object-cover" />
                                 </div>
 
                                 {/* Text Section */}
-                                <div className="p-8 md:p-10 w-full md:w-1/2 flex flex-col justify-center">
+                                <div className="p-8 md:p-10 w-full flex flex-col justify-center">
                                     <h4 className="font-source-serif font-[300] antialiased text-[5.25vw] md:text-[32px] lg:text-[40px] text-white mb-6 flex items-center gap-3 leading-none">
                                         {t.titleCeremony}
                                     </h4>
@@ -65,21 +65,22 @@ const About = () => {
                                         {t.descCeremony2}
                                     </p>
 
-                                    {/* Location Card explicitly placed AFTER "celebration" paragraph */}
-                                    <div className="w-full h-full mb-8 lg:mb-0">
-                                        <EventCard
-                                            title="Wedding Ceremony and Reception"
-                                            date="Friday, December 4, 2026"
-                                            time="Start at 16:00"
-                                            location="The Grotto Restaurant"
-                                            hotel="Rayavadee Resort"
-                                            mapLink="https://maps.google.com/?q=The+Grotto+Rayawadee+Krabi"
-                                            color="blue"
-                                            delay={0.2}
-                                            bgImage="/Grotto pic.jpg"
-                                        />
-                                    </div>
                                 </div>
+                            </div>
+
+                            {/* Location Card explicitly placed AFTER the two-column block */}
+                            <div className="w-full mt-10 md:mt-16 flex justify-center">
+                                <EventCard
+                                    title="Wedding Ceremony and Reception"
+                                    date="Friday, December 4, 2026"
+                                    time="Start at 16:00"
+                                    location="The Grotto Restaurant"
+                                    hotel="Rayavadee Resort"
+                                    mapLink="https://maps.google.com/?q=The+Grotto+Rayawadee+Krabi"
+                                    color="blue"
+                                    delay={0.2}
+                                    bgImage="/Grotto pic.jpg"
+                                />
                             </div>
                         </FadeIn>
                     </div>
