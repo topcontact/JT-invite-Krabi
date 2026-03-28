@@ -54,7 +54,7 @@ const HowToGet = () => {
                 </p>
             </FadeIn>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative items-start">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative items-stretch">
                 {/* Connecting line for desktop */}
                 <div className="hidden md:block absolute top-[64px] left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-blue/10 via-blue/30 to-blue/10 z-0"></div>
 

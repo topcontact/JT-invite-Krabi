@@ -18,10 +18,10 @@ const TransferCard = ({ icon: Icon, title, description, note, delay, bgImage }) 
                     <Icon className="w-8 h-8 text-white" />
                 </div>
                 <h4 className="text-2xl font-source-serif font-[500] antialiased text-white mb-4 tracking-wide">{title}</h4>
-                <p className="text-gray-100 font-source-serif font-[300] antialiased text-base md:text-lg flex items-start justify-center mb-6 whitespace-pre-line leading-relaxed">
+                <p className="text-gray-100 font-source-serif font-[300] antialiased text-base md:text-lg flex items-start justify-center mb-6 whitespace-pre-line leading-relaxed flex-grow">
                     {description}
                 </p>
-                <div className="mt-auto text-sm md:text-base font-source-serif font-[300] antialiased text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 rounded-3xl whitespace-pre-line flex text-left w-full items-center justify-center leading-relaxed">
+                <div className="mt-auto text-sm md:text-base font-source-serif font-[300] antialiased text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 rounded-3xl whitespace-pre-line flex text-left w-full items-center justify-center leading-relaxed h-[140px] md:h-[180px]">
                     <span className="w-full text-center">{note}</span>
                 </div>
             </div>
