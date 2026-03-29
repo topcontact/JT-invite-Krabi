@@ -9,7 +9,7 @@ const About = () => {
     const t = {
         titleVenue: "VENUE",
         titleAnd: "and",
-        titleCeremony: "Our Ceremony",
+        titleCeremony: <>Celebration <br /> beneath the Grotto</>,
         descRailay: language === 'th'
             ? "ไร่เลย์เป็นคาบสมุทรที่สวยงามซึ่งเข้าถึงได้ทางเรือเท่านั้น เนื่องจากมีหน้าผาหินปูนสูงชันโอบล้อมเอาไว้ หน้าผาเหล่านี้ดึงดูดนักปีนหน้าผาจากทั่วโลก และสถานที่แห่งนี้ยังโดดเด่นด้วยชายหาดที่งดงามพร้อมบรรยากาศการพักผ่อนที่แสนสงบ"
             : "Railay is a beautiful peninsula accessible only by boat due to the high limestone cliffs cutting off mainland access. These cliffs attract rock climbers from all over the world, but the area is also known for its beautiful beaches and quiet relaxing atmosphere.",
@@ -55,7 +55,7 @@ const About = () => {
 
                                 {/* Text Section */}
                                 <div className="p-8 md:p-10 w-full flex flex-col justify-center">
-                                    <h4 className="font-source-serif font-[300] antialiased text-[5.25vw] md:text-[32px] lg:text-[40px] text-white mb-6 flex items-center gap-3 leading-none">
+                                    <h4 className="font-source-serif font-[300] antialiased text-[5.25vw] md:text-[32px] lg:text-[40px] text-white mb-6 leading-tight">
                                         {t.titleCeremony}
                                     </h4>
                                     <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-6">
