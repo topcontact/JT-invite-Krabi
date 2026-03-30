@@ -1,0 +1,207 @@
+/**
+ * Centralized translations for the wedding invitation
+ * Structure: { en: {...}, th: {...} }
+ */
+
+export const translations = {
+  en: {
+    // Navigation
+    nav: {
+      location: 'Location',
+      program: 'Program',
+      hotels: 'Hotels',
+      rsvp: 'RSVP',
+    },
+    
+    // Hero Section
+    hero: {
+      saveTheDate: 'SAVE THE DATE',
+      rsvpBy: 'Kindly RSVP by April 30, 2026.',
+    },
+    
+    // Ceremonies Section
+    ceremonies: {
+      krabiTitle: 'KRABI CEREMONY',
+      krabiDate: '04 . 12 . 26',
+      krabiResponse: 'KINDLY RESPOND BY APRIL 30, 2026',
+      bangkokTitle: 'BANGKOK CEREMONY',
+      bangkokDate: '20 . 11 . 26',
+      bangkokResponse: '(MORE DETAILS TO FOLLOW)',
+    },
+    
+    // How to Get There
+    howToGet: {
+      title: 'How to Get There',
+      description: 'Railay can only be reached by boat. Here is our recommended travel route from Bangkok to Krabi, and finally to Railay.',
+      flightTitle: 'Flight to Krabi',
+      flightDesc: 'Fly directly to Krabi International Airport (KBV) from Bangkok.',
+      flightNote: 'Flights are available from both Don Mueang and Suvarnabhumi airports. Estimated round-trip fare: 4,000 – 7,000 THB',
+      transferTitle: 'Transfer to Pier',
+      transferDesc: 'Take a taxi or pre-arranged van from the airport to Ao Nam Mao Pier (Short bridge) or Ao Nang.',
+      transferNote: 'We provide van transfers from KBV Airport to the pier on December 3rd and 4th, Departing before 12:00 PM. (approx. 40 min)',
+      boatTitle: 'Boat to Railay',
+      boatDesc: 'Longtail boat ride from the pier to Railay.',
+      boatNote: 'Guests using our van transfer can board the boat to Railay directly (approx. 15-20 min).',
+    },
+    
+    // RSVP Form
+    rsvp: {
+      title: 'RSVP',
+      eventVenue: 'The Grotto Restaurant, Rayavadee Hotel, Krabi',
+      eventDate: 'Friday, December 4, 2026',
+      respondBy: '* Kindly Respond by April 30, 2026 *',
+      joyfullyAccept: 'Joyfully Accept',
+      regretfullyDecline: 'Regretfully Decline',
+      
+      // Labels
+      nickname: 'Nickname',
+      mobilePhone: 'Mobile Phone',
+      adults: 'Adults',
+      children: 'Children',
+      yes: 'Yes',
+      no: 'No',
+      under7: 'Under 7 yrs',
+      age7to12: '7 - 12 yrs',
+      over12: 'Over 12 yrs',
+      dietaryLabel: 'Dietary Restrictions / Additional Needs',
+      accommodation: 'Accommodation',
+      waitGroupRate: "Yes, I'll wait",
+      bookMyself: "No, I'll book myself",
+      firstName: 'First Name (English)',
+      lastName: 'Last Name (English)',
+      numberOfRooms: 'Number of Rooms',
+      shareWith: 'Share with',
+      notSureNow: 'Not sure now',
+      roomPreferenceLabel: 'Room Preference price range',
+      selectMultiple: '(You can select more than one option)',
+      checkIn: 'Check-in',
+      checkOut: 'Check-out',
+      weddingDay: 'Our Wedding Day | December 4, 2026',
+      nightStay: 'Night Stay',
+      night: 'night',
+      nights: 'nights',
+      arrivingOnDay: "You'll be arriving right on our wedding day!",
+      arrivingBefore: 'You will arrive {days} day{suffix} before our wedding.',
+      message: 'Message',
+      sendMessage: 'Send your best wishes...',
+      processing: 'Processing...',
+      
+      // Success
+      thankYou: 'Thank You!',
+      successMessage: 'Your RSVP has been sent successfully. We are so excited to celebrate with you!',
+      coupleNames: 'Supicha & Teerawat',
+      
+      // Validation Messages
+      selectAttendance: 'Please select whether you will attend.',
+      selectChildren: 'Please select the number of children in the respective age groups.',
+      specifyShareWith: "Please specify who you are sharing the room with, or select 'Not sure now'.",
+      selectRoomRange: 'Please select at least one Room Preference price range.',
+      selectDates: 'Please select both Check-in and Check-out dates.',
+      englishOnly: 'Please enter English characters only',
+      somethingWrong: 'Something went wrong. Please try again.',
+    },
+    
+    // Ticket Modal
+    ticket: {
+      verifyDetails: 'Please verify your details',
+      rsvpReview: 'RSVP Review',
+      guestName: 'Guest Name',
+      phone: 'Phone',
+      status: 'Status',
+      accepted: 'Accepted',
+      declined: 'Declined',
+      partySize: 'Party Size',
+      total: 'total',
+      dietaryNeeds: 'Dietary / Needs',
+      messageLabel: 'Message',
+      guestDetails: 'Guest Details',
+      childrenLabel: 'Children',
+      roomRangeInterested: 'Room range interested',
+      rooms: 'Rooms',
+      price: 'Price',
+      dates: 'Dates',
+      sending: 'Sending...',
+      slideToSend: 'Slide to send',
+      editDetails: 'Edit Details',
+      sharingRoom: 'Sharing room',
+    },
+  },
+  
+  th: {
+    // Navigation
+    nav: {
+      location: 'สถานที่',
+      program: 'กำหนดการ',
+      hotels: 'ที่พัก',
+      rsvp: 'ตอบรับ',
+    },
+    
+    // Hero Section
+    hero: {
+      saveTheDate: 'บันทึกวัน',
+      rsvpBy: 'กรุณาตอบกลับภายในวันที่ 30 เมษายน 2569',
+    },
+    
+    // Ceremonies Section
+    ceremonies: {
+      krabiTitle: 'พิธีกระบี่',
+      krabiDate: '04 . 12 . 26',
+      krabiResponse: 'กรุณาตอบกลับภายในวันที่ 30 เมษายน 2569',
+      bangkokTitle: 'พิธีกรุงเทพ',
+      bangkokDate: '20 . 11 . 26',
+      bangkokResponse: '(รายละเอียดเพิ่มเติมจะแจ้งให้ทราบ)',
+    },
+    
+    // How to Get There
+    howToGet: {
+      title: 'การเดินทาง',
+      description: 'ไร่เลย์สามารถเข้าถึงได้โดยเรือเท่านั้น นี่คือเส้นทางการเดินทางที่เราแนะนำจากกรุงเทพฯ ไปยังกระบี่ และสุดท้ายไปยังไร่เลย์',
+      flightTitle: 'เที่ยวบินไปกระบี่',
+      flightDesc: 'บินตรงสู่สนามบินนานาชาติกระบี่ (KBV) จากกรุงเทพฯ',
+      flightNote: 'มีเที่ยวบินให้บริการจากทั้งสนามบินดอนเมืองและสนามบินสุวรรณภูมิ ค่าโดยสารไป-กลับโดยประมาณ: 4,000 – 7,000 บาท',
+      transferTitle: 'ต่อรถไปท่าเรือ',
+      transferDesc: 'นั่งแท็กซี่หรือรถตู้ที่นัดหมายไว้จากสนามบินไปท่าเรืออ่าวน้ำเมา (สะพานแขวน) หรืออ่าวนาง',
+      transferNote: 'เรามีบริการรถตู้รับ-ส่งจากสนามบินกระบี่ไปท่าเรือในวันที่ 3 และ 4 ธันวาคม รถออกก่อนเวลา 12:00 น. ใช้เวลาเดินทาง 40 นาทีไปยังท่าเรือ',
+      boatTitle: 'เรือไปไร่เลย์',
+      boatDesc: 'นั่งเรือหางยาว (ประมาณ 15-20 นาที) จากท่าเรือไปไร่เลย์',
+      boatNote: 'แขกที่ใช้บริการรถตู้รับ-ส่งของเราสามารถขึ้นเรือไปยังไร่เลย์ได้โดยตรง (ประมาณ 15-20 นาที)',
+    },
+    
+    // RSVP Form - Key translations for Thai users
+    rsvp: {
+      title: 'ตอบรับ',
+      thankYou: 'ขอบคุณ!',
+      successMessage: 'ส่ง RSVP สำเร็จแล้ว เรารอคอยที่จะได้ฉลองกับคุณ!',
+    },
+    
+    // Ticket Modal
+    ticket: {
+      sending: 'กำลังส่ง...',
+      slideToSend: 'เลื่อนเพื่อส่ง',
+    },
+  },
+};
+
+/**
+ * Get translation by key path
+ * @param {object} translations - Translations object
+ * @param {string} lang - Language code ('en' or 'th')
+ * @param {string} path - Dot-notation path (e.g., 'rsvp.title')
+ * @returns {string} Translated string or key if not found
+ */
+export const t = (translations, lang, path) => {
+  const keys = path.split('.');
+  let value = translations[lang];
+  
+  for (const key of keys) {
+    if (value && typeof value === 'object' && key in value) {
+      value = value[key];
+    } else {
+      return path; // Return path if translation not found
+    }
+  }
+  
+  return typeof value === 'string' ? value : path;
+};
+
+export default translations;
