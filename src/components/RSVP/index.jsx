@@ -1,8 +1,8 @@
-import React from 'react';
 import { FadeInView, FadeInExpand } from '../animations/Motion';
 import { useRSVPForm } from '../../hooks/useRSVPForm';
 import { useRSVPValidation } from '../../hooks/useRSVPValidation';
 import { useRSVPSubmission } from '../../hooks/useRSVPSubmission';
+import { filterEnglishOnly } from '../../utils/formatters';
 import RSVPHeader from './RSVPHeader';
 import AttendingChoice from './AttendingChoice';
 import ChildrenSection from './ChildrenSection';
@@ -36,7 +36,7 @@ const RSVP = () => {
   // Handle name change with validation
   const onNameChange = (field, value) => {
     handleNameValidation(value);
-    handleNameChange(field, value, () => {}); // onInvalid callback handled by validation hook
+    updateKrabi(field, filterEnglishOnly(value));
   };
 
   // Show success state after submission
