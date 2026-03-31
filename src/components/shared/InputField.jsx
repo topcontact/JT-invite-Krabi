@@ -29,7 +29,7 @@ const InputField = ({
   ...props 
 }) => (
   <div className={`mb-4 flex flex-col w-full min-w-0 ${disabled ? 'opacity-50' : ''}`}>
-    <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider truncate">
+    <label className="block text-navy font-source-serif-4-variable mb-1 text-sm uppercase tracking-wider truncate">
       {label} {required && <span className="text-red-500">*</span>}
     </label>
     <div className="relative mt-auto w-full min-w-0">

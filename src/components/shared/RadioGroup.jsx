@@ -21,7 +21,7 @@ const RadioGroup = ({
 }) => (
   <div className="mb-6">
     {label && (
-      <label className="block text-navy font-sans mb-2 text-sm uppercase tracking-wider">
+      <label className="block text-navy font-source-serif-4-variable mb-2 text-sm uppercase tracking-wider">
         {label}
       </label>
     )}
@@ -39,7 +39,7 @@ const RadioGroup = ({
             onChange={() => onChange(opt.value)}
             className="text-navy focus:ring-navy"
           />
-          <span className="font-sans text-navy">{opt.label}</span>
+          <span className="font-source-serif-4-variable text-navy">{opt.label}</span>
         </label>
       ))}
     </div>

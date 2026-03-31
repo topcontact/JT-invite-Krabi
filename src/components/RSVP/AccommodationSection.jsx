@@ -116,16 +116,16 @@ const AccommodationSection = ({
                   }}
                   className="rounded text-white focus:ring-white w-4 h-4"
                 />
-                <span className="font-sans text-sm text-white/80">Not sure now</span>
+                <span className="font-source-serif-4-variable text-sm text-white/80">Not sure now</span>
               </label>
             </FadeInExpand>
           )}
 
           {/* Room Price Range */}
-          <label className="block text-white/80 font-sans mb-3 text-sm uppercase tracking-wider">
+          <label className="block text-white/80 font-source-serif-4-variable mb-3 text-sm uppercase tracking-wider">
             Room Preference price range
           </label>
-          <label className="block text-white/80 font-sans mb-3 text-sm tracking-wider">
+          <label className="block text-white/80 font-source-serif-4-variable mb-3 text-sm tracking-wider">
             (You can select more than one option)
           </label>
           <div className="space-y-3">
@@ -144,7 +144,7 @@ const AccommodationSection = ({
                   }}
                   className="rounded text-white focus:ring-white w-4 h-4"
                 />
-                <span className="font-sans text-white">{range}</span>
+                <span className="font-source-serif-4-variable text-white">{range}</span>
               </label>
             ))}
           </div>
@@ -170,7 +170,7 @@ const AccommodationSection = ({
                 onChange={(e) => onFieldChange('checkOut', e.target.value)}
                 disabled={!formData.checkIn}
               />
-              <p className="font-sans text-[10px] text-white/60 font-bold uppercase tracking-widest text-right -mt-2">
+              <p className="font-source-serif-4-variable text-[10px] text-white/60 font-bold uppercase tracking-widest text-right -mt-2">
                 Our Wedding Day | December 4, 2026
               </p>
             </div>
@@ -183,7 +183,7 @@ const AccommodationSection = ({
                 Night Stay: <span className="font-bold">{nights}</span> {nights === 1 ? 'night' : 'nights'}
               </span>
               {arrivalMessage && (
-                <span className="text-sm font-sans text-white/80">{arrivalMessage}</span>
+                <span className="text-sm font-source-serif-4-variable text-white/80">{arrivalMessage}</span>
               )}
             </div>
           )}
