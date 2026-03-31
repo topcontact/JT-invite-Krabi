@@ -3,8 +3,8 @@ import { Send, User, Phone, Users, Home, Calendar, Baby, ChevronDown } from 'luc
 import { FadeInExpand, FadeInScale, FadeInView, FadeIn, Shake, SlideInWarning } from './animations/Motion';
 import TicketModal from './TicketModal';
 
-const InputField = ({ label, type = "text", value, onChange, placeholder, icon: Icon, required = false, disabled = false, options = [], ...props }) => (
-    <div className={`mb-4 flex flex-col w-full min-w-0 ${disabled ? 'opacity-50' : ''}`}>
+const InputField = ({ label, type = "text", value, onChange, placeholder, icon: Icon, required = false, disabled = false, options = [], className = "", ...props }) => (
+    <div className={`mb-4 flex flex-col w-full min-w-0 ${disabled ? 'opacity-50' : ''} ${className}`}>
         <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider truncate">
             {label} {required && <span className="text-red-500">*</span>}
         </label>
@@ -373,7 +373,7 @@ const RSVP = () => {
                                                     ))}
                                                 </div>
                                             </div>
-                                            <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full min-w-0">
+                                            <div className="flex flex-col sm:flex-row gap-4 items-start w-full min-w-0">
                                                 <div className="w-full sm:w-1/2 flex min-w-0">
                                                     <InputField
                                                         label="Check-in"
@@ -387,6 +387,7 @@ const RSVP = () => {
                                                                 e.target.value = '';
                                                             }
                                                         }}
+                                                        className="!mb-0"
                                                     />
                                                 </div>
                                                 <div className="w-full sm:w-1/2 flex min-w-0 flex-col">
@@ -397,8 +398,9 @@ const RSVP = () => {
                                                         value={formData.krabi.checkOut}
                                                         onChange={(e) => updateKrabi('checkOut', e.target.value)}
                                                         disabled={!formData.krabi.checkIn}
+                                                        className="!mb-0"
                                                     />
-                                                    <p className="font-sans text-[10px] text-white/60 font-bold uppercase tracking-widest text-right -mt-2">
+                                                    <p className="font-sans text-[10px] text-white/60 font-bold uppercase tracking-widest text-right mt-1">
                                                         Our Wedding Day | December 4, 2026
                                                     </p>
                                                 </div>
