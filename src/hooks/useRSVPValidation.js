@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
-import { hasNonEnglishChars } from '../../utils/formatters';
+import { hasNonEnglishChars } from '../utils/formatters';
 
 /**
  * Custom hook for RSVP form validation
