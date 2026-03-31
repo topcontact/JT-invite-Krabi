@@ -28,12 +28,12 @@ const InputField = ({
   options = [], 
   ...props 
 }) => (
-  <div className={`mb-4 flex flex-col w-full min-w-0 ${disabled ? 'opacity-50' : ''}`}>
+  <div className={`mb-4 w-full min-w-0 ${disabled ? 'opacity-50' : ''}`}>
     <label className="block text-navy font-source-serif-4-variable mb-1 text-sm uppercase tracking-wider truncate">
       {label} {required && <span className="text-red-500">*</span>}
     </label>
-    <div className="relative mt-auto w-full min-w-0">
-      {Icon && <Icon className="absolute left-3 top-3 w-5 h-5 text-blue z-10 pointer-events-none" />}
+    <div className="relative w-full min-w-0">
+      {Icon && <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-blue z-10 pointer-events-none" />}
       
       {type === 'select' ? (
         <>
@@ -43,13 +43,13 @@ const InputField = ({
             required={required}
             disabled={disabled}
             {...props}
-            className={`w-full min-w-0 p-3 ${Icon ? 'pl-10' : ''} pr-10 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm appearance-none cursor-pointer ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+            className={`w-full min-w-0 px-3 py-3 h-[50px] ${Icon ? 'pl-10' : ''} pr-10 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm appearance-none cursor-pointer ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
           >
             {options.map(opt => (
               <option key={opt} value={opt}>{opt}</option>
             ))}
           </select>
-          <ChevronDown className="absolute right-3 top-3 w-5 h-5 text-navy/50 pointer-events-none" />
+          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-navy/50 pointer-events-none" />
         </>
       ) : type === 'textarea' ? (
         <textarea
@@ -70,7 +70,7 @@ const InputField = ({
           required={required}
           disabled={disabled}
           {...props}
-          className={`w-full min-w-0 p-3 ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${type === 'date' ? 'appearance-none' : ''} ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+          className={`w-full min-w-0 px-3 py-3 h-[50px] ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${type === 'date' ? 'appearance-none' : ''} ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
         />
       )}
     </div>

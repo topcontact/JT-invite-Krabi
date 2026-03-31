@@ -150,8 +150,8 @@ const AccommodationSection = ({
           </div>
 
           {/* Date Selection */}
-          <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full min-w-0">
-            <div className="w-full sm:w-1/2 flex min-w-0">
+          <div className="flex flex-col sm:flex-row gap-4 items-start w-full min-w-0">
+            <div className="w-full sm:w-1/2 block min-w-0">
               <InputField
                 label="Check-in"
                 type="date"
@@ -159,9 +159,10 @@ const AccommodationSection = ({
                 max={CHECKIN_MAX_DATE}
                 value={formData.checkIn}
                 onChange={(e) => onFieldChange('checkIn', e.target.value)}
+                className="!mb-0"
               />
             </div>
-            <div className="w-full sm:w-1/2 flex min-w-0 flex-col">
+            <div className="w-full sm:w-1/2 block min-w-0 relative">
               <InputField
                 label="Check-out"
                 type="date"
@@ -169,12 +170,16 @@ const AccommodationSection = ({
                 value={formData.checkOut}
                 onChange={(e) => onFieldChange('checkOut', e.target.value)}
                 disabled={!formData.checkIn}
+                className="!mb-0"
               />
-              <p className="font-source-serif-4-variable text-[10px] text-white/60 font-bold uppercase tracking-widest text-right -mt-2">
+              <p className="font-source-serif-4-variable text-[10px] text-white/60 font-bold uppercase tracking-widest text-right absolute -bottom-6 right-0 w-full mt-1 border-t border-transparent leading-tight whitespace-nowrap overflow-visible">
                 Our Wedding Day | December 4, 2026
               </p>
             </div>
           </div>
+          
+          {/* Spacer to absorb absolute height from Check-out row helper text relative to sibling rows */}
+          <div className="w-full h-4 sm:h-5"></div>
 
           {/* Stay Summary */}
           {formData.checkIn && formData.checkOut && (

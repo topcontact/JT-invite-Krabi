@@ -4,11 +4,11 @@ import { FadeInExpand, FadeInScale, FadeInView, FadeIn, Shake, SlideInWarning } 
 import TicketModal from './TicketModal';
 
 const InputField = ({ label, type = "text", value, onChange, placeholder, icon: Icon, required = false, disabled = false, options = [], className = "", ...props }) => (
-    <div className={`mb-4 flex flex-col w-full min-w-0 ${disabled ? 'opacity-50' : ''} ${className}`}>
+    <div className={`mb-4 w-full min-w-0 ${disabled ? 'opacity-50' : ''} ${className}`}>
         <label className="block text-navy font-sans mb-1 text-sm uppercase tracking-wider truncate">
             {label} {required && <span className="text-red-500">*</span>}
         </label>
-        <div className="relative mt-auto w-full min-w-0">
+        <div className="relative w-full min-w-0">
             {Icon && <Icon className="absolute left-3 top-3 w-5 h-5 text-blue z-10 pointer-events-none" />}
             {type === 'select' ? (
                 <>
@@ -374,7 +374,7 @@ const RSVP = () => {
                                                 </div>
                                             </div>
                                             <div className="flex flex-col sm:flex-row gap-4 items-start w-full min-w-0">
-                                                <div className="w-full sm:w-1/2 flex min-w-0">
+                                                <div className="w-full sm:w-1/2 block min-w-0">
                                                     <InputField
                                                         label="Check-in"
                                                         type="date"
@@ -390,7 +390,7 @@ const RSVP = () => {
                                                         className="!mb-0"
                                                     />
                                                 </div>
-                                                <div className="w-full sm:w-1/2 flex min-w-0 flex-col">
+                                                <div className="w-full sm:w-1/2 block min-w-0 relative">
                                                     <InputField
                                                         label="Check-out"
                                                         type="date"
@@ -400,11 +400,13 @@ const RSVP = () => {
                                                         disabled={!formData.krabi.checkIn}
                                                         className="!mb-0"
                                                     />
-                                                    <p className="font-sans text-[10px] text-white/60 font-bold uppercase tracking-widest text-right mt-1">
+                                                    <p className="font-sans text-[10px] text-white/60 font-bold uppercase tracking-widest text-right mt-1 absolute -bottom-5 right-0 border-t border-transparent">
                                                         Our Wedding Day | December 4, 2026
                                                     </p>
                                                 </div>
                                             </div>
+                                            {/* To account for absolute positioned text so it doesn't overlap the night stay */}
+                                            <div className="h-4 sm:h-5 w-full"></div>
                                             {formData.krabi.checkIn && formData.krabi.checkOut && (
                                                 <div className="mt-2 text-center flex flex-col gap-1">
                                                     <span className="text-white font-source-serif font-[300] text-lg">
