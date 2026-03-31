@@ -19,7 +19,7 @@ const WhereToStay = () => {
                     distance: "450m walk 6 min to wedding venue"
                 },
                 {
-                    name: "Sea and Sand Resort",
+                    name: "Sand Sea Resort",
                     image: "/sea-and-sand.jpg",
                     mapLink: "https://maps.app.goo.gl/NcswiQxHi9p26JtH6",
                     description: language === 'th' ? "รีสอร์ทแห่งนี้มอบการพักผ่อนที่เงียบสงบพร้อมวิวทะเลอันดามันที่สวยงาม เหมาะสำหรับผู้ที่ต้องการพักผ่อนและผ่อนคลายอย่างมีสไตล์" : "This resort offers a peaceful retreat with stunning views of the Andaman Sea. Perfect for those who want to relax and unwind in style.",
