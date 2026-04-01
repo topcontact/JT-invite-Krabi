@@ -99,7 +99,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                 <div className="relative z-10 text-center">
                   <div className="mb-4 flex justify-center items-center">
                     <Diamond />
-                    <span className="font-source-serif-4-variable text-[10px] font-bold uppercase tracking-widest text-navy mx-2">Please verify your details</span>
+                    <span className="font-source-serif text-[10px] font-bold uppercase tracking-widest text-navy mx-2">Please verify your details</span>
                     <Diamond />
                   </div>
 
@@ -109,7 +109,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                     <div className="flex items-start gap-3 mb-3">
                       <User className="w-4 h-4 text-blue mt-1 shrink-0" />
                       <div>
-                        <p className="font-source-serif-4-variable text-[10px] font-bold uppercase tracking-wider text-navy/60">Guest Name</p>
+                        <p className="font-source-serif text-[10px] font-bold uppercase tracking-wider text-navy/60">Guest Name</p>
                         <p className="font-serif text-lg text-navy leading-tight">{name}</p>
                       </div>
                     </div>
@@ -118,15 +118,15 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                       <div className="flex items-start gap-3 mb-3">
                         <Phone className="w-4 h-4 text-blue mt-px shrink-0" />
                         <div>
-                          <p className="font-source-serif-4-variable text-[10px] font-bold uppercase tracking-wider text-navy/60">Phone</p>
-                          <p className="font-source-serif-4-variable text-sm text-navy">{data.phone}</p>
+                          <p className="font-source-serif text-[10px] font-bold uppercase tracking-wider text-navy/60">Phone</p>
+                          <p className="font-source-serif text-sm text-navy">{data.phone}</p>
                         </div>
                       </div>
                     )}
 
                     <div className={`grid ${data?.attending === 'yes' ? 'grid-cols-2' : 'grid-cols-1'} gap-4 mt-4 pt-3 border-t border-navy/10`}>
                       <div>
-                        <p className="font-source-serif-4-variable text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Status</p>
+                        <p className="font-source-serif text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Status</p>
                         <p className="font-serif text-base text-navy flex items-center gap-1.5">
                           {data?.attending === 'yes' ? <Check size={14} className="text-green-600" /> : <X size={14} className="text-red-500" />}
                           {status}
@@ -134,8 +134,8 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                       </div>
                       {data?.attending === 'yes' && (
                         <div>
-                          <p className="font-source-serif-4-variable text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Party Size</p>
-                          <p className="font-serif text-base text-navy">{partySize} <span className="text-xs font-source-serif-4-variable text-navy/60">total</span></p>
+                          <p className="font-source-serif text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Party Size</p>
+                          <p className="font-serif text-base text-navy">{partySize} <span className="text-xs font-source-serif text-navy/60">total</span></p>
                         </div>
                       )}
                     </div>
@@ -145,8 +145,8 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                       <div className="flex items-start gap-3 mt-4 pt-3 border-t border-navy/10">
                         <Utensils className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                         <div>
-                          <p className="font-source-serif-4-variable text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Dietary / Needs</p>
-                          <span className="font-source-serif-4-variable text-sm text-navy italic leading-snug">"{data.dietary}"</span>
+                          <p className="font-source-serif text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Dietary / Needs</p>
+                          <span className="font-source-serif text-sm text-navy italic leading-snug">"{data.dietary}"</span>
                         </div>
                       </div>
                     )}
@@ -154,8 +154,8 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                       <div className="flex items-start gap-3 mt-4 pt-3 border-t border-navy/10">
                         <MessageSquare className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                         <div>
-                          <p className="font-source-serif-4-variable text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Message</p>
-                          <span className="font-source-serif-4-variable text-sm text-navy italic leading-snug">"{data.message}"</span>
+                          <p className="font-source-serif text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Message</p>
+                          <span className="font-source-serif text-sm text-navy italic leading-snug">"{data.message}"</span>
                         </div>
                       </div>
                     )}
@@ -204,7 +204,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                         boxShadow: '0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.5)',
                       }}
                     >
-                      <div className="space-y-4 text-sm text-navy font-source-serif-4-variable">
+                      <div className="space-y-4 text-sm text-navy font-source-serif">
                         <p className="text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5 text-center pb-4">Wait for Group Rate</p>
                         
                         {(data?.firstName || data?.lastName) && (
@@ -266,7 +266,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                   <button
                     onClick={onClose}
                     disabled={isSubmitting || isFolding}
-                    className="w-full flex items-center justify-center gap-1.5 py-2.5 mb-3 rounded-lg font-source-serif-4-variable text-xs font-bold uppercase tracking-wider text-navy/70 hover:text-navy hover:bg-white/30 transition-colors disabled:opacity-50"
+                    className="w-full flex items-center justify-center gap-1.5 py-2.5 mb-3 rounded-lg font-source-serif text-xs font-bold uppercase tracking-wider text-navy/70 hover:text-navy hover:bg-white/30 transition-colors disabled:opacity-50"
                   >
                     <Pencil size={12} />
                     Edit Details
@@ -294,7 +294,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                 className="absolute inset-0 z-50 flex flex-col items-center justify-center"
               >
                 <div className="w-12 h-12 border-3 border-white/30 border-t-white rounded-full animate-spin mb-4" />
-                <p className="font-source-serif-4-variable text-sm text-white/90 uppercase tracking-widest">Sending...</p>
+                <p className="font-source-serif text-sm text-white/90 uppercase tracking-widest">Sending...</p>
               </motion.div>
             )}
           </AnimatePresence>

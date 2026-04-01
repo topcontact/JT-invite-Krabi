@@ -119,7 +119,7 @@ const RSVP = () => {
 
                 {/* Dietary Restrictions */}
                 <div className="mt-4">
-                  <label className="block text-white/80 font-source-serif-4-variable mb-1 text-sm uppercase tracking-wider">
+                  <label className="block text-white/80 font-source-serif mb-1 text-sm uppercase tracking-wider">
                     Dietary Restrictions / Additional Needs
                   </label>
                   <textarea
@@ -146,7 +146,7 @@ const RSVP = () => {
           {/* Message for Decline */}
           {formData.krabi.attending === 'no' && (
             <FadeInExpand className="px-8 md:px-12 pb-6">
-              <label className="block text-white/80 font-source-serif-4-variable mb-1 text-sm uppercase tracking-wider">
+              <label className="block text-white/80 font-source-serif mb-1 text-sm uppercase tracking-wider">
                 Message
               </label>
               <textarea
