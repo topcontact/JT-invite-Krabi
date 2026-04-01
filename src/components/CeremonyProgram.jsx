@@ -48,20 +48,12 @@ const CeremonyProgram = () => {
                 <FadeIn delay={0.3}>
                     <TimelineItem
                         time="17:00"
-                        title="Prepare for Ceremony"
-                        description="Guests are seated for the ceremony."
+                        title="Ceremony"
+                        description="The wedding ceremony begins."
                         icon={Sparkles}
                     />
                 </FadeIn>
                 <FadeIn delay={0.4}>
-                    <TimelineItem
-                        time="17:30"
-                        title="Ceremony"
-                        description="The wedding ceremony begins."
-                        icon={CalendarHeart}
-                    />
-                </FadeIn>
-                <FadeIn delay={0.5}>
                     <TimelineItem
                         time="18:00"
                         title="Dinner till 22:00"

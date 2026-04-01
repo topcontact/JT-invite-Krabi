@@ -5,7 +5,7 @@ import About from './components/About';
 import HowToGet from './components/HowToGet';
 import CeremonyProgram from './components/CeremonyProgram';
 import WhereToStay from './components/WhereToStay';
-import RSVP from './components/RSVP';
+import RSVP from './components/RSVP/index';
 import Envelope from './components/Envelope';
 import FloatingNav from './components/FloatingNav';
 
