@@ -13,9 +13,9 @@ export const RSVP_DEADLINE = "April 30, 2026";
 
 // Room Price Ranges
 export const ROOM_RANGES = [
-  "Est. 4,000 - 6,000+ THB / night",
-  "Est. 6,000 - 10,000+ THB / night",
-  "Est. 25,000 - 40,000+ THB / night"
+  "ประมาณ 4,000 - 6,000+ บาท / คืน",
+  "ประมาณ 6,000 - 10,000+ บาท / คืน",
+  "ประมาณ 25,000 - 40,000+ บาท / คืน"
 ];
 
 // Date Constraints

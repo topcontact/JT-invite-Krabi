@@ -48,13 +48,13 @@ export const useRSVPSubmission = () => {
         : '',
       roomRange4kTo6k: formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
-        formData.roomRange.includes("Est. 4,000 - 6,000+ THB / night") ? 'Yes' : '',
+        formData.roomRange.includes("ประมาณ 4,000 - 6,000+ บาท / คืน") ? 'Yes' : '',
       roomRange6kTo10k: formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
-        formData.roomRange.includes("Est. 6,000 - 10,000+ THB / night") ? 'Yes' : '',
+        formData.roomRange.includes("ประมาณ 6,000 - 10,000+ บาท / คืน") ? 'Yes' : '',
       roomRange25kTo40k: formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
-        formData.roomRange.includes("Est. 25,000 - 40,000+ THB / night") ? 'Yes' : '',
+        formData.roomRange.includes("ประมาณ 25,000 - 40,000+ บาท / คืน") ? 'Yes' : '',
       checkIn: formData.attending === 'yes' ? formData.checkIn : '',
       checkOut: formData.attending === 'yes' ? formData.checkOut : '',
       nightStay: formData.attending === 'yes' && nights > 0 ? nights : '',

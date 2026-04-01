@@ -72,8 +72,8 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
                 style={{ opacity: textOpacity }}
             >
-                <span className="text-xs font-bold uppercase tracking-wider text-navy/50 ml-10 drop-shadow-sm">
-                    Slide to send
+                <span className="text-xs font-krub font-[400] uppercase tracking-wider text-navy/50 ml-10 drop-shadow-sm">
+                    เลื่อนเพื่อส่งข้อมูล
                 </span>
             </motion.div>
 
@@ -147,7 +147,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
     };
 
     const name = data?.name || "Guest";
-    const status = data?.attending === 'yes' ? "Accepted" : "Declined";
+    const status = data?.attending === 'yes' ? "ยินดีเข้าร่วมงาน" : "ไม่สามารถเข้าร่วมได้";
     const adults = parseInt(data?.adults || 0);
     const totalChildren = data?.hasChildren === 'yes' ?
         (parseInt(data?.childrenOver12 || 0) + parseInt(data?.children7To12 || 0) + parseInt(data?.childrenUnder7 || 0)) : 0;
@@ -206,17 +206,17 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                 <div className="relative z-10 text-center">
                                     <div className="mb-4 flex justify-center items-center">
                                         <Diamond />
-                                        <span className="font-sans text-[10px] font-bold uppercase tracking-widest text-navy mx-2">Please verify your details</span>
+                                        <span className="font-krub text-[11px] font-[400] uppercase tracking-widest text-navy mx-2">กรุณาตรวจสอบข้อมูลของคุณ</span>
                                         <Diamond />
                                     </div>
 
-                                    <h2 className="font-serif text-3xl text-navy tracking-tight mb-1">RSVP Review</h2>
+                                    <h2 className="font-serif text-3xl text-navy tracking-tight mb-1">สรุปการตอบรับ</h2>
 
                                     <div className="mt-4 mb-4 border border-navy/20 rounded-lg p-4 bg-white/40 text-left">
                                         <div className="flex items-start gap-3 mb-3">
                                             <User className="w-4 h-4 text-blue mt-1 shrink-0" />
                                             <div>
-                                                <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60">Guest Name</p>
+                                                <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60">ชื่อผู้เข้าร่วมงาน</p>
                                                 <p className="font-serif text-lg text-navy leading-tight">{name}</p>
                                             </div>
                                         </div>
@@ -225,24 +225,24 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                             <div className="flex items-start gap-3 mb-3">
                                                 <Phone className="w-4 h-4 text-blue mt-px shrink-0" />
                                                 <div>
-                                                    <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60">Phone</p>
-                                                    <p className="font-sans text-sm text-navy">{data.phone}</p>
+                                                    <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60">เบอร์โทรศัพท์</p>
+                                                    <p className="font-krub text-sm text-navy">{data.phone}</p>
                                                 </div>
                                             </div>
                                         )}
 
                                         <div className={`grid ${data?.attending === 'yes' ? 'grid-cols-2' : 'grid-cols-1'} gap-4 mt-4 pt-3 border-t border-navy/10`}>
                                             <div>
-                                                <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Status</p>
-                                                <p className="font-serif text-base text-navy flex items-center gap-1.5">
+                                                <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-1">สถานะ</p>
+                                                <p className="font-krub font-[400] text-base text-navy flex items-center gap-1.5">
                                                     {data?.attending === 'yes' ? <Check size={14} className="text-green-600" /> : <X size={14} className="text-red-500" />}
                                                     {status}
                                                 </p>
                                             </div>
                                             {data?.attending === 'yes' && (
                                                 <div>
-                                                    <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-1">Party Size</p>
-                                                    <p className="font-serif text-base text-navy">{partySize} <span className="text-xs font-sans text-navy/60">total</span></p>
+                                                    <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-1">จำนวนผู้เข้าร่วม</p>
+                                                    <p className="font-serif text-base text-navy">{partySize} <span className="text-xs font-krub text-navy/60">คน</span></p>
                                                 </div>
                                             )}
                                         </div>
@@ -252,8 +252,8 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                             <div className="flex items-start gap-3 mt-4 pt-3 border-t border-navy/10">
                                                 <Utensils className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                 <div>
-                                                    <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Dietary / Needs</p>
-                                                    <span className="font-sans text-sm text-navy italic leading-snug">"{data.dietary}"</span>
+                                                    <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5">ข้อจำกัดด้านอาหาร / ความต้องการเพิ่มเติม</p>
+                                                    <span className="font-krub text-sm text-navy italic leading-snug">"{data.dietary}"</span>
                                                 </div>
                                             </div>
                                         )}
@@ -261,8 +261,8 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                             <div className="flex items-start gap-3 mt-4 pt-3 border-t border-navy/10">
                                                 <MessageSquare className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                 <div>
-                                                    <p className="font-sans text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Message</p>
-                                                    <span className="font-sans text-sm text-navy italic leading-snug">"{data.message}"</span>
+                                                    <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5">ข้อความถึงบ่าวสาว</p>
+                                                    <span className="font-krub text-sm text-navy italic leading-snug">"{data.message}"</span>
                                                 </div>
                                             </div>
                                         )}
@@ -317,15 +317,15 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                                 boxShadow: '0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.5)',
                                             }}
                                         >
-                                            <div className="space-y-4 text-sm text-navy font-sans">
-                                                <p className="text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5 text-center pb-4">Wait for Group Rate</p>
+                                            <div className="space-y-4 text-sm text-navy font-krub">
+                                                <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5 text-center pb-4">รอเข้าร่วม Group Rate</p>
                                                 {(data?.firstName || data?.lastName) && (
                                                     <div className="flex items-start gap-3">
                                                         <User className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                         <div className="leading-snug">
-                                                            <p className="text-[10px] font-bold uppercase tracking-wider text-navy/60">Guest Details</p>
-                                                            {data?.firstName && <p>Firstname: {data.firstName}</p>}
-                                                            {data?.lastName && <p>Lastname: {data.lastName}</p>}
+                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60">ข้อมูลผู้เข้าพัก</p>
+                                                            {data?.firstName && <p>ชื่อจริง: {data.firstName}</p>}
+                                                            {data?.lastName && <p>นามสกุล: {data.lastName}</p>}
                                                         </div>
                                                     </div>
                                                 )}
@@ -334,10 +334,10 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                                     <div className="flex items-start gap-3">
                                                         <Baby className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                         <div>
-                                                            <p className="text-[10px] font-bold uppercase tracking-wider text-navy/60">Children</p>
-                                                            <p className="leading-snug">Age &lt;7 = {data.childrenUnder7 || 0}</p>
-                                                            <p className="leading-snug">Age 7-12 = {data.children7To12 || 0}</p>
-                                                            <p className="leading-snug">Age 12+ = {data.childrenOver12 || 0}</p>
+                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60">เด็ก</p>
+                                                            <p className="leading-snug">อายุ &lt;7 ปี = {data.childrenUnder7 || 0}</p>
+                                                            <p className="leading-snug">อายุ 7-12 ปี = {data.children7To12 || 0}</p>
+                                                            <p className="leading-snug">อายุ 12+ ปี = {data.childrenOver12 || 0}</p>
                                                         </div>
                                                     </div>
                                                 )}
@@ -346,11 +346,11 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                                     <div className="flex items-start gap-3">
                                                         <BedDouble className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                         <div className="leading-snug">
-                                                            <p className="text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Room range interested</p>
-                                                            <p className="mb-1">Rooms: {data?.rooms === 'Share room' ? `Sharing room (${data?.isShareNotSure ? 'Not sure now' : data?.shareWith})` : data?.rooms}</p>
+                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5">ช่วงราคาห้องพักที่สนใจ</p>
+                                                            <p className="mb-1">จำนวนห้อง: {data?.rooms === 'แชร์ห้องกับผู้อื่น' ? `แชร์ห้องกับผู้อื่น (${data?.isShareNotSure ? 'ยังไม่แน่ใจ' : data?.shareWith})` : data?.rooms}</p>
                                                             {data?.roomRange && data?.roomRange.length > 0 && (
                                                                 <div className="mb-1 text-xs pb-2">
-                                                                    <p>Price:</p>
+                                                                    <p>ราคา:</p>
                                                                     {(Array.isArray(data?.roomRange) ? data.roomRange : [data.roomRange]).map((range, i) => (
                                                                         <p key={i} className="ml-2">{range.replace(/\/ night/g, '').trim()}</p>
                                                                     ))}
@@ -358,17 +358,17 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                                             )}
                                                             {data?.checkIn && data?.checkOut && (
                                                                 <div className="text-xs">
-                                                                    <p>Dates: {data.checkIn} to {data.checkOut}</p>
-                                                                    <p>({Math.round((new Date(data.checkOut) - new Date(data.checkIn)) / (1000 * 60 * 60 * 24))} nights)</p>
+                                                                    <p>วันที่: {data.checkIn} ถึง {data.checkOut}</p>
+                                                                    <p>({Math.round((new Date(data.checkOut) - new Date(data.checkIn)) / (1000 * 60 * 60 * 24))} คืน)</p>
                                                                     {(() => {
                                                                         const eventDate = new Date('2026-12-04');
                                                                         const checkInDate = new Date(data.checkIn);
                                                                         const daysBefore = Math.round((eventDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
 
                                                                         if (daysBefore === 0) {
-                                                                            return <p className="text-blue mt-1 font-medium">You'll be arriving right on our wedding day!</p>;
+                                                                            return <p className="text-blue mt-1 font-medium">คุณเข้าพักในวันแต่งงานของเราพอดี!</p>;
                                                                         } else if (daysBefore > 0) {
-                                                                            return <p className="text-blue mt-1 font-medium">You will arrive {daysBefore} day{daysBefore > 1 ? 's' : ''} before our wedding.</p>;
+                                                                            return <p className="text-blue mt-1 font-medium">คุณจะเข้าพักก่อนวันงาน {daysBefore} วัน</p>;
                                                                         }
                                                                         return null;
                                                                     })()}
@@ -392,10 +392,10 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                     <button
                                         onClick={onClose}
                                         disabled={isSubmitting || isFolding}
-                                        className="w-full flex items-center justify-center gap-1.5 py-2.5 mb-3 rounded-lg font-sans text-xs font-bold uppercase tracking-wider text-navy/70 hover:text-navy hover:bg-white/30 transition-colors disabled:opacity-50"
+                                        className="w-full flex items-center justify-center gap-1.5 py-2.5 mb-3 rounded-lg font-krub text-sm font-[400] uppercase tracking-wider text-navy/70 hover:text-navy hover:bg-white/30 transition-colors disabled:opacity-50"
                                     >
                                         <Pencil size={12} />
-                                        Edit Details
+                                        แก้ไขข้อมูล
                                     </button>
                                     <SlideToConfirm
                                         onConfirm={handleConfirm}
@@ -419,7 +419,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                 className="absolute inset-0 z-50 flex flex-col items-center justify-center"
                             >
                                 <div className="w-12 h-12 border-3 border-white/30 border-t-white rounded-full animate-spin mb-4" />
-                                <p className="font-sans text-sm text-white/90 uppercase tracking-widest">Sending...</p>
+                                <p className="font-krub text-sm text-white/90 uppercase tracking-widest">กำลังส่งข้อมูล...</p>
                             </motion.div>
                         )}
                     </AnimatePresence>

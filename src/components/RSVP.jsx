@@ -350,9 +350,9 @@ const RSVP = () => {
                                                 <label className="block text-white/80 font-sans mb-3 text-sm tracking-wider">(You can select more than one option)</label>
                                                 <div className="space-y-3">
                                                     {[
-                                                        "Est. 4,000 - 6,000+ THB / night",
-                                                        "Est. 6,000 - 10,000+ THB / night",
-                                                        "Est. 25,000 - 40,000+ THB / night"
+                                                        "ประมาณ 4,000 - 6,000+ บาท / คืน",
+                                                        "ประมาณ 6,000 - 10,000+ บาท / คืน",
+                                                        "ประมาณ 25,000 - 40,000+ บาท / คืน"
                                                     ].map((range) => (
                                                         <label key={range} className="flex items-center gap-3 cursor-pointer">
                                                             <input

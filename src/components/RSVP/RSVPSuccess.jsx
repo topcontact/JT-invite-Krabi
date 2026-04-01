@@ -15,8 +15,8 @@ const RSVPSuccess = () => (
         </div>
       </div>
       <h2 className="text-4xl font-serif text-navy mb-4">Thank You!</h2>
-      <p className="text-lg text-white/80 font-source-serif mb-8">
-        Your RSVP has been sent successfully. We are so excited to celebrate with you!
+      <p className="text-lg text-white/80 font-krub font-[400] mb-8">
+        เราได้รับข้อมูลการตอบรับของคุณเรียบร้อยแล้ว แล้วพบกันในวันงาน!
       </p>
       <p className="text-white font-instrument font-medium uppercase tracking-wider">
         Supicha & Teerawat

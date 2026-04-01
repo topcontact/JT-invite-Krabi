@@ -70,14 +70,14 @@ const RSVP = () => {
             <FadeInExpand className="px-8 md:px-12 pb-6">
               <div className="space-y-4 [&_label]:!text-white/80 [&_input]:!bg-white/10 [&_input]:!border-white/30 [&_input]:!text-white [&_input]:placeholder:!text-white/40 [&_select]:!bg-white/10 [&_select]:!border-white/30 [&_select]:!text-white [&_svg]:!text-white/60 [&_option]:!text-navy">
                 <InputField
-                  label="Nickname"
+                  label="ชื่อเล่น (Nickname)"
                   value={formData.krabi.name}
                   onChange={(e) => updateKrabi('name', e.target.value)}
                   icon={User}
                   required
                 />
                 <InputField
-                  label="Mobile Phone"
+                  label="เบอร์โทรศัพท์ (Mobile Phone)"
                   type="tel"
                   value={formData.krabi.phone}
                   onChange={(e) => updateKrabi('phone', e.target.value)}
@@ -96,7 +96,7 @@ const RSVP = () => {
                 <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full min-w-0">
                   <div className="w-full sm:w-1/2 flex min-w-0">
                     <InputField
-                      label="Adults"
+                      label="ผู้ใหญ่ (Adults)"
                       type="select"
                       options={Array.from({ length: 10 }, (_, i) => i + 1)}
                       value={formData.krabi.adults}
@@ -119,8 +119,8 @@ const RSVP = () => {
 
                 {/* Dietary Restrictions */}
                 <div className="mt-4">
-                  <label className="block text-white/80 font-source-serif mb-1 text-sm uppercase tracking-wider">
-                    Dietary Restrictions / Additional Needs
+                  <label className="block text-white/80 font-krub mb-1 text-sm uppercase tracking-wider">
+                    ข้อจำกัดด้านอาหาร / ความต้องการเพิ่มเติม
                   </label>
                   <textarea
                     className="w-full p-3 border border-white/30 rounded-lg focus:outline-none focus:border-white bg-white/10 backdrop-blur-sm text-white placeholder:text-white/40"
@@ -146,13 +146,13 @@ const RSVP = () => {
           {/* Message for Decline */}
           {formData.krabi.attending === 'no' && (
             <FadeInExpand className="px-8 md:px-12 pb-6">
-              <label className="block text-white/80 font-source-serif mb-1 text-sm uppercase tracking-wider">
-                Message
+              <label className="block text-white/80 font-krub mb-1 text-sm uppercase tracking-wider">
+                ข้อความถึงบ่าวสาว
               </label>
               <textarea
                 className="w-full p-3 border border-white/30 rounded-lg focus:outline-none focus:border-white bg-white/10 backdrop-blur-sm text-white placeholder:text-white/40"
                 rows="2"
-                placeholder="Send your best wishes..."
+                placeholder="ส่งข้อความถึงบ่าวสาว..."
                 value={formData.krabi.message || ''}
                 onChange={(e) => updateKrabi('message', e.target.value)}
               ></textarea>
@@ -170,7 +170,7 @@ const RSVP = () => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Processing...
+                    กำลังดำเนินการ...
                   </>
                 ) : (
                   <>
