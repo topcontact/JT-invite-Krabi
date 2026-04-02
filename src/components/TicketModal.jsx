@@ -135,14 +135,20 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
     );
 };
 
-const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
+const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) => {
     const [isFolding, setIsFolding] = useState(false);
+    const [resetKey, setResetKey] = useState(0);
 
     const handleConfirm = async () => {
         setIsFolding(true);
         setTimeout(async () => {
-            await onConfirm();
-            setTimeout(() => setIsFolding(false), 500);
+            const success = await onConfirm();
+            setTimeout(() => {
+                setIsFolding(false);
+                if (!success) {
+                    setResetKey(prev => prev + 1);
+                }
+            }, 500);
         }, 600);
     };
 
@@ -388,6 +394,14 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                         <Diamond /><Diamond /><Diamond />
                                     </div>
 
+                                    {error && (
+                                        <div className="mb-4 p-3 bg-red-100/80 backdrop-blur-sm rounded-lg border border-red-200 shadow-sm animate-pulse">
+                                            <p className="text-red-600 font-krub text-[13px] text-center font-[500] leading-tight">
+                                                เกิดข้อผิดพลาดในการส่งข้อมูล: <br className="mb-1" /> {error}
+                                            </p>
+                                        </div>
+                                    )}
+
                                     {/* Edit Details + Slide to Confirm */}
                                     <button
                                         onClick={onClose}
@@ -398,6 +412,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                                         แก้ไขข้อมูล
                                     </button>
                                     <SlideToConfirm
+                                        key={resetKey}
                                         onConfirm={handleConfirm}
                                         isSubmitting={isSubmitting}
                                         isFolding={isFolding}

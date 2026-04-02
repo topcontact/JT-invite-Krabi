@@ -31,7 +31,7 @@ const RSVP = () => {
   const { nameShake, englishWarning, handleNameValidation } = useRSVPValidation();
 
   // Submission state
-  const { isSubmitting, isSubmitted, submitRSVP } = useRSVPSubmission();
+  const { isSubmitting, isSubmitted, submitRSVP, error } = useRSVPSubmission();
 
   // Handle name change with validation
   const onNameChange = (field, value) => {
@@ -196,6 +196,7 @@ const RSVP = () => {
         onConfirm={() => submitRSVP(formData.krabi)}
         data={formData.krabi}
         isSubmitting={isSubmitting}
+        error={error}
       />
     </section>
   );
