@@ -6,7 +6,7 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
     <FadeInUp
         delay={delay}
         duration={0.8}
-        className={`bg-white relative p-6 md:p-12 rounded-[40px] shadow-2xl w-full max-w-4xl text-center flex flex-col items-center overflow-hidden h-full`}
+        className={`bg-white relative p-6 md:p-10 rounded-3xl shadow-xl w-full max-w-4xl text-center flex flex-col items-center overflow-hidden h-full`}
         style={bgImage ? {
             backgroundImage: `linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.95)), url('${bgImage}')`,
             backgroundSize: 'cover',

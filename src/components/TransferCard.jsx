@@ -3,7 +3,7 @@ import { FadeInUp as FadeIn } from './animations/Motion';
 
 const TransferCard = ({ icon: Icon, title, description, note, delay, bgImage }) => {
     return (
-        <FadeIn delay={delay} className="relative z-10 flex flex-col items-center text-center p-6 rounded-2xl shadow-sm border border-gray-200 h-full overflow-hidden">
+        <FadeIn delay={delay} className="relative z-10 flex flex-col items-center text-center p-6 md:p-10 rounded-3xl shadow-xl border border-gray-200 h-full overflow-hidden">
             {/* Background Image Container */}
             <div
                 className="absolute inset-0 bg-cover bg-center z-0"

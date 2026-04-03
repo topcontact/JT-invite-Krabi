@@ -110,7 +110,7 @@ const HotelCard = ({ hotel, delay }) => {
     );
 
     return (
-        <FadeIn delay={delay} className="flex flex-col bg-gradient-to-br from-mist/50 to-white p-6 md:p-8 rounded-3xl border border-sky/30 shadow-lg text-center h-full relative overflow-hidden">
+        <FadeIn delay={delay} className="flex flex-col bg-gradient-to-br from-mist/50 to-white p-6 md:p-10 rounded-3xl border border-sky/30 shadow-xl text-center h-full relative overflow-hidden">
             {imageContent}
 
             <h3 className="text-3xl font-source-serif font-[300] antialiased text-navy mb-4 h-12 flex items-center justify-center">

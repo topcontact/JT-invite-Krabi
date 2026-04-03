@@ -3,6 +3,7 @@ import { FadeInExpand, FadeIn } from '../animations/Motion';
 import InputField from '../shared/InputField';
 import { Shake, SlideInWarning } from '../animations/Motion';
 import { User, Home, Users } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
 import { ROOM_RANGES, CHECKIN_MAX_DATE, CHECKIN_MIN_DATE } from '../../utils/constants';
 import { calculateNights, getNextDay, getDaysBeforeEvent, getArrivalMessage } from '../../utils/formatters';
 
@@ -26,6 +27,7 @@ const AccommodationSection = ({
   nameShake,
   englishWarning,
 }) => {
+  const { language } = useLanguage();
   const nights = calculateNights(formData.checkIn, formData.checkOut);
   const daysBefore = getDaysBeforeEvent(formData.checkIn);
   const arrivalMessage = getArrivalMessage(daysBefore);
@@ -33,7 +35,7 @@ const AccommodationSection = ({
 
   return (
     <div className="mt-8 p-6 bg-white/10 rounded-xl border border-white/20">
-      <h4 className="font-krub font-[400] text-xl text-white mb-4">ที่พัก (Accommodation)</h4>
+      <h4 className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400] text-xl text-white mb-4`}>{language === 'th' ? "ที่พัก (Accommodation)" : "Accommodation"}</h4>
       
       {/* Wait for Group Rate Selection */}
       <div className="space-y-3 mb-4">
@@ -44,7 +46,7 @@ const AccommodationSection = ({
           <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${waitGroupRate === 'yes' ? 'bg-white' : ''}`}>
             {waitGroupRate === 'yes' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
           </span>
-          <span className="text-white/90 font-krub font-[400]">รอเข้าร่วม Group Rate</span>
+          <span className={`text-white/90 ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400]`}>{language === 'th' ? "รอเข้าร่วม Group Rate" : "Wait for Group Rate"}</span>
         </label>
         <label 
           className="flex items-center gap-3 cursor-pointer" 
@@ -53,7 +55,7 @@ const AccommodationSection = ({
           <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${waitGroupRate === 'no' ? 'bg-white' : ''}`}>
             {waitGroupRate === 'no' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
           </span>
-          <span className="text-white/90 font-krub font-[400]">จองด้วยตนเอง</span>
+          <span className={`text-white/90 ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400]`}>{language === 'th' ? "จองด้วยตนเอง" : "Book by Self"}</span>
         </label>
       </div>
 
@@ -63,14 +65,14 @@ const AccommodationSection = ({
           {/* Name Fields with English Validation */}
           <Shake trigger={nameShake}>
             <InputField
-              label="ชื่อจริง (First Name - English)"
+              label={language === 'th' ? "ชื่อจริง (First Name - English)" : "First Name (English)"}
               value={formData.firstName}
               onChange={(e) => onNameChange('firstName', e.target.value)}
               icon={User}
               required
             />
             <InputField
-              label="นามสกุล (Last Name - English)"
+              label={language === 'th' ? "นามสกุล (Last Name - English)" : "Last Name (English)"}
               value={formData.lastName}
               onChange={(e) => onNameChange('lastName', e.target.value)}
               icon={User}
@@ -78,12 +80,12 @@ const AccommodationSection = ({
             />
           </Shake>
           <SlideInWarning isVisible={englishWarning}>
-            <span className="font-krub">⚠️ กรุณากรอกภาษาอังกฤษเท่านั้น</span>
+            <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'}`}>{language === 'th' ? "⚠️ กรุณากรอกภาษาอังกฤษเท่านั้น" : "⚠️ Please fill in English only"}</span>
           </SlideInWarning>
 
           {/* Room Selection */}
           <InputField
-            label="จำนวนห้อง (Number of Rooms)"
+            label={language === 'th' ? "จำนวนห้อง (Number of Rooms)" : "Number of Rooms"}
             type="select"
             options={[...Array.from({ length: 5 }, (_, i) => i + 1), 'แชร์ห้องกับผู้อื่น']}
             value={formData.rooms}
@@ -96,8 +98,8 @@ const AccommodationSection = ({
           {formData.rooms === 'แชร์ห้องกับผู้อื่น' && (
             <FadeInExpand className="mb-4 space-y-3">
               <InputField
-                label="แชร์ห้องกับ"
-                placeholder="ระบุชื่อ (Enter name)"
+                label={language === 'th' ? "แชร์ห้องกับ" : "Share with"}
+                placeholder={language === 'th' ? "ระบุชื่อ (Enter name)" : "Enter name"}
                 value={formData.shareWith}
                 onChange={(e) => onFieldChange('shareWith', e.target.value)}
                 icon={Users}
@@ -116,17 +118,17 @@ const AccommodationSection = ({
                   }}
                   className="rounded text-white focus:ring-white w-4 h-4"
                 />
-                <span className="font-krub text-sm text-white/80">ยังไม่แน่ใจ</span>
+                <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-sm text-white/80`}>{language === 'th' ? "ยังไม่แน่ใจ" : "Not sure yet"}</span>
               </label>
             </FadeInExpand>
           )}
 
           {/* Room Price Range */}
-          <label className="block text-white/80 font-krub mb-3 text-sm uppercase tracking-wider">
-            ช่วงราคาห้องพักที่สนใจ (Room Preference price range)
+          <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} mb-3 text-sm uppercase tracking-wider`}>
+            {language === 'th' ? "ช่วงราคาห้องพักที่สนใจ (Room Preference price range)" : "Room Preference (Price Range)"}
           </label>
-          <label className="block text-white/80 font-krub mb-3 text-sm tracking-wider">
-            (สามารถเลือกได้มากกว่า 1 ข้อ)
+          <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} mb-3 text-sm tracking-wider`}>
+            {language === 'th' ? "(สามารถเลือกได้มากกว่า 1 ข้อ)" : "(Select all that apply)"}
           </label>
           <div className="space-y-3">
             {ROOM_RANGES.map((range) => (
@@ -144,7 +146,7 @@ const AccommodationSection = ({
                   }}
                   className="rounded text-white focus:ring-white w-4 h-4"
                 />
-                <span className="font-krub text-white">{range}</span>
+                <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-white`}>{range}</span>
               </label>
             ))}
           </div>
@@ -153,7 +155,7 @@ const AccommodationSection = ({
           <div className="flex flex-col sm:flex-row gap-4 items-start w-full min-w-0">
             <div className="w-full sm:w-1/2 block min-w-0">
               <InputField
-                label="วันที่เช็คอิน (Check-in)"
+                label={language === 'th' ? "วันที่เช็คอิน (Check-in)" : "Check-in Date"}
                 type="date"
                 min={CHECKIN_MIN_DATE}
                 max={CHECKIN_MAX_DATE}
@@ -164,7 +166,7 @@ const AccommodationSection = ({
             </div>
             <div className="w-full sm:w-1/2 block min-w-0 relative">
               <InputField
-                label="วันที่เช็คเอาท์ (Check-out)"
+                label={language === 'th' ? "วันที่เช็คเอาท์ (Check-out)" : "Check-out Date"}
                 type="date"
                 min={nextDay}
                 value={formData.checkOut}
@@ -172,8 +174,8 @@ const AccommodationSection = ({
                 disabled={!formData.checkIn}
                 className="!mb-0"
               />
-              <p className="font-krub text-[10.5px] text-white/60 tracking-widest text-right absolute -bottom-6 right-0 w-full mt-1 border-t border-transparent leading-tight whitespace-nowrap overflow-visible">
-                วันแต่งงาน | 4 ธันวาคม 2026
+              <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[10.5px] text-white/60 tracking-widest text-right absolute -bottom-6 right-0 w-full mt-1 border-t border-transparent leading-tight whitespace-nowrap overflow-visible`}>
+                {language === 'th' ? "วันแต่งงาน | 4 ธันวาคม 2026" : "Wedding Day | Dec 4, 2026"}
               </p>
             </div>
           </div>
@@ -184,11 +186,11 @@ const AccommodationSection = ({
           {/* Stay Summary */}
           {formData.checkIn && formData.checkOut && (
             <div className="mt-2 text-center flex flex-col gap-1">
-              <span className="text-white font-krub font-[400] text-lg">
-                จำนวนคืนที่เข้าพัก: <span className="font-bold">{nights}</span> คืน
+              <span className={`text-white ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400] text-lg`}>
+                {language === 'th' ? <>จำนวนคืนที่เข้าพัก: <span className="font-bold">{nights}</span> คืน</> : <>Stay duration: <span className="font-bold">{nights}</span> nights</>}
               </span>
               {arrivalMessage && (
-                <span className="text-sm font-krub text-white/80">{arrivalMessage}</span>
+                <span className={`text-sm ${language === 'th' ? 'font-krub' : 'font-source-serif'} text-white/80`}>{arrivalMessage}</span>
               )}
             </div>
           )}

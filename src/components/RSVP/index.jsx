@@ -11,12 +11,14 @@ import RSVPSuccess from './RSVPSuccess';
 import TicketModal from '../TicketModal';
 import InputField from '../shared/InputField';
 import { User, Phone, Users, Send } from 'lucide-react';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 /**
  * RSVP Container Component
  * Main orchestrator for RSVP form - handles state and composes sub-components
  */
 const RSVP = () => {
+  const { language } = useLanguage();
   // Form state management
   const {
     formData,
@@ -45,7 +47,7 @@ const RSVP = () => {
   }
 
   return (
-    <section className="pt-20 pb-40 md:pb-48 px-4" id="rsvp">
+    <section className="w-full pt-16 pb-32 md:pt-24 md:pb-48 px-4 md:px-8" id="rsvp">
       <FadeInView className="max-w-2xl mx-auto rounded-3xl shadow-2xl overflow-hidden">
         {/* Blue invitation card */}
         <div className="bg-[#1079a6] text-white">
@@ -70,14 +72,14 @@ const RSVP = () => {
             <FadeInExpand className="px-8 md:px-12 pb-6">
               <div className="space-y-4 [&_label]:!text-white/80 [&_input]:!bg-white/10 [&_input]:!border-white/30 [&_input]:!text-white [&_input]:placeholder:!text-white/40 [&_select]:!bg-white/10 [&_select]:!border-white/30 [&_select]:!text-white [&_svg]:!text-white/60 [&_option]:!text-navy">
                 <InputField
-                  label="ชื่อเล่น (Nickname)"
+                  label={language === 'th' ? "ชื่อเล่น (Nickname)" : "Nickname"}
                   value={formData.krabi.name}
                   onChange={(e) => updateKrabi('name', e.target.value)}
                   icon={User}
                   required
                 />
                 <InputField
-                  label="เบอร์โทรศัพท์ (Mobile Phone)"
+                  label={language === 'th' ? "เบอร์โทรศัพท์ (Mobile Phone)" : "Mobile Phone"}
                   type="tel"
                   value={formData.krabi.phone}
                   onChange={(e) => updateKrabi('phone', e.target.value)}
@@ -96,7 +98,7 @@ const RSVP = () => {
                 <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full min-w-0">
                   <div className="w-full sm:w-1/2 flex min-w-0">
                     <InputField
-                      label="ผู้ใหญ่ (Adults)"
+                      label={language === 'th' ? "ผู้ใหญ่ (Adults)" : "Adults"}
                       type="select"
                       options={Array.from({ length: 10 }, (_, i) => i + 1)}
                       value={formData.krabi.adults}
@@ -119,8 +121,8 @@ const RSVP = () => {
 
                 {/* Dietary Restrictions */}
                 <div className="mt-4">
-                  <label className="block text-white/80 font-krub mb-1 text-sm uppercase tracking-wider">
-                    ข้อจำกัดด้านอาหาร / ความต้องการเพิ่มเติม
+                  <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} mb-1 text-sm uppercase tracking-wider`}>
+                    {language === 'th' ? "ข้อจำกัดด้านอาหาร / ความต้องการเพิ่มเติม" : "Dietary Restrictions / Special Requirements"}
                   </label>
                   <textarea
                     className="w-full p-3 border border-white/30 rounded-lg focus:outline-none focus:border-white bg-white/10 backdrop-blur-sm text-white placeholder:text-white/40"
@@ -146,13 +148,13 @@ const RSVP = () => {
           {/* Message for Decline */}
           {formData.krabi.attending === 'no' && (
             <FadeInExpand className="px-8 md:px-12 pb-6">
-              <label className="block text-white/80 font-krub mb-1 text-sm uppercase tracking-wider">
-                ข้อความถึงบ่าวสาว
+              <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} mb-1 text-sm uppercase tracking-wider`}>
+                {language === 'th' ? "ข้อความถึงบ่าวสาว" : "Message to the Couple"}
               </label>
               <textarea
                 className="w-full p-3 border border-white/30 rounded-lg focus:outline-none focus:border-white bg-white/10 backdrop-blur-sm text-white placeholder:text-white/40"
                 rows="2"
-                placeholder="ส่งข้อความถึงบ่าวสาว..."
+                placeholder={language === 'th' ? "ส่งข้อความถึงบ่าวสาว..." : "Leave a message..."}
                 value={formData.krabi.message || ''}
                 onChange={(e) => updateKrabi('message', e.target.value)}
               ></textarea>
@@ -170,7 +172,7 @@ const RSVP = () => {
                 {isSubmitting ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    กำลังดำเนินการ...
+                    {language === 'th' ? "กำลังดำเนินการ..." : "Processing..."}
                   </>
                 ) : (
                   <>

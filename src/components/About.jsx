@@ -24,7 +24,7 @@ const About = () => {
     return (
         <div id="location" className="relative w-full z-10 overflow-hidden">
             {/* --- 1. About Railay and our ceremony --- */}
-            <section className="relative pt-24 pb-36 md:pb-48 px-4 md:px-8 min-h-[80vh] flex items-center justify-center overflow-hidden">
+            <section className="relative py-16 md:py-24 px-4 md:px-8 min-h-[80vh] flex items-center justify-center overflow-hidden">
                 {/* Background Image */}
                 <div className="absolute inset-0 z-0 bg-[#1079a6]">
                     <img src="/railay-bg.jpg" alt="Railay Background" className="w-full h-full object-cover object-[center_30%] opacity-60" />

@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { Check, X, BedDouble, Utensils, MessageSquare, Baby, ArrowRight, User, Phone, Pencil } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 const Diamond = () => (
     <svg width="6" height="6" viewBox="0 0 10 10" className="fill-blue opacity-80 inline-block mx-2">
@@ -8,7 +9,7 @@ const Diamond = () => (
     </svg>
 );
 
-const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
+const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding, language }) => {
     const containerRef = useRef(null);
     const x = useMotionValue(0);
     const [confirmed, setConfirmed] = useState(false);
@@ -72,8 +73,8 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
                 style={{ opacity: textOpacity }}
             >
-                <span className="text-xs font-krub font-[400] uppercase tracking-wider text-navy/50 ml-10 drop-shadow-sm">
-                    เลื่อนเพื่อส่งข้อมูล
+                <span className={`text-xs ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400] uppercase tracking-wider text-navy/50 ml-10 drop-shadow-sm`}>
+                    {language === 'th' ? "เลื่อนเพื่อส่งข้อมูล" : "Slide to Submit"}
                 </span>
             </motion.div>
 
@@ -136,6 +137,7 @@ const SlideToConfirm = ({ onConfirm, isSubmitting, isFolding }) => {
 };
 
 const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) => {
+    const { language } = useLanguage();
     const [isFolding, setIsFolding] = useState(false);
     const [resetKey, setResetKey] = useState(0);
 
@@ -153,7 +155,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
     };
 
     const name = data?.name || "Guest";
-    const status = data?.attending === 'yes' ? "ยินดีเข้าร่วมงาน" : "ไม่สามารถเข้าร่วมได้";
+    const status = data?.attending === 'yes' ? (language === 'th' ? "ยินดีเข้าร่วมงาน" : "Joyfully Attend") : (language === 'th' ? "ไม่สามารถเข้าร่วมได้" : "Declines with Regret");
     const adults = parseInt(data?.adults || 0);
     const totalChildren = data?.hasChildren === 'yes' ?
         (parseInt(data?.childrenOver12 || 0) + parseInt(data?.children7To12 || 0) + parseInt(data?.childrenUnder7 || 0)) : 0;
@@ -212,17 +214,17 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                 <div className="relative z-10 text-center">
                                     <div className="mb-4 flex justify-center items-center">
                                         <Diamond />
-                                        <span className="font-krub text-[11px] font-[400] uppercase tracking-widest text-navy mx-2">กรุณาตรวจสอบข้อมูลของคุณ</span>
+                                        <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-widest text-navy mx-2`}>{language === 'th' ? "กรุณาตรวจสอบข้อมูลของคุณ" : "Please review your details"}</span>
                                         <Diamond />
                                     </div>
 
-                                    <h2 className="font-serif text-3xl text-navy tracking-tight mb-1">สรุปการตอบรับ</h2>
+                                    <h2 className="font-serif text-3xl text-navy tracking-tight mb-1">{language === 'th' ? "สรุปการตอบรับ" : "RSVP Summary"}</h2>
 
                                     <div className="mt-4 mb-4 border border-navy/20 rounded-lg p-4 bg-white/40 text-left">
                                         <div className="flex items-start gap-3 mb-3">
                                             <User className="w-4 h-4 text-blue mt-1 shrink-0" />
                                             <div>
-                                                <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60">ชื่อผู้เข้าร่วมงาน</p>
+                                                <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-wider text-navy/60`}>{language === 'th' ? "ชื่อผู้เข้าร่วมงาน" : "Guest Name"}</p>
                                                 <p className="font-serif text-lg text-navy leading-tight">{name}</p>
                                             </div>
                                         </div>
@@ -231,24 +233,24 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                             <div className="flex items-start gap-3 mb-3">
                                                 <Phone className="w-4 h-4 text-blue mt-px shrink-0" />
                                                 <div>
-                                                    <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60">เบอร์โทรศัพท์</p>
-                                                    <p className="font-krub text-sm text-navy">{data.phone}</p>
+                                                    <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-wider text-navy/60`}>{language === 'th' ? "เบอร์โทรศัพท์" : "Phone Number"}</p>
+                                                    <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-sm text-navy`}>{data.phone}</p>
                                                 </div>
                                             </div>
                                         )}
 
                                         <div className={`grid ${data?.attending === 'yes' ? 'grid-cols-2' : 'grid-cols-1'} gap-4 mt-4 pt-3 border-t border-navy/10`}>
                                             <div>
-                                                <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-1">สถานะ</p>
-                                                <p className="font-krub font-[400] text-base text-navy flex items-center gap-1.5">
+                                                <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-1`}>{language === 'th' ? "สถานะ" : "Status"}</p>
+                                                <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400] text-base text-navy flex items-center gap-1.5`}>
                                                     {data?.attending === 'yes' ? <Check size={14} className="text-green-600" /> : <X size={14} className="text-red-500" />}
                                                     {status}
                                                 </p>
                                             </div>
                                             {data?.attending === 'yes' && (
                                                 <div>
-                                                    <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-1">จำนวนผู้เข้าร่วม</p>
-                                                    <p className="font-serif text-base text-navy">{partySize} <span className="text-xs font-krub text-navy/60">คน</span></p>
+                                                    <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-1`}>{language === 'th' ? "จำนวนผู้เข้าร่วม" : "Party Size"}</p>
+                                                    <p className="font-serif text-base text-navy">{partySize} <span className={`text-xs ${language === 'th' ? 'font-krub' : 'font-source-serif'} text-navy/60`}>{language === 'th' ? "คน" : "Guest(s)"}</span></p>
                                                 </div>
                                             )}
                                         </div>
@@ -258,8 +260,8 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                             <div className="flex items-start gap-3 mt-4 pt-3 border-t border-navy/10">
                                                 <Utensils className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                 <div>
-                                                    <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5">ข้อจำกัดด้านอาหาร / ความต้องการเพิ่มเติม</p>
-                                                    <span className="font-krub text-sm text-navy italic leading-snug">"{data.dietary}"</span>
+                                                    <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5`}>{language === 'th' ? "ข้อจำกัดด้านอาหาร / ความต้องการเพิ่มเติม" : "Dietary Restrictions / Special Requirements"}</p>
+                                                    <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-sm text-navy italic leading-snug`}>"{data.dietary}"</span>
                                                 </div>
                                             </div>
                                         )}
@@ -267,8 +269,8 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                             <div className="flex items-start gap-3 mt-4 pt-3 border-t border-navy/10">
                                                 <MessageSquare className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                 <div>
-                                                    <p className="font-krub text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5">ข้อความถึงบ่าวสาว</p>
-                                                    <span className="font-krub text-sm text-navy italic leading-snug">"{data.message}"</span>
+                                                    <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5`}>{language === 'th' ? "ข้อความถึงบ่าวสาว" : "Message to the Couple"}</p>
+                                                    <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-sm text-navy italic leading-snug`}>"{data.message}"</span>
                                                 </div>
                                             </div>
                                         )}
@@ -323,15 +325,15 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                                 boxShadow: '0 4px 20px rgba(0,0,0,0.05), inset 0 1px 0 rgba(255,255,255,0.5)',
                                             }}
                                         >
-                                            <div className="space-y-4 text-sm text-navy font-krub">
-                                                <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5 text-center pb-4">รอเข้าร่วม Group Rate</p>
+                                            <div className={`space-y-4 text-sm text-navy ${language === 'th' ? 'font-krub' : 'font-source-serif'}`}>
+                                                <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5 text-center pb-4">{language === 'th' ? "รอเข้าร่วม Group Rate" : "Wait for Group Rate"}</p>
                                                 {(data?.firstName || data?.lastName) && (
                                                     <div className="flex items-start gap-3">
                                                         <User className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                         <div className="leading-snug">
-                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60">ข้อมูลผู้เข้าพัก</p>
-                                                            {data?.firstName && <p>ชื่อจริง: {data.firstName}</p>}
-                                                            {data?.lastName && <p>นามสกุล: {data.lastName}</p>}
+                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60">{language === 'th' ? "ข้อมูลผู้เข้าพัก" : "Guest Details"}</p>
+                                                            {data?.firstName && <p>{language === 'th' ? "ชื่อจริง: " : "First Name: "}{data.firstName}</p>}
+                                                            {data?.lastName && <p>{language === 'th' ? "นามสกุล: " : "Last Name: "}{data.lastName}</p>}
                                                         </div>
                                                     </div>
                                                 )}
@@ -340,10 +342,10 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                                     <div className="flex items-start gap-3">
                                                         <Baby className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                         <div>
-                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60">เด็ก</p>
-                                                            <p className="leading-snug">อายุ &lt;7 ปี = {data.childrenUnder7 || 0}</p>
-                                                            <p className="leading-snug">อายุ 7-12 ปี = {data.children7To12 || 0}</p>
-                                                            <p className="leading-snug">อายุ 12+ ปี = {data.childrenOver12 || 0}</p>
+                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60">{language === 'th' ? "เด็ก" : "Children"}</p>
+                                                            <p className="leading-snug">{language === 'th' ? "อายุ <7 ปี =" : "Under 7 yrs ="} {data.childrenUnder7 || 0}</p>
+                                                            <p className="leading-snug">{language === 'th' ? "อายุ 7-12 ปี =" : "7-12 yrs ="} {data.children7To12 || 0}</p>
+                                                            <p className="leading-snug">{language === 'th' ? "อายุ 12+ ปี =" : "12+ yrs ="} {data.childrenOver12 || 0}</p>
                                                         </div>
                                                     </div>
                                                 )}
@@ -352,11 +354,11 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                                     <div className="flex items-start gap-3">
                                                         <BedDouble className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                         <div className="leading-snug">
-                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5">ช่วงราคาห้องพักที่สนใจ</p>
-                                                            <p className="mb-1">จำนวนห้อง: {data?.rooms === 'แชร์ห้องกับผู้อื่น' ? `แชร์ห้องกับผู้อื่น (${data?.isShareNotSure ? 'ยังไม่แน่ใจ' : data?.shareWith})` : data?.rooms}</p>
+                                                            <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5">{language === 'th' ? "ช่วงราคาห้องพักที่สนใจ" : "Room Preference"}</p>
+                                                            <p className="mb-1">{language === 'th' ? "จำนวนห้อง: " : "Rooms: "}{data?.rooms === 'แชร์ห้องกับผู้อื่น' ? (language === 'th' ? `แชร์ห้องกับผู้อื่น (${data?.isShareNotSure ? 'ยังไม่แน่ใจ' : data?.shareWith})` : `Share Room (${data?.isShareNotSure ? 'Not sure yet' : data?.shareWith})`) : data?.rooms}</p>
                                                             {data?.roomRange && data?.roomRange.length > 0 && (
                                                                 <div className="mb-1 text-xs pb-2">
-                                                                    <p>ราคา:</p>
+                                                                    <p>{language === 'th' ? "ราคา:" : "Price:"}</p>
                                                                     {(Array.isArray(data?.roomRange) ? data.roomRange : [data.roomRange]).map((range, i) => (
                                                                         <p key={i} className="ml-2">{range.replace(/\/ night/g, '').trim()}</p>
                                                                     ))}
@@ -364,17 +366,17 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                                             )}
                                                             {data?.checkIn && data?.checkOut && (
                                                                 <div className="text-xs">
-                                                                    <p>วันที่: {data.checkIn} ถึง {data.checkOut}</p>
-                                                                    <p>({Math.round((new Date(data.checkOut) - new Date(data.checkIn)) / (1000 * 60 * 60 * 24))} คืน)</p>
+                                                                    <p>{language === 'th' ? "วันที่: " : "Dates: "}{data.checkIn} {language === 'th' ? "ถึง" : "to"} {data.checkOut}</p>
+                                                                    <p>({Math.round((new Date(data.checkOut) - new Date(data.checkIn)) / (1000 * 60 * 60 * 24))} {language === 'th' ? "คืน" : "nights"})</p>
                                                                     {(() => {
                                                                         const eventDate = new Date('2026-12-04');
                                                                         const checkInDate = new Date(data.checkIn);
                                                                         const daysBefore = Math.round((eventDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24));
 
                                                                         if (daysBefore === 0) {
-                                                                            return <p className="text-blue mt-1 font-medium">คุณเข้าพักในวันแต่งงานของเราพอดี!</p>;
+                                                                            return <p className="text-blue mt-1 font-medium">{language === 'th' ? "คุณเข้าพักในวันแต่งงานของเราพอดี!" : "You will arrive on our wedding day!"}</p>;
                                                                         } else if (daysBefore > 0) {
-                                                                            return <p className="text-blue mt-1 font-medium">คุณจะเข้าพักก่อนวันงาน {daysBefore} วัน</p>;
+                                                                            return <p className="text-blue mt-1 font-medium">{language === 'th' ? `คุณจะเข้าพักก่อนวันงาน ${daysBefore} วัน` : `Arriving ${daysBefore} days before the wedding`}</p>;
                                                                         }
                                                                         return null;
                                                                     })()}
@@ -396,8 +398,8 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
 
                                     {error && (
                                         <div className="mb-4 p-3 bg-red-100/80 backdrop-blur-sm rounded-lg border border-red-200 shadow-sm animate-pulse">
-                                            <p className="text-red-600 font-krub text-[13px] text-center font-[500] leading-tight">
-                                                เกิดข้อผิดพลาดในการส่งข้อมูล: <br className="mb-1" /> {error}
+                                            <p className={`text-red-600 ${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[13px] text-center font-[500] leading-tight`}>
+                                                {language === 'th' ? "เกิดข้อผิดพลาดในการส่งข้อมูล:" : "Submission Error:"} <br className="mb-1" /> {error}
                                             </p>
                                         </div>
                                     )}
@@ -406,16 +408,17 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                     <button
                                         onClick={onClose}
                                         disabled={isSubmitting || isFolding}
-                                        className="w-full flex items-center justify-center gap-1.5 py-2.5 mb-3 rounded-lg font-krub text-sm font-[400] uppercase tracking-wider text-navy/70 hover:text-navy hover:bg-white/30 transition-colors disabled:opacity-50"
+                                        className={`w-full flex items-center justify-center gap-1.5 py-2.5 mb-3 rounded-lg ${language === 'th' ? 'font-krub' : 'font-source-serif'} text-sm font-[400] uppercase tracking-wider text-navy/70 hover:text-navy hover:bg-white/30 transition-colors disabled:opacity-50`}
                                     >
                                         <Pencil size={12} />
-                                        แก้ไขข้อมูล
+                                        {language === 'th' ? "แก้ไขข้อมูล" : "Edit details"}
                                     </button>
                                     <SlideToConfirm
                                         key={resetKey}
                                         onConfirm={handleConfirm}
                                         isSubmitting={isSubmitting}
                                         isFolding={isFolding}
+                                        language={language}
                                     />
                                 </div>
                             </div>
@@ -434,7 +437,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                 className="absolute inset-0 z-50 flex flex-col items-center justify-center"
                             >
                                 <div className="w-12 h-12 border-3 border-white/30 border-t-white rounded-full animate-spin mb-4" />
-                                <p className="font-krub text-sm text-white/90 uppercase tracking-widest">กำลังส่งข้อมูล...</p>
+                                <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-sm text-white/90 uppercase tracking-widest`}>{language === 'th' ? "กำลังส่งข้อมูล..." : "Submitting..."}</p>
                             </motion.div>
                         )}
                     </AnimatePresence>

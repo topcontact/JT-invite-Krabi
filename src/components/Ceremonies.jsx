@@ -42,7 +42,7 @@ const Ceremonies = () => {
             {/* Background Image / Overlay (if needed to match Hero, otherwise transparent/ocean) */}
             
             {/* --- Extended Content: Krabi & Bangkok Ceremonies (Single Viewport) --- */}
-            <div className="min-h-[100dvh] w-full max-w-7xl mx-auto px-6 md:px-12 pt-8 pb-[10vh] md:pb-[15vh] flex flex-col md:flex-row justify-center md:justify-between items-center gap-6 md:gap-0 relative z-10 overflow-hidden -translate-y-[2vh] md:-translate-y-[4vh]">
+            <div className="min-h-[100dvh] w-full max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-[10vh] md:pb-[15vh] flex flex-col md:flex-row justify-center md:justify-between items-center gap-8 md:gap-12 relative z-10 overflow-hidden -translate-y-[2vh] md:-translate-y-[4vh]">
                 {/* Krabi Ceremony Block */}
                 <ElegantReveal delay={0.1} className="w-full md:w-[45%] flex flex-col items-start md:items-end text-left md:text-right pl-0">
                     <h2 className="font-chloe text-[13vw] md:text-[72px] lg:text-[90px] leading-[0.85] uppercase flex flex-col">

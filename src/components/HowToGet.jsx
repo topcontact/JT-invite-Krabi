@@ -41,7 +41,7 @@ const HowToGet = () => {
     ];
 
     return (
-        <section id="getting-there" className="max-w-6xl mx-auto px-12 md:px-20 py-15 bg-white">
+        <section id="getting-there" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24 bg-white">
             <FadeIn className="text-center mb-16">
                 <h2 className="text-[10.5vw] md:text-[64px] lg:text-[80px] font-chloe text-navy mb-4 drop-shadow-lg leading-tight uppercase">
                     {language === 'th' ? "การเดินทาง" : "How to Get There"}
