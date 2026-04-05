@@ -163,10 +163,10 @@ const HotelCard = ({ hotel, delay }) => {
                 </AnimatePresence>
             </div>
 
-            {/* Dots Indicator */}
-            {isSlider && (
-                <div className="flex justify-center gap-2 mb-4">
-                    {options.map((_, idx) => (
+            <div className="mt-auto w-full flex flex-col items-center">
+                {/* Dots Indicator */}
+                <div className={`flex justify-center gap-2 mb-4 h-2 w-full ${!isSlider ? 'invisible' : ''}`}>
+                    {isSlider && options.map((_, idx) => (
                         <button
                             key={idx}
                             onClick={() => handleDotClick(idx)}
@@ -174,18 +174,18 @@ const HotelCard = ({ hotel, delay }) => {
                         />
                     ))}
                 </div>
-            )}
 
-            <div className="mt-auto">
-                <span className="inline-block bg-mist/80 text-blue font-sans font-semibold text-xs px-4 py-2 rounded-full border border-blue/10">
-                    {currentOption.price}
-                </span>
-            </div>
+                <div className="mb-1">
+                    <span className="inline-block bg-mist/80 text-blue font-sans font-semibold text-xs px-4 py-2 rounded-full border border-blue/10">
+                        {currentOption.price}
+                    </span>
+                </div>
 
-            <div className="mt-auto">
-                <span className="inline-block text-blue font-sans font-semibold text-xs px-4 py-2 ">
-                    {currentOption.distance}
-                </span>
+                <div>
+                    <span className="inline-block text-blue font-sans font-semibold text-xs px-4 py-2 ">
+                        {currentOption.distance}
+                    </span>
+                </div>
             </div>
         </FadeIn>
     );
