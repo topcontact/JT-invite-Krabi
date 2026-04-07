@@ -72,14 +72,16 @@ const RSVP = () => {
             <FadeInExpand className="px-8 md:px-12 pb-6">
               <div className="space-y-4 [&_label]:!text-white/80 [&_input]:!bg-white/10 [&_input]:!border-white/30 [&_input]:!text-white [&_input]:placeholder:!text-white/40 [&_select]:!bg-white/10 [&_select]:!border-white/30 [&_select]:!text-white [&_svg]:!text-white/60 [&_option]:!text-navy">
                 <InputField
-                  label={language === 'th' ? "ชื่อเล่น (Nickname)" : "Nickname"}
+                  label={language === 'th' ? "ชื่อเล่น" : "Nickname"}
+                  labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
                   value={formData.krabi.name}
                   onChange={(e) => updateKrabi('name', e.target.value)}
                   icon={User}
                   required
                 />
                 <InputField
-                  label={language === 'th' ? "เบอร์โทรศัพท์ (Mobile Phone)" : "Mobile Phone"}
+                  label={language === 'th' ? "เบอร์โทรศัพท์" : "Mobile Phone"}
+                  labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
                   type="tel"
                   value={formData.krabi.phone}
                   onChange={(e) => updateKrabi('phone', e.target.value)}
@@ -98,7 +100,8 @@ const RSVP = () => {
                 <div className="flex flex-col sm:flex-row gap-4 items-stretch w-full min-w-0">
                   <div className="w-full sm:w-1/2 flex min-w-0">
                     <InputField
-                      label={language === 'th' ? "ผู้ใหญ่ (Adults)" : "Adults"}
+                      label={language === 'th' ? "ผู้ใหญ่" : "Adults"}
+                      labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
                       type="select"
                       options={Array.from({ length: 10 }, (_, i) => i + 1)}
                       value={formData.krabi.adults}
@@ -121,7 +124,7 @@ const RSVP = () => {
 
                 {/* Dietary Restrictions */}
                 <div className="mt-4">
-                  <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} mb-1 text-sm uppercase tracking-wider`}>
+                  <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-1 text-sm uppercase tracking-wider`}>
                     {language === 'th' ? "ข้อจำกัดด้านอาหาร / ความต้องการเพิ่มเติม" : "Dietary Restrictions / Special Requirements"}
                   </label>
                   <textarea

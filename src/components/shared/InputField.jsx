@@ -26,10 +26,11 @@ const InputField = ({
   required = false, 
   disabled = false, 
   options = [], 
+  labelClassName = "font-krub",
   ...props 
 }) => (
   <div className={`mb-4 w-full min-w-0 ${disabled ? 'opacity-50' : ''}`}>
-    <label className="block text-navy font-krub mb-1 text-sm uppercase tracking-wider truncate">
+    <label className={`block text-navy mb-1 text-sm uppercase tracking-wider truncate ${labelClassName}`}>
       {label} {required && <span className="text-red-500">*</span>}
     </label>
     <div className="relative w-full min-w-0">

@@ -176,13 +176,13 @@ const HotelCard = ({ hotel, delay }) => {
                 </div>
 
                 <div className="mb-1">
-                    <span className="inline-block bg-mist/80 text-blue font-sans font-semibold text-xs px-4 py-2 rounded-full border border-blue/10">
+                    <span className="inline-block bg-mist/80 text-blue font-source-serif font-[300] antialiased text-sm md:text-base px-4 py-2 rounded-full border border-blue/10 text-center">
                         {currentOption.price}
                     </span>
                 </div>
 
                 <div>
-                    <span className="inline-block text-blue font-sans font-semibold text-xs px-4 py-2 ">
+                    <span className="inline-block text-blue font-source-serif font-[300] antialiased text-sm md:text-base px-4 py-2 text-center">
                         {currentOption.distance}
                     </span>
                 </div>

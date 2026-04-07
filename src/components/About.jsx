@@ -40,7 +40,7 @@ const About = () => {
 
                     <div className="flex justify-center">
                         <FadeIn delay={0.2} className="w-full max-w-4xl text-center space-y-12">
-                            <p className="text-white font-source-serif font-[300] antialiased leading-relaxed text-[4.26vw] md:text-[24px] lg:text-[32px] drop-shadow-md">
+                            <p className={`text-white ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased leading-relaxed text-[4.26vw] md:text-[24px] lg:text-[32px] drop-shadow-md`}>
                                 {t.descRailay}
                             </p>
 
@@ -58,10 +58,10 @@ const About = () => {
                                     <h4 className="font-source-serif font-[300] antialiased text-[5.25vw] md:text-[32px] lg:text-[40px] text-white mb-6 leading-tight">
                                         {t.titleCeremony}
                                     </h4>
-                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-6">
+                                    <p className={`text-white ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-6`}>
                                         {t.descCeremony1}
                                     </p>
-                                    <p className="text-white font-source-serif font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-10">
+                                    <p className={`text-white ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-10`}>
                                         {t.descCeremony2}
                                     </p>
 

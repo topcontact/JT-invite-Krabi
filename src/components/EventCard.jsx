@@ -48,7 +48,7 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
                         href={mapLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-8 py-2 md:py-3 bg-white/90 border border-blue text-blue rounded-full hover:bg-blue hover:text-white transition-colors text-sm md:text-lg uppercase tracking-widest font-sans"
+                        className="px-8 py-2 md:py-3 bg-white/90 border border-blue text-blue rounded-full hover:bg-blue hover:text-white transition-colors text-sm md:text-lg uppercase tracking-widest font-source-serif font-[300]"
                     >
                         View Map
                     </a>
