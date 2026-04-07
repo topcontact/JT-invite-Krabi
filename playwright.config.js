@@ -20,6 +20,9 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. */
     trace: 'on-first-retry',
     video: 'on',
+    
+    /* ตั้ง viewport ให้สูงพอเพื่อให้ TicketModal แสดงได้ครบทั้งหน้า */
+    viewport: { width: 1280, height: 1200 },
   },
 
   /* Configure projects for major browsers */
