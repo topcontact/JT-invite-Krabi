@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
 import { Check, X, BedDouble, Utensils, MessageSquare, Baby, ArrowRight, User, Phone, Pencil } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -153,6 +153,19 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
             }, 500);
         }, 600);
     };
+
+    // #region Playwright test hook
+    // Expose the confirm action so Playwright can submit RSVP without relying on fragile drag gestures.
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const isPlaywright = typeof navigator !== 'undefined' && navigator.webdriver;
+        if (isOpen && isPlaywright) {
+            window.__PLAYWRIGHT_TICKET_CONFIRM = handleConfirm;
+        } else {
+            window.__PLAYWRIGHT_TICKET_CONFIRM = undefined;
+        }
+    }, [isOpen, handleConfirm]);
+    // #endregion
 
     const name = data?.name || "Guest";
     const status = data?.attending === 'yes' ? (language === 'th' ? "ยินดีเข้าร่วมงาน" : "Joyfully Attend") : (language === 'th' ? "ไม่สามารถเข้าร่วมได้" : "Declines with Regret");
