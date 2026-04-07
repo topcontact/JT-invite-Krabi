@@ -17,7 +17,9 @@ const RSVPSuccess = () => {
           <Send className="w-10 h-10 text-green-600" />
         </div>
       </div>
-      <h2 className="text-4xl font-serif text-navy mb-4">Thank You!</h2>
+      <h2 className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-4xl text-navy mb-4`}>
+        {language === 'th' ? "ขอบคุณ!" : "Thank You!"}
+      </h2>
       <p className={`text-lg text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400] mb-8`}>
         {language === 'th' ? "เราได้รับข้อมูลการตอบรับของคุณเรียบร้อยแล้ว แล้วพบกันในวันงาน!" : "We have successfully received your RSVP. See you there!"}
       </p>

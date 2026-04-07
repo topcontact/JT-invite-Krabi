@@ -27,6 +27,7 @@ const InputField = ({
   disabled = false, 
   options = [], 
   labelClassName = "font-krub",
+  inputClassName = "",
   ...props 
 }) => (
   <div className={`mb-4 w-full min-w-0 ${disabled ? 'opacity-50' : ''}`}>
@@ -44,7 +45,7 @@ const InputField = ({
             required={required}
             disabled={disabled}
             {...props}
-            className={`w-full min-w-0 px-3 py-3 h-[50px] ${Icon ? 'pl-10' : ''} pr-10 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm appearance-none cursor-pointer ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+            className={`w-full min-w-0 px-3 py-3 h-[50px] ${Icon ? 'pl-10' : ''} pr-10 border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm appearance-none cursor-pointer ${disabled ? 'cursor-not-allowed bg-gray-100' : ''} ${inputClassName}`}
           >
             {options.map(opt => (
               <option key={opt} value={opt}>{opt}</option>
@@ -60,7 +61,7 @@ const InputField = ({
           required={required}
           disabled={disabled}
           {...props}
-          className={`w-full min-w-0 p-3 ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+          className={`w-full min-w-0 p-3 ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${disabled ? 'cursor-not-allowed bg-gray-100' : ''} ${inputClassName}`}
         />
       ) : (
         <input
@@ -71,7 +72,7 @@ const InputField = ({
           required={required}
           disabled={disabled}
           {...props}
-          className={`w-full min-w-0 px-3 py-3 h-[50px] ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${type === 'date' ? 'appearance-none' : ''} ${disabled ? 'cursor-not-allowed bg-gray-100' : ''}`}
+          className={`w-full min-w-0 px-3 py-3 h-[50px] ${Icon ? 'pl-10' : ''} border border-blue/30 rounded-lg focus:outline-none focus:border-navy bg-white/50 backdrop-blur-sm ${type === 'date' ? 'appearance-none' : ''} ${disabled ? 'cursor-not-allowed bg-gray-100' : ''} ${inputClassName}`}
         />
       )}
     </div>

@@ -167,7 +167,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
     }, [isOpen, handleConfirm]);
     // #endregion
 
-    const name = data?.name || "Guest";
+    const name = data?.name || (language === 'th' ? "แขกผู้มีเกียรติ" : "Guest");
     const status = data?.attending === 'yes' ? (language === 'th' ? "ยินดีเข้าร่วมงาน" : "Joyfully Attend") : (language === 'th' ? "ไม่สามารถเข้าร่วมได้" : "Declines with Regret");
     const adults = parseInt(data?.adults || 0);
     const totalChildren = data?.hasChildren === 'yes' ?
@@ -231,14 +231,14 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                         <Diamond />
                                     </div>
 
-                                    <h2 className="font-serif text-3xl text-navy tracking-tight mb-1">{language === 'th' ? "สรุปการตอบรับ" : "RSVP Summary"}</h2>
+                                    <h2 className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-3xl text-navy tracking-tight mb-1`}>{language === 'th' ? "สรุปการตอบรับ" : "RSVP Summary"}</h2>
 
                                     <div className="mt-4 mb-4 border border-navy/20 rounded-lg p-4 bg-white/40 text-left">
                                         <div className="flex items-start gap-3 mb-3">
                                             <User className="w-4 h-4 text-blue mt-1 shrink-0" />
                                             <div>
                                                 <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-wider text-navy/60`}>{language === 'th' ? "ชื่อผู้เข้าร่วมงาน" : "Guest Name"}</p>
-                                                <p className="font-serif text-lg text-navy leading-tight">{name}</p>
+                                                <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-lg text-navy leading-tight`}>{name}</p>
                                             </div>
                                         </div>
 
@@ -263,7 +263,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                             {data?.attending === 'yes' && (
                                                 <div>
                                                     <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-1`}>{language === 'th' ? "จำนวนผู้เข้าร่วม" : "Party Size"}</p>
-                                                    <p className="font-serif text-base text-navy">{partySize} <span className={`text-xs ${language === 'th' ? 'font-krub' : 'font-source-serif'} text-navy/60`}>{language === 'th' ? "คน" : "Guest(s)"}</span></p>
+                                                    <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-base text-navy`}>{partySize} <span className={`text-xs ${language === 'th' ? 'font-krub' : 'font-source-serif'} text-navy/60`}>{language === 'th' ? "คน" : "Guest(s)"}</span></p>
                                                 </div>
                                             )}
                                         </div>
@@ -393,7 +393,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                                                         if (daysBefore === 0) {
                                                                             return <p className="text-blue mt-1 font-medium">{language === 'th' ? "คุณเข้าพักในวันแต่งงานของเราพอดี!" : "You will arrive on our wedding day!"}</p>;
                                                                         } else if (daysBefore > 0) {
-                                                                            return <p className="text-blue mt-1 font-medium">{language === 'th' ? `คุณจะเข้าพักก่อนวันงาน ${daysBefore} วัน` : `Arriving ${daysBefore} days before the wedding`}</p>;
+                                                                            return <p className="text-blue mt-1 font-medium">{language === 'th' ? `คุณเข้าพักก่อนถึงวันงาน ${daysBefore} คืน` : `Arriving ${daysBefore} night${daysBefore > 1 ? 's' : ''} before the wedding`}</p>;
                                                                         }
                                                                         return null;
                                                                     })()}

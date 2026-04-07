@@ -83,12 +83,17 @@ export const getDaysBeforeEvent = (checkInDate, eventDate = '2026-12-04') => {
  * @param {number} daysBefore - Days before event
  * @returns {string|null} Arrival message or null
  */
-export const getArrivalMessage = (daysBefore) => {
+export const getArrivalMessage = (daysBefore, language = 'en') => {
   if (daysBefore === 0) {
-    return "You'll be arriving right on our wedding day!";
+    return language === 'th' 
+      ? "คุณเข้าพักในวันแต่งงานของเราพอดี!" 
+      : "You'll be arriving right on our wedding day!";
   } else if (daysBefore > 0) {
+    if (language === 'th') {
+      return `คุณเข้าพักก่อนถึงวันงาน ${daysBefore} คืน`;
+    }
     const suffix = daysBefore > 1 ? 's' : '';
-    return `You will arrive ${daysBefore} day${suffix} before our wedding.`;
+    return `You will arrive ${daysBefore} night${suffix} before our wedding.`;
   }
   return null;
 };

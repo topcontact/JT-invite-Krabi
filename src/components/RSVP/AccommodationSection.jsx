@@ -30,7 +30,7 @@ const AccommodationSection = ({
   const { language } = useLanguage();
   const nights = calculateNights(formData.checkIn, formData.checkOut);
   const daysBefore = getDaysBeforeEvent(formData.checkIn);
-  const arrivalMessage = getArrivalMessage(daysBefore);
+  const arrivalMessage = getArrivalMessage(daysBefore, language);
   const nextDay = getNextDay(formData.checkIn);
 
   return (
@@ -98,6 +98,7 @@ const AccommodationSection = ({
             onChange={(e) => onFieldChange('rooms', e.target.value)}
             icon={Home}
             required
+            inputClassName="font-source-serif"
           />
 
           {/* Share Room Details */}
@@ -173,6 +174,7 @@ const AccommodationSection = ({
                 value={formData.checkIn}
                 onChange={(e) => onFieldChange('checkIn', e.target.value)}
                 className="!mb-0"
+                inputClassName="font-source-serif"
               />
             </div>
             <div className="w-full sm:w-1/2 block min-w-0 relative">
@@ -185,8 +187,9 @@ const AccommodationSection = ({
                 onChange={(e) => onFieldChange('checkOut', e.target.value)}
                 disabled={!formData.checkIn}
                 className="!mb-0"
+                inputClassName="font-source-serif"
               />
-              <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[10.5px] text-white/60 tracking-widest text-right absolute -bottom-6 right-0 w-full mt-1 border-t border-transparent leading-tight whitespace-nowrap overflow-visible`}>
+              <p className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-[11.5px] text-white/60 tracking-widest text-right absolute -bottom-6 right-0 w-full mt-1 border-t border-transparent leading-tight whitespace-nowrap overflow-visible`}>
                 {language === 'th' ? "วันแต่งงาน | 4 ธันวาคม 2026" : "Wedding Day | Dec 4, 2026"}
               </p>
             </div>

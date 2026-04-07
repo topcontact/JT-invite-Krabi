@@ -58,6 +58,7 @@ const ChildrenSection = ({
                   value={childrenUnder7}
                   onChange={(e) => onFieldChange('childrenUnder7', e.target.value)}
                   icon={Baby}
+                  inputClassName="font-source-serif"
                 />
               </div>
               <div className="w-full sm:w-1/3 flex min-w-0">
@@ -69,6 +70,7 @@ const ChildrenSection = ({
                   value={children7To12}
                   onChange={(e) => onFieldChange('children7To12', e.target.value)}
                   icon={Baby}
+                  inputClassName="font-source-serif"
                 />
               </div>
               <div className="w-full sm:w-1/3 flex min-w-0">
@@ -80,6 +82,7 @@ const ChildrenSection = ({
                   value={childrenOver12}
                   onChange={(e) => onFieldChange('childrenOver12', e.target.value)}
                   icon={Baby}
+                  inputClassName="font-source-serif"
                 />
               </div>
             </div>

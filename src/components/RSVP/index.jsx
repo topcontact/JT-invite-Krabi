@@ -87,6 +87,7 @@ const RSVP = () => {
                   onChange={(e) => updateKrabi('phone', e.target.value)}
                   icon={Phone}
                   required
+                  inputClassName="font-source-serif"
                 />
               </div>
             </FadeInExpand>
@@ -108,6 +109,7 @@ const RSVP = () => {
                       onChange={(e) => updateKrabi('adults', e.target.value)}
                       icon={Users}
                       required
+                      inputClassName="font-source-serif"
                     />
                   </div>
                 </div>
