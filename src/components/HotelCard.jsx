@@ -128,7 +128,7 @@ const HotelCard = ({ hotel, delay }) => {
             </h3>
 
             <div className="mb-4">
-                <a href={currentOption.mapLink} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue text-white hover:bg-navy transition-colors font-sans font-semibold text-xs md:text-sm rounded-full px-5 py-2 shadow-sm">
+                <a href={currentOption.mapLink} target="_blank" rel="noopener noreferrer" className="inline-block bg-blue text-white hover:bg-navy transition-colors font-source-serif font-[300] antialiased text-xs md:text-sm rounded-full px-5 py-2 shadow-sm">
                     Map and Review
                 </a>
             </div>
@@ -176,13 +176,13 @@ const HotelCard = ({ hotel, delay }) => {
                 </div>
 
                 <div className="mb-1">
-                    <span className="inline-block bg-mist/80 text-blue font-source-serif font-[300] antialiased text-sm md:text-base px-4 py-2 rounded-full border border-blue/10 text-center">
+                    <span className="inline-block bg-mist/80 text-blue font-source-serif font-[300] antialiased text-sm md:text-base px-4 py-2 rounded-full border border-blue/10 text-center whitespace-nowrap">
                         {currentOption.price}
                     </span>
                 </div>
 
-                <div>
-                    <span className="inline-block text-blue font-source-serif font-[300] antialiased text-sm md:text-base px-4 py-2 text-center">
+                <div className="h-[72px] flex items-start justify-center w-full px-2">
+                    <span className="inline-block text-blue font-source-serif font-[300] antialiased text-sm md:text-base pt-2 text-center text-balance leading-snug">
                         {currentOption.distance}
                     </span>
                 </div>

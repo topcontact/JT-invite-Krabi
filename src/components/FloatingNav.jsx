@@ -61,10 +61,10 @@ const FloatingNav = () => {
     }, []);
 
     const navItems = [
-        { id: 'location', label: 'Location', icon: MapPin },
-        { id: 'program', label: 'Program', icon: Calendar },
-        { id: 'where-to-stay', label: 'Hotels', icon: Bed },
-        { id: 'rsvp', label: 'RSVP', icon: Send },
+        { id: 'location', label: language === 'th' ? 'สถานที่' : 'Location', icon: MapPin },
+        { id: 'program', label: language === 'th' ? 'กำหนดการ' : 'Program', icon: Calendar },
+        { id: 'where-to-stay', label: language === 'th' ? 'โรงแรม' : 'Hotels', icon: Bed },
+        { id: 'rsvp', label: language === 'th' ? 'ตอบกลับ' : 'RSVP', icon: Send },
     ];
 
     return (
@@ -88,7 +88,7 @@ const FloatingNav = () => {
                                     className="flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-navy/80 hover:text-blue hover:bg-white/30 hover:scale-105"
                                 >
                                     <Icon className="w-4 h-4 md:w-5 md:h-5" />
-                                    <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">{item.label}</span>
+                                    <span className={`text-[9px] md:text-[10px] ${language === 'th' ? 'font-krub' : 'font-sans tracking-widest uppercase'}`}>{item.label}</span>
                                 </a>
                             );
                         })}

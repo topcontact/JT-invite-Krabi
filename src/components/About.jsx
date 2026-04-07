@@ -14,10 +14,10 @@ const About = () => {
             ? "ไร่เลย์เป็นคาบสมุทรที่สวยงามซึ่งเข้าถึงได้ทางเรือเท่านั้น เนื่องจากมีหน้าผาหินปูนสูงชันโอบล้อมเอาไว้ หน้าผาเหล่านี้ดึงดูดนักปีนหน้าผาจากทั่วโลก และสถานที่แห่งนี้ยังโดดเด่นด้วยชายหาดที่งดงามพร้อมบรรยากาศการพักผ่อนที่แสนสงบ"
             : "Railay is a beautiful peninsula accessible only by boat due to the high limestone cliffs cutting off mainland access. These cliffs attract rock climbers from all over the world, but the area is also known for its beautiful beaches and quiet relaxing atmosphere.",
         descCeremony1: language === 'th'
-            ? "ขอเชิญร่วมเป็นส่วนหนึ่งในค่ำคืนแห่งความทรงจำ งานเลี้ยงฉลองมงคลสมรสจะจัดขึ้นที่ห้องอาหารเดอะ กรอตโต (โรงแรมรายาวดี) ซึ่งตั้งอยู่ใต้หน้าผาหินปูนโบราณริมหาดถ้ำพระนางอันงดงาม"
+            ? "ขอเชิญร่วมเป็นส่วนหนึ่งในค่ำคืนแห่งความทรงจำ ในงานเลี้ยงฉลองมงคลสมรสจะจัดขึ้นที่ห้องอาหารเดอะ กรอตโต (โรงแรมรายาวดี) ซึ่งตั้งอยู่ใต้หน้าผาหินปูนโบราณริมหาดถ้ำพระนางอันงดงาม ซึ่งพิธีการจะดำเนินการในช่วงพระอาทิตย์ตก และต่อด้วยงานเลี้ยงฉลองมื้อเย็นภายใต้แสงดาวริมหาดไร่เลย์"
             : "Join us for an unforgettable evening. The wedding reception will be held at The Grotto Restaurant (Rayavadee Hotel), set beneath an ancient limestone cliff edge that fringes the beautiful Phranang Beach.",
         descCeremony2: language === 'th'
-            ? "เตรียมพบกับวิวพระอาทิตย์ตกที่แสนงดงาม ดินเนอร์ใต้แสงดาว และค่ำคืนแห่งการเฉลิมฉลองไปกับเรา"
+            ? ""
             : "Expect incredible sunset views, dinner under the stars, and a night of celebration."
     };
 
@@ -58,12 +58,14 @@ const About = () => {
                                     <h4 className="font-source-serif font-[300] antialiased text-[5.25vw] md:text-[32px] lg:text-[40px] text-white mb-6 leading-tight">
                                         {t.titleCeremony}
                                     </h4>
-                                    <p className={`text-white ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-6`}>
+                                    <p className={`text-white ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed ${t.descCeremony2 ? 'mb-6' : 'mb-10'}`}>
                                         {t.descCeremony1}
                                     </p>
-                                    <p className={`text-white ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-10`}>
-                                        {t.descCeremony2}
-                                    </p>
+                                    {t.descCeremony2 && (
+                                        <p className={`text-white ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed mb-10`}>
+                                            {t.descCeremony2}
+                                        </p>
+                                    )}
 
                                 </div>
                             </div>
@@ -71,9 +73,9 @@ const About = () => {
                             {/* Location Card explicitly placed AFTER the two-column block */}
                             <div className="w-full mt-10 md:mt-16 flex justify-center">
                                 <EventCard
-                                    title="Wedding Ceremony and Reception"
-                                    date="Friday, December 4, 2026"
-                                    time="Start at 16:00"
+                                    title={language === 'th' ? "งานมงคลสมรส และ เลี้ยงฉลอง" : "Wedding Ceremony and Reception"}
+                                    date={language === 'th' ? "วันศุกร์ที่ 4 ธันวาคม 2026" : "Friday, December 4, 2026"}
+                                    time={language === 'th' ? "เริ่มเวลา 16:00 น." : "Start at 16:00"}
                                     location="The Grotto Restaurant"
                                     hotel="Rayavadee Resort"
                                     mapLink="https://maps.google.com/?q=The+Grotto+Rayawadee+Krabi"
