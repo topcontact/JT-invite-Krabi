@@ -35,7 +35,7 @@ const AccommodationSection = ({
 
   return (
     <div className="mt-8 p-6 bg-white/10 rounded-xl border border-white/20">
-      <h4 className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400] text-xl text-white mb-4`}>{language === 'th' ? "ที่พัก (Accommodation)" : "Accommodation"}</h4>
+      <h4 className={`${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} text-xl text-white mb-4`}>{language === 'th' ? "ที่พัก" : "Accommodation"}</h4>
       
       {/* Wait for Group Rate Selection */}
       <div className="space-y-3 mb-4">
@@ -46,7 +46,7 @@ const AccommodationSection = ({
           <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${waitGroupRate === 'yes' ? 'bg-white' : ''}`}>
             {waitGroupRate === 'yes' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
           </span>
-          <span className={`text-white/90 ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400]`}>{language === 'th' ? "รอเข้าร่วม Group Rate" : "Wait for Group Rate"}</span>
+          <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'}`}>{language === 'th' ? "รอเข้าร่วม Group Rate" : "Wait for Group Rate"}</span>
         </label>
         <label 
           className="flex items-center gap-3 cursor-pointer" 
@@ -55,7 +55,7 @@ const AccommodationSection = ({
           <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${waitGroupRate === 'no' ? 'bg-white' : ''}`}>
             {waitGroupRate === 'no' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
           </span>
-          <span className={`text-white/90 ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400]`}>{language === 'th' ? "จองด้วยตนเอง" : "Book by Self"}</span>
+          <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'}`}>{language === 'th' ? "จองด้วยตนเอง" : "Book by Self"}</span>
         </label>
       </div>
 
@@ -65,14 +65,16 @@ const AccommodationSection = ({
           {/* Name Fields with English Validation */}
           <Shake trigger={nameShake}>
             <InputField
-              label={language === 'th' ? "ชื่อจริง (First Name - English)" : "First Name (English)"}
+              label={language === 'th' ? "ชื่อจริง (ภาษาอังกฤษ)" : "First Name (English)"}
+              labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
               value={formData.firstName}
               onChange={(e) => onNameChange('firstName', e.target.value)}
               icon={User}
               required
             />
             <InputField
-              label={language === 'th' ? "นามสกุล (Last Name - English)" : "Last Name (English)"}
+              label={language === 'th' ? "นามสกุล (ภาษาอังกฤษ)" : "Last Name (English)"}
+              labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
               value={formData.lastName}
               onChange={(e) => onNameChange('lastName', e.target.value)}
               icon={User}
@@ -85,7 +87,8 @@ const AccommodationSection = ({
 
           {/* Room Selection */}
           <InputField
-            label={language === 'th' ? "จำนวนห้อง (Number of Rooms)" : "Number of Rooms"}
+            label={language === 'th' ? "จำนวนห้อง" : "Number of Rooms"}
+            labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
             type="select"
             options={[...Array.from({ length: 5 }, (_, i) => i + 1), 'แชร์ห้องกับผู้อื่น']}
             value={formData.rooms}
@@ -124,10 +127,10 @@ const AccommodationSection = ({
           )}
 
           {/* Room Price Range */}
-          <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} mb-3 text-sm uppercase tracking-wider`}>
-            {language === 'th' ? "ช่วงราคาห้องพักที่สนใจ (Room Preference price range)" : "Room Preference (Price Range)"}
+          <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-3 text-sm uppercase tracking-wider`}>
+            {language === 'th' ? "ช่วงราคาห้องพักที่สนใจ" : "Room Preference (Price Range)"}
           </label>
-          <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} mb-3 text-sm tracking-wider`}>
+          <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-3 text-sm tracking-wider`}>
             {language === 'th' ? "(สามารถเลือกได้มากกว่า 1 ข้อ)" : "(Select all that apply)"}
           </label>
           <div className="space-y-3">
@@ -146,7 +149,11 @@ const AccommodationSection = ({
                   }}
                   className="rounded text-white focus:ring-white w-4 h-4"
                 />
-                <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-white`}>{range}</span>
+                <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} text-white`}>
+                  {language === 'th' 
+                    ? range 
+                    : range.replace('ประมาณ', 'Est.').replace('บาท / คืน', 'Bath / Night')}
+                </span>
               </label>
             ))}
           </div>
@@ -155,7 +162,8 @@ const AccommodationSection = ({
           <div className="flex flex-col sm:flex-row gap-4 items-start w-full min-w-0">
             <div className="w-full sm:w-1/2 block min-w-0">
               <InputField
-                label={language === 'th' ? "วันที่เช็คอิน (Check-in)" : "Check-in Date"}
+                label={language === 'th' ? "วันที่เช็คอิน (Check-in)" : "Check-in Date (dd/mm/yyyy)"}
+                labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
                 type="date"
                 min={CHECKIN_MIN_DATE}
                 max={CHECKIN_MAX_DATE}
@@ -166,7 +174,8 @@ const AccommodationSection = ({
             </div>
             <div className="w-full sm:w-1/2 block min-w-0 relative">
               <InputField
-                label={language === 'th' ? "วันที่เช็คเอาท์ (Check-out)" : "Check-out Date"}
+                label={language === 'th' ? "วันที่เช็คเอาท์ (Check-out)" : "Check-out Date (dd/mm/yyyy)"}
+                labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
                 type="date"
                 min={nextDay}
                 value={formData.checkOut}

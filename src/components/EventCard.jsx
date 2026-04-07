@@ -1,8 +1,12 @@
 import React from 'react';
 import { FadeInUp } from './animations/Motion';
 import { Calendar, MapPin } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
-const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, bgImage }) => (
+const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, bgImage }) => {
+    const { language } = useLanguage();
+    
+    return (
     <FadeInUp
         delay={delay}
         duration={0.8}
@@ -16,7 +20,7 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
         <div className="relative z-10 flex flex-col items-center gap-4 md:gap-6 font-source-serif font-[500] antialiased flex-grow w-full">
             
             {/* Title */}
-            <h3 className="text-navy text-[4.26vw] md:text-[24px] lg:text-[32px] uppercase tracking-widest leading-snug">
+            <h3 className={`text-navy text-[4.26vw] md:text-[24px] lg:text-[32px] ${language === 'th' ? 'font-krub font-[400]' : 'uppercase tracking-widest leading-snug font-source-serif font-[500]'}`}>
                 {title}
             </h3>
 
@@ -24,19 +28,19 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
             <div className="flex flex-col items-center gap-1 text-navy leading-tight mt-2">
                 <div className="flex items-center gap-2">
                     <MapPin className="w-5 h-5 md:w-8 md:h-8 text-blue" />
-                    <span className="text-[4.26vw] md:text-[24px] lg:text-[32px]">{location}</span>
+                    <span className="text-[4.26vw] md:text-[24px] lg:text-[32px] font-source-serif font-[500]">{location}</span>
                 </div>
-                <span className="text-[4.26vw] md:text-[24px] lg:text-[32px] opacity-80">{hotel}</span>
+                <span className="text-[4.26vw] md:text-[24px] lg:text-[32px] opacity-80 font-source-serif font-[300]">{hotel}</span>
             </div>
 
             {/* Date & Time */}
             <div className="flex flex-col items-center gap-1 mt-2">
                 <div className="flex items-center gap-2 text-navy">
                     <Calendar className="w-5 h-5 md:w-8 md:h-8 text-navy" />
-                    <span className="text-[4.26vw] md:text-[24px] lg:text-[32px]">{date}</span>
+                    <span className={`text-[4.26vw] md:text-[24px] lg:text-[32px] ${language === 'th' ? 'font-krub font-[300]' : 'font-source-serif font-[500]'}`}>{date}</span>
                 </div>
                 {time && (
-                    <div className="text-navy text-[4.26vw] md:text-[24px] lg:text-[32px]">
+                    <div className={`text-navy text-[4.26vw] md:text-[24px] lg:text-[32px] ${language === 'th' ? 'font-krub font-[300]' : 'font-source-serif font-[500]'}`}>
                         {time}
                     </div>
                 )}
@@ -48,9 +52,9 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
                         href={mapLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="px-8 py-2 md:py-3 bg-white/90 border border-blue text-blue rounded-full hover:bg-blue hover:text-white transition-colors text-sm md:text-lg uppercase tracking-widest font-sans"
+                        className={`px-8 py-2 md:py-3 bg-white/90 border border-blue text-blue rounded-full hover:bg-blue hover:text-white transition-colors text-sm md:text-lg ${language === 'th' ? 'font-krub font-[400]' : 'uppercase tracking-widest font-source-serif font-[300]'}`}
                     >
-                        View Map
+                        {language === 'th' ? 'ดูแผนที่' : 'View Map'}
                     </a>
                     <div className="w-full h-64 md:h-72 lg:h-80 rounded-2xl overflow-hidden border border-gray-200 shadow-inner mt-auto">
                         <iframe
@@ -67,6 +71,7 @@ const EventCard = ({ title, date, time, location, hotel, mapLink, color, delay, 
             )}
         </div>
     </FadeInUp>
-);
+    );
+};
 
 export default EventCard;

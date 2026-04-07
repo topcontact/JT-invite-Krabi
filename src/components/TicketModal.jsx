@@ -373,7 +373,11 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                                                 <div className="mb-1 text-xs pb-2">
                                                                     <p>{language === 'th' ? "ราคา:" : "Price:"}</p>
                                                                     {(Array.isArray(data?.roomRange) ? data.roomRange : [data.roomRange]).map((range, i) => (
-                                                                        <p key={i} className="ml-2">{range.replace(/\/ night/g, '').trim()}</p>
+                                                                        <p key={i} className="ml-2">
+                                                                            {language === 'th' 
+                                                                                ? range.replace(/\/ night/g, '').trim() 
+                                                                                : range.replace('ประมาณ', 'Est.').replace('บาท / คืน', 'Bath / Night').replace(/\/ night/g, '').trim()}
+                                                                        </p>
                                                                     ))}
                                                                 </div>
                                                             )}
