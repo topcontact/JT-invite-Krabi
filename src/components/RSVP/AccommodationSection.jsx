@@ -34,11 +34,14 @@ const AccommodationSection = ({
   const nextDay = getNextDay(formData.checkIn);
 
   return (
-    <div className="mt-8 p-6 bg-white/10 rounded-xl border border-white/20">
-      <h4 className={`${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} text-xl text-white mb-4`}>{language === 'th' ? "ที่พัก" : "Accommodation"}</h4>
+    <div className="mt-6">
+      <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-1 text-sm uppercase tracking-wider`}>
+        {language === 'th' ? "ที่พัก" : "Accommodation"}
+      </label>
+      <div className="p-5 bg-white/10 rounded-xl border border-white/20">
       
       {/* Wait for Group Rate Selection */}
-      <div className="space-y-3 mb-4">
+      <div className={`space-y-3 ${waitGroupRate === 'yes' ? 'mb-4' : ''}`}>
         <label 
           className="flex items-center gap-3 cursor-pointer" 
           onClick={() => onFieldChange('waitGroupRate', 'yes')}
@@ -205,6 +208,7 @@ const AccommodationSection = ({
           )}
         </FadeIn>
       )}
+      </div>
     </div>
   );
 };
