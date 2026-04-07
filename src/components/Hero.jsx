@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FadeIn, FadeInUpOnLoad } from './animations/Motion';
 import { useLanguage } from '../contexts/LanguageContext';
-import { MapPin, Calendar, Bed, Send, Globe } from 'lucide-react';
+import { MapPin, Calendar, Bed, Send, Globe, ChevronDown } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const Hero = () => {
     const { language, setLanguage } = useLanguage();
@@ -55,7 +56,7 @@ const Hero = () => {
                 <div className="flex-1"></div>
 
                 {/* Save The Date Section */}
-                <FadeIn delay={1.5} duration={1} className="w-full absolute bottom-[18vh] md:bottom-[20vh] flex justify-center items-center z-10">
+                <FadeIn delay={1.5} duration={1} className="w-full absolute bottom-[22vh] md:bottom-[25vh] flex justify-center items-center z-10">
                     <div className="flex flex-col items-center bg-transparent px-6 relative z-10">
                         <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[52px] h-[52px] md:w-[72px] md:h-[72px] lg:w-[77px] lg:h-[77px] mb-4 md:mb-6">
                             <defs>
@@ -81,8 +82,23 @@ const Hero = () => {
                     </div>
                 </FadeIn>
 
+                {/* Scroll Indicator - Bottom most */}
+                <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: navOpacity * 0.7 }}
+                    transition={{ delay: 2.2, duration: 1 }}
+                    className="absolute bottom-0 left-1/2 -translate-x-1/2 flex flex-col items-center pointer-events-none z-10 pb-4 md:pb-6"
+                >
+                    <motion.div
+                        animate={{ y: [0, 8, 0] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    >
+                        <ChevronDown className="text-white/60 w-5 h-5 md:w-7 md:h-7" strokeWidth={1.5} />
+                    </motion.div>
+                </motion.div>
+
                 {/* Navigation Pill - Sticky/Absolute at bottom of first section */}
-                <FadeInUpOnLoad delay={1.8} duration={1} yOffset={20} className="z-30 w-full flex justify-center pb-8 absolute bottom-0">
+                <FadeInUpOnLoad delay={1.8} duration={1} yOffset={20} className="z-30 w-full flex justify-center pb-20 md:pb-24 absolute bottom-0">
                     <div
                         style={{ opacity: navOpacity, pointerEvents: navOpacity > 0.1 ? 'auto' : 'none', transition: 'opacity 0.1s ease-out' }}
                         className="flex items-center justify-around bg-white/20 backdrop-blur-xl border border-white/30 shadow-lg rounded-full px-2 py-3 md:px-4 md:py-4 w-[95%] max-w-sm md:max-w-[480px]"

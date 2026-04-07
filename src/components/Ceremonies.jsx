@@ -98,11 +98,11 @@ const Ceremonies = () => {
                             </p>
                         </div>
 
-                        <a href="#rsvp" className="inline-block px-11 md:px-14 py-0 border border-white/50 rounded-full hover:bg-white/10 transition-all">
+                        <div className="inline-block px-11 md:px-14 py-0 border border-white/30 rounded-full opacity-30 cursor-not-allowed pointer-events-none">
                             <span className="font-chloe text-[9.7vw] md:text-[64px] lg:text-[80px] leading-[1] uppercase block py-[0.08em] text-white text-center tracking-[0.12em]" style={{ fontFeatureSettings: '"salt", "swsh", "ss01", "liga"' }}>
                                 RSVP
                             </span>
-                        </a>
+                        </div>
                     </div>
                 </ElegantReveal>
             </div>
