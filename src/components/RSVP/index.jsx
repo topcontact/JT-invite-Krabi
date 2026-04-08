@@ -56,7 +56,7 @@ const RSVP = () => {
 
           {/* Divider */}
           <div className="px-8 md:px-12">
-            <div className="w-3/4 h-px bg-white/40 mb-10"></div>
+            <div className="w-3/4 h-px bg-white/40 mb-10 mx-auto"></div>
           </div>
 
           {/* Attendance Selection */}

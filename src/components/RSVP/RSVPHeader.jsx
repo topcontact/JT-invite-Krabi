@@ -12,6 +12,7 @@ const RSVPHeader = ({ t }) => (
     >
       RSVP
     </h2>
+    <div className="w-[60%] h-px bg-white/30 mx-auto mt-8"></div>
     <div className="px-8 md:px-12 pb-8 mt-8">
       <h3 className="font-chloe text-[12vw] md:text-[56px] lg:text-[72px] leading-[0.85] uppercase mb-8">
         <span className="block">Krabi</span>

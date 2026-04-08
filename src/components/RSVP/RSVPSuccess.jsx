@@ -13,11 +13,11 @@ const RSVPSuccess = () => {
   <section className="pt-20 pb-40 md:pb-48 px-4" id="rsvp">
     <FadeInScale className="max-w-2xl mx-auto rounded-3xl shadow-2xl p-12 text-center text-white bg-[#1079a6]">
       <div className="mb-6 flex justify-center">
-        <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center">
-          <Send className="w-10 h-10 text-green-600" />
+        <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
+          <Send className="w-10 h-10 text-[#1079a6]" />
         </div>
       </div>
-      <h2 className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-4xl text-navy mb-4`}>
+      <h2 className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-4xl text-white mb-4`}>
         {language === 'th' ? "ขอบคุณ!" : "Thank You!"}
       </h2>
       <p className={`text-lg text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[400] mb-8`}>
