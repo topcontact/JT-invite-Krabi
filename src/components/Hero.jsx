@@ -35,9 +35,9 @@ const Hero = () => {
     };
 
     return (
-        <section className="min-h-screen w-full flex flex-col items-center bg-hero-bg text-white relative overflow-hidden snap-start shrink-0">
+        <section className="min-h-[100dvh] w-full flex flex-col items-center bg-hero-bg text-white relative overflow-hidden snap-start shrink-0">
             {/* --- Initial Hero Section (Names & Save the Date) --- */}
-            <div className="h-screen w-full flex flex-col items-center justify-between relative shrink-0 pt-20 pb-10">
+            <div className="h-[100dvh] w-full flex flex-col items-center justify-between relative shrink-0 pt-20 pb-10">
                 <div className="flex-1"></div>
 
                 {/* Names Section */}

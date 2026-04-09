@@ -13,8 +13,10 @@
 html {
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
+  overscroll-behavior-y: none;
 }
 
 body {
   @apply font-sans text-navy bg-mist;
+  overscroll-behavior-y: none;
 }

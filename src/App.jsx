@@ -18,7 +18,7 @@ function App() {
   // For Krabi Standalone project, we don't need URL parsing.
 
   return (
-    <div className={`min-h-screen bg-mist relative ${language === 'th' ? 'font-krub' : ''}`}>
+    <div className={`min-h-[100dvh] bg-mist relative ${language === 'th' ? 'font-krub' : ''}`}>
       <Envelope onOpen={() => setIsEnvelopeOpen(true)} />
 
       {/* Main Content - hidden behind envelope until opened */}

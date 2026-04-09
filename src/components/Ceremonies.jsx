@@ -38,7 +38,7 @@ const Ceremonies = () => {
     ];
 
     return (
-        <section ref={sectionRef} id="ceremonies" className="min-h-screen w-full bg-hero-bg bg-cover bg-center text-white relative overflow-hidden snap-start shrink-0">
+        <section ref={sectionRef} id="ceremonies" className="min-h-[100dvh] w-full bg-hero-bg bg-cover bg-center text-white relative overflow-hidden snap-start shrink-0">
             {/* Background Image / Overlay (if needed to match Hero, otherwise transparent/ocean) */}
             
             {/* --- Extended Content: Krabi & Bangkok Ceremonies (Single Viewport) --- */}

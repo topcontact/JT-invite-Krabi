@@ -13,7 +13,7 @@ const RSVPHeader = ({ t }) => (
       RSVP
     </h2>
     <div className="w-[60%] h-px bg-white/30 mx-auto mt-8"></div>
-    <div className="px-8 md:px-12 pb-8 mt-8">
+    <div className="px-4 min-[400px]:px-8 md:px-12 pb-8 mt-8">
       <h3 className="font-chloe text-[12vw] md:text-[56px] lg:text-[72px] leading-[0.85] uppercase mb-8">
         <span className="block">Krabi</span>
         <span className="block">Ceremony</span>
@@ -27,7 +27,7 @@ const RSVPHeader = ({ t }) => (
         Friday, December 4, 2026
       </p>
 
-      <p className="font-source-serif font-[300] antialiased text-[17px] md:text-[19px] uppercase tracking-wide mb-8">
+      <p className="font-source-serif font-[300] antialiased text-[3.6vw] min-[480px]:text-[17px] md:text-[19px] uppercase tracking-wide mb-8 whitespace-nowrap">
         * Kindly Respond by April 30, 2026 *
       </p>
     </div>
