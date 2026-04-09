@@ -14,10 +14,11 @@ html {
   scroll-behavior: smooth;
   scroll-snap-type: y proximity;
   overscroll-behavior-y: none;
+  background-color: #0f79a6;
 }
 
 body {
   @apply font-sans text-navy;
-  background-color: #ede2e1;
+  background-color: #0f79a6;
   overscroll-behavior-y: none;
 }

@@ -20,7 +20,7 @@ const Envelope = ({ onOpen }) => {
 
     return (
         <div 
-            className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-1000 ease-in-out ${isOpen ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}
+            className={`fixed inset-0 z-50 flex items-center justify-center transition-transform duration-1000 ease-in-out ${isOpen ? '-translate-y-full' : 'translate-y-0'}`}
             style={{ backgroundColor: '#ede2e1' }}
         >
 
