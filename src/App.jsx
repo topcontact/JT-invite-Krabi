@@ -18,18 +18,20 @@ function App() {
   // For Krabi Standalone project, we don't need URL parsing.
 
   return (
-    <div className={`min-h-[100dvh] bg-mist relative ${language === 'th' ? 'font-krub' : ''}`}>
+    <div className={`min-h-[100dvh] bg-hero-bg relative ${language === 'th' ? 'font-krub' : ''}`}>
       <Envelope onOpen={() => setIsEnvelopeOpen(true)} />
 
       {/* Main Content - hidden behind envelope until opened */}
       <div className={`transition-opacity duration-1000 ${isEnvelopeOpen ? 'opacity-100' : 'opacity-0 h-0 overflow-hidden'}`}>
         <Hero />
         <Ceremonies />
-        <About />
-        <HowToGet />
-        <CeremonyProgram />
-        <WhereToStay />
-        <RSVP />
+        <div className="bg-mist w-full">
+            <About />
+            <HowToGet />
+            <CeremonyProgram />
+            <WhereToStay />
+            <RSVP />
+        </div>
       </div>
       <FloatingNav />
     </div>

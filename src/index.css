@@ -17,6 +17,6 @@ html {
 }
 
 body {
-  @apply font-sans text-navy bg-mist;
+  @apply font-sans text-navy bg-hero-bg;
   overscroll-behavior-y: none;
 }
