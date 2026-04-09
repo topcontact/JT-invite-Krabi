@@ -27,14 +27,14 @@ const FloatingNav = () => {
             }
             setActiveSection(current);
 
-            // Show after scrolling past 60% of viewport height (Hero section)
+            // Show after scrolling past 60% of viewport height
             if (currentScrollY > window.innerHeight * 0.6) {
-                // If we are actively in the ceremonies section, always show it so they see it immediately upon scrolling down.
+                // Hide navbar entirely while in the ceremonies section
                 if (current === 'ceremonies') {
-                    setIsVisible(true);
+                    setIsVisible(false);
                 } else {
                     if (currentScrollY > lastScrollY.current + 2) {
-                        // Scrolling DOWN - Hide Navbar (like Safari) - add a 2px buffer to prevent jitter
+                        // Scrolling DOWN - Hide Navbar
                         setIsVisible(false);
                     } else if (currentScrollY < lastScrollY.current - 2) {
                         // Scrolling UP - Show Navbar
