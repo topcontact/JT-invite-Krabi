@@ -27,25 +27,22 @@ const FloatingNav = () => {
             }
             setActiveSection(current);
 
-            // Check if we are still within the Hero or Ceremonies section by checking the bottom of the viewport
-            // against the top of the Location/Venue section (which is right below Ceremonies).
-            const locationElement = document.getElementById('location');
-            const locationTop = locationElement ? (locationElement.getBoundingClientRect().top + window.scrollY) : window.innerHeight * 2;
-            
-            // To prevent overlap with Ceremonies inline navbar, hide if the viewport bottom is above Location section + 80px.
-            const isTouchingCeremoniesNavbar = (currentScrollY + window.innerHeight) <= (locationTop + 80);
-
             // Show after scrolling past 60% of viewport height (Hero section)
-            if (currentScrollY > window.innerHeight * 0.6 && !isTouchingCeremoniesNavbar) {
-                if (currentScrollY > lastScrollY.current + 2) {
-                    // Scrolling DOWN - Hide Navbar (like Safari) - add a 2px buffer to prevent jitter
-                    setIsVisible(false);
-                } else if (currentScrollY < lastScrollY.current - 2) {
-                    // Scrolling UP - Show Navbar
+            if (currentScrollY > window.innerHeight * 0.6) {
+                // If we are actively in the ceremonies section, always show it so they see it immediately upon scrolling down.
+                if (current === 'ceremonies') {
                     setIsVisible(true);
+                } else {
+                    if (currentScrollY > lastScrollY.current + 2) {
+                        // Scrolling DOWN - Hide Navbar (like Safari) - add a 2px buffer to prevent jitter
+                        setIsVisible(false);
+                    } else if (currentScrollY < lastScrollY.current - 2) {
+                        // Scrolling UP - Show Navbar
+                        setIsVisible(true);
+                    }
                 }
             } else {
-                // At the top or inside Ceremonies - Hide Navbar
+                // At the top - Hide Navbar
                 setIsVisible(false);
             }
 
