@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Ceremonies from './components/Ceremonies';
 import About from './components/About';
@@ -15,10 +15,23 @@ function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const { language } = useLanguage();
 
+  useEffect(() => {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (isEnvelopeOpen) {
+      document.body.classList.remove('bg-mist');
+      document.body.classList.add('bg-hero-bg');
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#0f79a6');
+    } else {
+      document.body.classList.remove('bg-hero-bg');
+      document.body.classList.add('bg-mist');
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#e7eff6');
+    }
+  }, [isEnvelopeOpen]);
+
   // For Krabi Standalone project, we don't need URL parsing.
 
   return (
-    <div className={`min-h-[100dvh] bg-hero-bg relative ${language === 'th' ? 'font-krub' : ''}`}>
+    <div className={`min-h-[100dvh] relative ${language === 'th' ? 'font-krub' : ''}`}>
       <Envelope onOpen={() => setIsEnvelopeOpen(true)} />
 
       {/* Main Content - hidden behind envelope until opened */}
