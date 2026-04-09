@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Hero from './components/Hero';
 import Ceremonies from './components/Ceremonies';
 import About from './components/About';
@@ -14,6 +14,15 @@ import { useLanguage } from './contexts/LanguageContext';
 function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const { language } = useLanguage();
+
+  useEffect(() => {
+    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+    if (isEnvelopeOpen) {
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#0f79a6');
+    } else {
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#ede2e1');
+    }
+  }, [isEnvelopeOpen]);
 
   // For Krabi Standalone project, we don't need URL parsing.
 

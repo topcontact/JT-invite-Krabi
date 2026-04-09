@@ -19,7 +19,10 @@ const Envelope = ({ onOpen }) => {
     if (isHidden) return null;
 
     return (
-        <div className={`fixed inset-0 z-50 flex items-center justify-center bg-white transition-all duration-1000 ease-in-out ${isOpen ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}>
+        <div 
+            className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-1000 ease-in-out ${isOpen ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'}`}
+            style={{ backgroundColor: '#ede2e1' }}
+        >
 
             {/* Full Screen Envelope Image */}
             {/* Using object-cover to ensure it fills the screen as requested ("paper full page") */}
