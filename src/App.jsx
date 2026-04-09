@@ -23,8 +23,8 @@ function App() {
       if (metaThemeColor) metaThemeColor.setAttribute('content', '#0f79a6');
     } else {
       document.body.classList.remove('bg-hero-bg');
-      document.body.classList.add('bg-mist');
-      if (metaThemeColor) metaThemeColor.setAttribute('content', '#e7eff6');
+      document.body.classList.add('bg-white');
+      if (metaThemeColor) metaThemeColor.setAttribute('content', '#ffffff');
     }
   }, [isEnvelopeOpen]);
 
