@@ -9,9 +9,9 @@ const Envelope = ({ onOpen }) => {
     const handleOpen = () => {
         if (isOpen) return;
         setIsOpen(true);
+        onOpen(); // Trigger background change immediately
         // Wait for animation to finish before hiding
         setTimeout(() => {
-            onOpen();
             setIsHidden(true);
         }, 1000);
     };
