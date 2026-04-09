@@ -16,11 +16,10 @@ function App() {
   const { language } = useLanguage();
 
   useEffect(() => {
-    const metaThemeColor = document.querySelector('meta[name="theme-color"]');
     if (isEnvelopeOpen) {
-      if (metaThemeColor) metaThemeColor.setAttribute('content', '#0f79a6');
+      document.body.style.backgroundColor = '#0f79a6';
     } else {
-      if (metaThemeColor) metaThemeColor.setAttribute('content', '#ede2e1');
+      document.body.style.backgroundColor = '#ede2e1';
     }
   }, [isEnvelopeOpen]);
 
