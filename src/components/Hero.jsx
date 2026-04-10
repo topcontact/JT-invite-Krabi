@@ -109,7 +109,7 @@ const Hero = () => {
                                 <a
                                     key={item.id}
                                     href={`#${item.id}`}
-                                    className="flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-white/90 hover:text-white hover:bg-white/30 hover:scale-105"
+                                    className="flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-white/90 md:hover:text-white md:hover:bg-white/30 active:bg-white/30 md:hover:scale-105"
                                 >
                                     <Icon className="w-4 h-4 md:w-5 md:h-5" />
                                     <span className="text-[9px] md:text-[10px] font-sans tracking-widest uppercase">{item.label}</span>
@@ -118,7 +118,7 @@ const Hero = () => {
                         })}
                         <button
                             onClick={() => setLanguage(language === 'en' ? 'th' : 'en')}
-                            className="flex flex-col items-center justify-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-white/90 hover:text-white hover:bg-white/30 hover:scale-105 cursor-pointer border-none bg-transparent"
+                            className="flex flex-col items-center justify-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-white/90 md:hover:text-white md:hover:bg-white/30 active:bg-white/30 md:hover:scale-105 cursor-pointer border-none bg-transparent"
                             aria-label="Toggle Language"
                         >
                             <Globe className="w-4 h-4 md:w-5 md:h-5" />
