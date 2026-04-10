@@ -3,7 +3,7 @@ import { ElegantReveal } from './animations/Motion';
 
 const Ceremonies = () => {
     return (
-        <section id="ceremonies" className="min-h-[100dvh] w-full bg-hero-bg bg-cover bg-center text-white relative overflow-hidden snap-start shrink-0">
+        <section id="ceremonies" className="h-[100dvh] w-full bg-hero-bg bg-cover bg-center text-white relative overflow-hidden snap-start shrink-0">
             {/* --- Extended Content: Krabi & Bangkok Ceremonies --- */}
             <div className="min-h-[100dvh] w-full max-w-7xl mx-auto px-6 md:px-8 pt-16 md:pt-20 pb-32 md:pb-36 flex flex-col md:flex-row justify-center md:justify-between items-center gap-12 md:gap-16 relative z-10">
                 {/* Krabi Ceremony Block */}

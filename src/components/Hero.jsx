@@ -4,20 +4,23 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { MapPin, Calendar, Bed, Send, Globe, ChevronDown } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-const Hero = () => {
+const Hero = ({ scrollContainerRef }) => {
     const { language, setLanguage } = useLanguage();
     const [navOpacity, setNavOpacity] = useState(1);
 
     useEffect(() => {
+        const container = scrollContainerRef?.current;
+        if (!container) return;
+
         const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            const newOpacity = Math.max(0, 1 - currentScrollY / 250);
+            const scrollY = container.scrollTop;
+            const newOpacity = Math.max(0, 1 - scrollY / 250);
             setNavOpacity(newOpacity);
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        container.addEventListener('scroll', handleScroll);
+        return () => container.removeEventListener('scroll', handleScroll);
+    }, [scrollContainerRef]);
 
     const navItems = [
         { id: 'location', label: 'Location', icon: MapPin },
