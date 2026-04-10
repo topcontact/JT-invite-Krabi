@@ -14,7 +14,6 @@ import { useLanguage } from './contexts/LanguageContext';
 function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const { language } = useLanguage();
-  const snapContainerRef = useRef(null);
 
   // For Krabi Standalone project, we don't need URL parsing.
 
@@ -24,16 +23,8 @@ function App() {
 
       {/* Main Content - always fully rendered behind envelope, just hidden until opened */}
       <div className={isEnvelopeOpen ? '' : 'h-0 overflow-hidden'}>
-        {/* Scroll Snap Container: เฉพาะ Hero ↔ Ceremonies */}
-        <div
-          id="snap-container"
-          ref={snapContainerRef}
-          className="h-[100dvh] overflow-y-scroll snap-y snap-mandatory shrink-0"
-          style={{ scrollSnapStop: 'always' }}
-        >
-          <Hero scrollContainerRef={snapContainerRef} />
-          <Ceremonies />
-        </div>
+        <Hero />
+        <Ceremonies />
         <div className="bg-mist w-full">
             <About />
             <HowToGet />
