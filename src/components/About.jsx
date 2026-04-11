@@ -9,7 +9,7 @@ const About = () => {
     const t = {
         titleVenue: "VENUE",
         titleAnd: "and",
-        titleCeremony: <>Celebration <br /> beneath the Grotto</>,
+        titleCeremony: "Celebration beneath the Grotto",
         descRailay: language === 'th'
             ? "ไร่เลย์เป็นคาบสมุทรที่สวยงามซึ่งเข้าถึงได้ทางเรือเท่านั้น เนื่องจากมีหน้าผาหินปูนสูงชันโอบล้อมเอาไว้ หน้าผาเหล่านี้ดึงดูดนักปีนหน้าผาจากทั่วโลก และสถานที่แห่งนี้ยังโดดเด่นด้วยชายหาดที่งดงามพร้อมบรรยากาศการพักผ่อนที่แสนสงบ"
             : "Railay is a beautiful peninsula accessible only by boat due to the high limestone cliffs cutting off mainland access. These cliffs attract rock climbers from all over the world, but the area is also known for its beautiful beaches and quiet relaxing atmosphere.",
