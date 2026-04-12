@@ -38,27 +38,39 @@ const AccommodationSection = ({
       <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-1 text-sm uppercase tracking-wider`}>
         {language === 'th' ? "ที่พัก" : "Accommodation"}
       </label>
+      
+      {/* Accommodation Description */}
+      <p className={`mb-5 text-white/70 text-sm leading-relaxed ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'}`}>
+        {language === 'th' 
+          ? "เพื่อให้การพักผ่อนของท่านเป็นไปอย่างราบรื่นและสะดวกสบาย เราจะดำเนินการจัดราคาพิเศษสำหรับกลุ่ม (Group rate) และแจ้งรายละเอียดให้ท่านทราบเพื่อยืนยันอีกครั้ง" 
+          : "To ensure a seamless and comfortable stay, we will arrange a special group rate and share the details with you for confirmation."}
+      </p>
+
       <div className="p-5 bg-white/10 rounded-xl border border-white/20">
       
       {/* Wait for Group Rate Selection */}
       <div className={`space-y-3 ${waitGroupRate === 'yes' ? 'mb-4' : ''}`}>
         <label 
-          className="flex items-center gap-3 cursor-pointer" 
+          className="flex items-start gap-3 cursor-pointer group" 
           onClick={() => onFieldChange('waitGroupRate', 'yes')}
         >
-          <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${waitGroupRate === 'yes' ? 'bg-white' : ''}`}>
+          <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:border-white transition-colors ${waitGroupRate === 'yes' ? 'bg-white border-white' : ''}`}>
             {waitGroupRate === 'yes' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
           </span>
-          <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'}`}>{language === 'th' ? "รอเข้าร่วม Group Rate" : "Wait for Group Rate"}</span>
+          <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} leading-snug`}>
+            {language === 'th' ? "ฉันต้องการรอราคาพิเศษสำหรับกลุ่ม" : "I’d love to wait for the group rate."}
+          </span>
         </label>
         <label 
-          className="flex items-center gap-3 cursor-pointer" 
+          className="flex items-start gap-3 cursor-pointer group" 
           onClick={() => onFieldChange('waitGroupRate', 'no')}
         >
-          <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${waitGroupRate === 'no' ? 'bg-white' : ''}`}>
+          <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:border-white transition-colors ${waitGroupRate === 'no' ? 'bg-white border-white' : ''}`}>
             {waitGroupRate === 'no' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
           </span>
-          <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'}`}>{language === 'th' ? "จองด้วยตนเอง" : "Book by Self"}</span>
+          <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} leading-snug`}>
+            {language === 'th' ? "ฉันจะจัดการเรื่องที่พักด้วยตนเอง" : "I’ll arrange my own stay."}
+          </span>
         </label>
       </div>
 

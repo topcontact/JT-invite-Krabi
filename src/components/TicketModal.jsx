@@ -339,7 +339,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                             }}
                                         >
                                             <div className={`space-y-4 text-sm text-navy ${language === 'th' ? 'font-krub' : 'font-source-serif'}`}>
-                                                <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5 text-center pb-4">{language === 'th' ? "รอเข้าร่วม Group Rate" : "Wait for Group Rate"}</p>
+                                                <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5 text-center pb-4">{language === 'th' ? "ข้อมูลที่พัก" : "Accommodation Details"}</p>
                                                 {(data?.firstName || data?.lastName) && (
                                                     <div className="flex items-start gap-3">
                                                         <User className="w-4 h-4 text-blue mt-0.5 shrink-0" />

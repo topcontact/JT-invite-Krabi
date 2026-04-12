@@ -65,8 +65,9 @@ export const translations = {
       over12: 'Over 12 yrs',
       dietaryLabel: 'Dietary Restrictions / Additional Needs',
       accommodation: 'Accommodation',
-      waitGroupRate: "Yes, I'll wait",
-      bookMyself: "No, I'll book myself",
+      accommodationDesc: 'To ensure a seamless and comfortable stay, we will arrange a special group rate and share the details with you for confirmation.',
+      waitGroupRate: "I’d love to wait for the group rate.",
+      bookMyself: "I’ll arrange my own stay.",
       firstName: 'First Name (English)',
       lastName: 'Last Name (English)',
       numberOfRooms: 'Number of Rooms',
@@ -170,6 +171,10 @@ export const translations = {
     // RSVP Form - Key translations for Thai users
     rsvp: {
       title: 'ตอบรับ',
+      accommodation: 'ที่พัก',
+      accommodationDesc: 'เพื่อให้การพักผ่อนของท่านเป็นไปอย่างราบรื่นและสะดวกสบาย เราจะดำเนินการจัดราคาพิเศษสำหรับกลุ่ม (Group rate) และแจ้งรายละเอียดให้ท่านทราบเพื่อยืนยันอีกครั้ง',
+      waitGroupRate: 'ฉันต้องการรอราคาพิเศษสำหรับกลุ่ม',
+      bookMyself: 'ฉันจะจัดการเรื่องที่พักด้วยตนเอง',
       thankYou: 'ขอบคุณ!',
       successMessage: 'ส่ง RSVP สำเร็จแล้ว เรารอคอยที่จะได้ฉลองกับคุณ!',
     },
