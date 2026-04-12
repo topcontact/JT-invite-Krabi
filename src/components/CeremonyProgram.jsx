@@ -32,7 +32,7 @@ const CeremonyProgram = () => {
     return (
         <section id="program" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24 bg-white">
             <FadeIn className="text-center mb-16">
-                <h2 className="text-[10.5vw] md:text-[64px] lg:text-[80px] font-chloe text-navy mb-4 drop-shadow-lg leading-tight uppercase">
+                <h2 className="text-[10.5vw] md:text-[64px] lg:text-[80px] font-chloe text-navy mb-4 drop-shadow-lg leading-[0.96] uppercase">
                     Ceremony Program
                 </h2>
                 <div className="w-16 h-px bg-blue/30 mx-auto"></div>
@@ -71,6 +71,21 @@ const CeremonyProgram = () => {
                     />
                 </FadeIn>
             </div>
+
+            {/* Dress Code Section */}
+            <FadeIn delay={0.5} className="mt-16 text-center max-w-2xl mx-auto border-t border-blue/10 pt-12">
+                <h3 className={`text-xl md:text-2xl ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[500]'} text-navy antialiased mb-4 uppercase tracking-[0.2em]`}>
+                    {language === 'th' ? "การแต่งกาย" : "Dress Code"}
+                </h3>
+                <div className={`text-gray-500 ${language === 'th' ? 'font-krub font-[300]' : 'font-source-serif font-[300]'} antialiased text-sm md:text-base leading-relaxed space-y-2`}>
+                    <p className="text-navy font-[500] tracking-wide">Coastal Glam Palette</p>
+                    <p className="max-w-md mx-auto">
+                        {language === 'th' 
+                            ? "ยินดีต้อนรับทุกเฉดสีและทุกลาย — ในบรรยากาศสบายๆ ริมชายหาดที่แฝงด้วยความหรูหรา" 
+                            : "All shades & patterns are welcome — think beach, breeze and a touch of glam."}
+                    </p>
+                </div>
+            </FadeIn>
         </section>
     );
 };

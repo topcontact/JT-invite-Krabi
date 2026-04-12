@@ -43,8 +43,8 @@ const HowToGet = () => {
     return (
         <section id="getting-there" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-16 md:py-24 bg-white">
             <FadeIn className="text-center mb-16">
-                <h2 className={`${language === 'th' ? 'font-krub font-[400]' : 'font-chloe uppercase'} text-[10.5vw] md:text-[64px] lg:text-[80px] text-navy mb-4 drop-shadow-lg leading-tight`}>
-                    {language === 'th' ? "การเดินทาง" : "How to Get There"}
+                <h2 className={`${language === 'th' ? 'font-krub font-[400]' : 'font-chloe uppercase'} text-[10.5vw] md:text-[64px] lg:text-[80px] text-navy mb-4 drop-shadow-lg leading-[0.96]`}>
+                    {language === 'th' ? "การเดินทาง" : <>How to<br />Get There</>}
                 </h2>
                 <div className="w-16 h-px bg-blue/30 mx-auto mt-4 mb-8 md:mt-6 md:mb-10"></div>
                 <p className={`mt-6 text-navy ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-[4.26vw] md:text-[24px] lg:text-[32px] leading-relaxed max-w-5xl mx-auto text-center`}>
