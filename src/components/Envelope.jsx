@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import envelopeImg from '../assets/upscaleEnvelope.png';
+import envelopeImg from '../assets/upscaleEnvelope.jpg';
 
 
 const Envelope = ({ onOpen }) => {
