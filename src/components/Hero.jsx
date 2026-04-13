@@ -43,7 +43,7 @@ const Hero = () => {
                 {/* Names Section */}
                 <FadeInUpOnLoad duration={1} yOffset={20} className="w-full relative flex flex-col justify-center items-center z-10 -translate-y-16 md:-translate-y-24">
                     <div className="relative w-full flex justify-center">
-                        <h1 className="font-chloe text-[16vw] md:text-[80px] lg:text-[120px] leading-[0.8] mb-2 text-center text-white relative z-10 bg-hero-bg px-4 md:px-8">
+                        <h1 className="font-chloe text-[16vw] md:text-[80px] lg:text-[120px] leading-[0.8] mb-2 text-center text-white relative z-10 bg-hero-bg px-4 md:px-8 ml-0 md:ml-16">
                             SUPICHA
                         </h1>
                     </div>
