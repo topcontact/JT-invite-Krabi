@@ -378,6 +378,7 @@ const RSVP = () => {
                                                     <InputField
                                                         label="Check-in"
                                                         type="date"
+                                                        min="2026-11-01"
                                                         max="2026-12-04"
                                                         value={formData.krabi.checkIn}
                                                         onChange={(e) => updateKrabi('checkIn', e.target.value)}

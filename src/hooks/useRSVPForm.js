@@ -32,9 +32,19 @@ export const useRSVPForm = () => {
         krabi: { ...prev.krabi, [field]: finalValue }
       };
 
-      // Validate Check-out date
-      if (field === 'checkIn' && newData.krabi.checkOut && newData.krabi.checkOut <= value) {
-        newData.krabi.checkOut = ''; // Reset check-out if it becomes invalid
+      // Handle Date dependencies
+      if (field === 'checkIn') {
+        const checkIn = finalValue;
+        const checkOut = newData.krabi.checkOut;
+        
+        // If check-in is cleared, clear check-out too
+        if (!checkIn) {
+          newData.krabi.checkOut = '';
+        } 
+        // If check-out exists and is NOT after check-in, clear it
+        else if (checkOut && checkOut <= checkIn) {
+          newData.krabi.checkOut = '';
+        }
       }
 
       return newData;

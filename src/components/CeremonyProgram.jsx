@@ -81,7 +81,7 @@ const CeremonyProgram = () => {
                     <p className="text-navy font-[500] tracking-wide">Coastal Glam Palette</p>
                     <p className="max-w-md mx-auto">
                         {language === 'th' 
-                            ? "ยินดีต้อนรับทุกเฉดสีและทุกลาย — ในบรรยากาศสบายๆ ริมชายหาดที่แฝงด้วยความหรูหรา" 
+                            ? "มาได้เลยทุกเฉดสีและลวดลาย — เน้นฟีลริมหาด รับลมชิลๆ ติดแกลมนิดๆ" 
                             : "All shades & patterns are welcome — think beach, breeze and a touch of glam."}
                     </p>
                 </div>

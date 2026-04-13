@@ -185,6 +185,12 @@ const AccommodationSection = ({
                 max={CHECKIN_MAX_DATE}
                 value={formData.checkIn}
                 onChange={(e) => onFieldChange('checkIn', e.target.value)}
+                onFocus={(e) => {
+                  if (!e.target.value) {
+                    e.target.value = CHECKIN_MIN_DATE;
+                    e.target.value = '';
+                  }
+                }}
                 className="!mb-0"
                 inputClassName="font-source-serif"
               />
