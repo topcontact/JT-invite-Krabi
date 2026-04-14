@@ -34,7 +34,7 @@ export const validateRoomShare = (formData) => {
   if (
     formData.attending === 'yes' && 
     formData.waitGroupRate === 'yes' && 
-    formData.rooms === 'Share room'
+    (formData.stayType === 'sharing' || formData.rooms === 'Share room' || formData.rooms === 'แชร์ห้องกับผู้อื่น')
   ) {
     if (!formData.isShareNotSure && !formData.shareWith?.trim()) {
       return {
@@ -51,6 +51,18 @@ export const validateRoomShare = (formData) => {
  * @param {object} formData - Form data object
  * @returns {{valid: boolean, message: string}}
  */
+export const validateStayType = (formData) => {
+  if (formData.attending === 'yes' && formData.waitGroupRate === 'yes') {
+    if (!formData.stayType) {
+      return {
+        valid: false,
+        message: "Please select if you are staying alone or sharing a room."
+      };
+    }
+  }
+  return { valid: true, message: '' };
+};
+
 export const validateRoomRange = (formData) => {
   if (formData.attending === 'yes' && formData.waitGroupRate === 'yes') {
     if (!formData.roomRange || formData.roomRange.length === 0) {
@@ -114,6 +126,9 @@ export const validateRSVPForm = (formData) => {
     if (!roomShareResult.valid) return roomShareResult;
     
     if (formData.waitGroupRate === 'yes') {
+      const stayTypeResult = validateStayType(formData);
+      if (!stayTypeResult.valid) return stayTypeResult;
+
       const roomRangeResult = validateRoomRange(formData);
       if (!roomRangeResult.valid) return roomRangeResult;
       

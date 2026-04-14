@@ -100,24 +100,56 @@ const AccommodationSection = ({
             <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'}`}>{language === 'th' ? "⚠️ กรุณากรอกภาษาอังกฤษเท่านั้น" : "⚠️ Please fill in English only"}</span>
           </SlideInWarning>
 
-          {/* Room Selection */}
-          <InputField
-            label={language === 'th' ? "จำนวนห้อง" : "Number of Rooms"}
-            labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
-            type="select"
-            options={[...Array.from({ length: 5 }, (_, i) => i + 1), 'แชร์ห้องกับผู้อื่น']}
-            value={formData.rooms}
-            onChange={(e) => onFieldChange('rooms', e.target.value)}
-            icon={Home}
-            required
-            inputClassName="font-source-serif"
-          />
+          {/* Stay Type Selection */}
+          <div className="mb-4">
+            <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-1 text-sm uppercase tracking-wider`}>
+              {language === 'th' ? "คุณมีแพลนจะเข้าพักกับรูมเมทหรือไม่?" : "DO YOU HAVE PLANS TO STAY WITH A ROOMMATE?"} <span className="text-red-500">*</span>
+            </label>
+            <div className="space-y-3 pt-2">
+              <label className="flex items-center gap-3 cursor-pointer">
+                <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${formData.stayType === 'alone' ? 'bg-white border-white' : ''}`}>
+                  {formData.stayType === 'alone' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
+                </span>
+                <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} leading-snug`}>
+                  {language === 'th' ? "ไม่มี" : "No"}
+                </span>
+                <input 
+                  type="radio" 
+                  name="stayType" 
+                  className="hidden" 
+                  checked={formData.stayType === 'alone'} 
+                  onChange={() => {
+                    onFieldChange('stayType', 'alone');
+                    if (formData.rooms === 'แชร์ห้องกับผู้อื่น') onFieldChange('rooms', 1);
+                  }} 
+                />
+              </label>
+              <label className="flex items-center gap-3 cursor-pointer">
+                <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${formData.stayType === 'sharing' ? 'bg-white border-white' : ''}`}>
+                  {formData.stayType === 'sharing' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
+                </span>
+                <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} leading-snug`}>
+                  {language === 'th' ? "มี" : "Yes"}
+                </span>
+                <input 
+                  type="radio" 
+                  name="stayType" 
+                  className="hidden" 
+                  checked={formData.stayType === 'sharing'} 
+                  onChange={() => {
+                    onFieldChange('stayType', 'sharing');
+                    onFieldChange('rooms', 'แชร์ห้องกับผู้อื่น');
+                  }} 
+                />
+              </label>
+            </div>
+          </div>
 
           {/* Share Room Details */}
-          {formData.rooms === 'แชร์ห้องกับผู้อื่น' && (
-            <FadeInExpand className="mb-4 space-y-3">
+          {formData.stayType === 'sharing' && (
+            <FadeInExpand className="mb-4 space-y-3 pt-2">
               <InputField
-                label={language === 'th' ? "แชร์ห้องกับ" : "Share with"}
+                label={language === 'th' ? "ให้ใส่ชื่อ:" : "Name:"}
                 placeholder={language === 'th' ? "ระบุชื่อ (Enter name)" : "Enter name"}
                 value={formData.shareWith}
                 onChange={(e) => onFieldChange('shareWith', e.target.value)}
@@ -139,6 +171,23 @@ const AccommodationSection = ({
                 />
                 <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'} text-sm text-white/80`}>{language === 'th' ? "ยังไม่แน่ใจ" : "Not sure yet"}</span>
               </label>
+            </FadeInExpand>
+          )}
+
+          {/* Room Selection */}
+          {formData.stayType === 'alone' && (
+            <FadeInExpand>
+              <InputField
+                label={language === 'th' ? "จำนวนห้อง" : "Number of Rooms"}
+                labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
+                type="select"
+                options={[...Array.from({ length: 5 }, (_, i) => i + 1)]}
+                value={formData.rooms === 'แชร์ห้องกับผู้อื่น' ? 1 : formData.rooms}
+                onChange={(e) => onFieldChange('rooms', e.target.value)}
+                icon={Home}
+                required
+                inputClassName="font-source-serif"
+              />
             </FadeInExpand>
           )}
 

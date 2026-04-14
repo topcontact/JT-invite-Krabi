@@ -368,7 +368,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting, error }) 
                                                         <BedDouble className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                                                         <div className="leading-snug">
                                                             <p className="text-[11px] font-[400] uppercase tracking-wider text-navy/60 mb-0.5">{language === 'th' ? "ช่วงราคาห้องพักที่สนใจ" : "Room Preference"}</p>
-                                                            <p className="mb-1">{language === 'th' ? "จำนวนห้อง: " : "Rooms: "}{data?.rooms === 'แชร์ห้องกับผู้อื่น' ? (language === 'th' ? `แชร์ห้องกับผู้อื่น (${data?.isShareNotSure ? 'ยังไม่แน่ใจ' : data?.shareWith})` : `Share Room (${data?.isShareNotSure ? 'Not sure yet' : data?.shareWith})`) : data?.rooms}</p>
+                                                            <p className="mb-1">{language === 'th' ? "จำนวนห้อง: " : "Rooms: "}{data?.stayType === 'sharing' || data?.rooms === 'Share room' || data?.rooms === 'แชร์ห้องกับผู้อื่น' ? (language === 'th' ? `แชร์ห้องกับผู้อื่น (${data?.isShareNotSure ? 'ยังไม่แน่ใจ' : data?.shareWith})` : `Share Room (${data?.isShareNotSure ? 'Not sure yet' : data?.shareWith})`) : data?.rooms}</p>
                                                             {data?.roomRange && data?.roomRange.length > 0 && (
                                                                 <div className="mb-1 text-xs pb-2">
                                                                     <p>{language === 'th' ? "ราคา:" : "Price:"}</p>

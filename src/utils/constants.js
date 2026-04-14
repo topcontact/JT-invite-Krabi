@@ -36,6 +36,7 @@ export const INITIAL_FORM_DATA = {
   waitGroupRate: '',
   firstName: '',
   lastName: '',
+  stayType: '',
   rooms: 1,
   shareWith: '',
   isShareNotSure: false,
