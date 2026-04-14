@@ -43,8 +43,11 @@ export const useRSVPSubmission = () => {
       lastName: formData.attending === 'yes' ? formData.lastName : '',
       rooms: formData.attending === 'yes'
         ? (formData.stayType === 'sharing' || formData.rooms === 'Share room' || formData.rooms === 'แชร์ห้องกับผู้อื่น'
-          ? `Share room (With: ${formData.isShareNotSure ? 'Not sure now' : formData.shareWith})`
+          ? 'Share room'
           : formData.rooms)
+        : '',
+      shareWith: formData.attending === 'yes' && (formData.stayType === 'sharing' || formData.rooms === 'Share room' || formData.rooms === 'แชร์ห้องกับผู้อื่น')
+        ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith)
         : '',
       roomRange4kTo6k: formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
