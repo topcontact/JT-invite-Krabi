@@ -60,7 +60,13 @@ var HEADER_ALIASES = {
   "7 - 12 ปี": "7 - 12 ปี",
   "Over 12 yrs": "Over 12 yrs",
   "12+ yrs": "12+ yrs",
-  "12 ปีขึ้นไป": "12 ปีขึ้นไป"
+  "12 ปีขึ้นไป": "12 ปีขึ้นไป",
+  
+  // Exact user headers
+  "Children (<7 yrs)": "Under 7 yrs",
+  "Children (7-12 yrs)": "7 - 12 yrs",
+  "Children (>12 yrs)": "Over 12 yrs",
+  "Dietary/Needs": "dietary"
 };
 
 function doPost(e) {

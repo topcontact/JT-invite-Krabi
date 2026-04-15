@@ -74,6 +74,18 @@ export const useRSVPSubmission = () => {
         ? formData.childrenOver12 
         : (formData.attending === 'yes' ? '0' : ''),
       
+      // Exact user headers matching
+      "Children (<7 yrs)": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenUnder7 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "Children (7-12 yrs)": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.children7To12 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "Children (>12 yrs)": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenOver12 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "Dietary/Needs": formData.attending === 'yes' ? formData.dietary : '',
+      
       dietary: formData.attending === 'yes' ? formData.dietary : '',
       
       // Accommodation Section Fields
