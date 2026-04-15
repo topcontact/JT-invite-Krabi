@@ -22,46 +22,42 @@ export const useRSVPSubmission = () => {
     const nights = calculateNights(formData.checkIn, formData.checkOut);
 
     return {
-      inviteType: 'krabi',
-      event: 'Krabi',
-      attending: formData.attending,
-      name: formData.name,
-      phone: `'${formData.phone}'`, // Force Google Sheets to treat as string
-      adults: formData.attending === 'yes' ? formData.adults : '',
-      childrenUnder7: formData.attending === 'yes' && formData.hasChildren === 'yes' 
+      'Invite Type': 'krabi',
+      'Event': 'Krabi',
+      'Attending': formData.attending,
+      'Nickname': formData.name,
+      'Phone': `'${formData.phone}'`, // Force Google Sheets to treat as string
+      'Adults': formData.attending === 'yes' ? formData.adults : '',
+      'Children (<7 yrs)': formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenUnder7 
         : (formData.attending === 'yes' ? '0' : ''),
-      children7To12: formData.attending === 'yes' && formData.hasChildren === 'yes' 
+      'Children (7-12 yrs)': formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.children7To12 
         : (formData.attending === 'yes' ? '0' : ''),
-      childrenOver12: formData.attending === 'yes' && formData.hasChildren === 'yes' 
+      'Children (>12 yrs)': formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenOver12 
         : (formData.attending === 'yes' ? '0' : ''),
-      dietary: formData.attending === 'yes' ? formData.dietary : '',
-      waitGroupRate: formData.attending === 'yes' ? formData.waitGroupRate : '',
-      firstName: formData.attending === 'yes' ? formData.firstName : '',
-      lastName: formData.attending === 'yes' ? formData.lastName : '',
-      rooms: formData.attending === 'yes'
-        ? (formData.stayType === 'sharing' || formData.rooms === 'Share room' || formData.rooms === 'แชร์ห้องกับผู้อื่น'
-          ? 'Share room'
-          : formData.rooms)
-        : '',
-      roommateName: formData.attending === 'yes' && (formData.stayType === 'sharing' || formData.rooms === 'Share room' || formData.rooms === 'แชร์ห้องกับผู้อื่น')
+      'Dietary/Needs': formData.attending === 'yes' ? formData.dietary : '',
+      'Wait Group Rate': formData.attending === 'yes' ? formData.waitGroupRate : '',
+      'First Name': formData.attending === 'yes' ? formData.firstName : '',
+      'Last Name': formData.attending === 'yes' ? formData.lastName : '',
+      'Rooms': formData.attending === 'yes' ? formData.rooms : '',
+      'roommateName': formData.attending === 'yes' && (formData.stayType === 'sharing' || formData.rooms === 'Share room' || formData.rooms === 'แชร์ห้องกับผู้อื่น')
         ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith)
         : '',
-      roomRange4kTo6k: formData.attending === 'yes' && 
+      'Room (4k-6k THB)': formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 4,000 - 6,000+ บาท / คืน") ? 'Yes' : '',
-      roomRange6kTo10k: formData.attending === 'yes' && 
+      'Room (6k-10k THB)': formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 6,000 - 10,000+ บาท / คืน") ? 'Yes' : '',
-      roomRange25kTo40k: formData.attending === 'yes' && 
+      'Room (25k-40k THB)': formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 25,000 - 40,000+ บาท / คืน") ? 'Yes' : '',
-      checkIn: formData.attending === 'yes' ? formData.checkIn : '',
-      checkOut: formData.attending === 'yes' ? formData.checkOut : '',
-      nightStay: formData.attending === 'yes' && nights > 0 ? nights : '',
-      message: formData.attending === 'no' ? (formData.message || '') : ''
+      'Check-in': formData.attending === 'yes' ? formData.checkIn : '',
+      'Check-out': formData.attending === 'yes' ? formData.checkOut : '',
+      'Night Stay': formData.attending === 'yes' && nights > 0 ? nights : '',
+      'Message': formData.attending === 'no' ? (formData.message || '') : ''
     };
   }, []);
 

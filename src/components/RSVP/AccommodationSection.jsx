@@ -100,6 +100,21 @@ const AccommodationSection = ({
             <span className={`${language === 'th' ? 'font-krub' : 'font-source-serif'}`}>{language === 'th' ? "⚠️ กรุณากรอกภาษาอังกฤษเท่านั้น" : "⚠️ Please fill in English only"}</span>
           </SlideInWarning>
 
+          {/* Number of Rooms (Moved directly after Last Name) */}
+          <div className="mb-4 pt-2">
+            <InputField
+              label={language === 'th' ? "จำนวนห้องที่ต้องการ" : "Number of Rooms Required"}
+              labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
+              type="select"
+              options={[...Array.from({ length: 5 }, (_, i) => i + 1)]}
+              value={formData.rooms}
+              onChange={(e) => onFieldChange('rooms', e.target.value)}
+              icon={Home}
+              required
+              inputClassName="font-source-serif"
+            />
+          </div>
+
           {/* Stay Type Selection */}
           <div className="mb-4">
             <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-1 text-sm uppercase tracking-wider`}>
@@ -120,7 +135,6 @@ const AccommodationSection = ({
                   checked={formData.stayType === 'alone'} 
                   onChange={() => {
                     onFieldChange('stayType', 'alone');
-                    if (formData.rooms === 'แชร์ห้องกับผู้อื่น') onFieldChange('rooms', 1);
                   }} 
                 />
               </label>
@@ -138,7 +152,6 @@ const AccommodationSection = ({
                   checked={formData.stayType === 'sharing'} 
                   onChange={() => {
                     onFieldChange('stayType', 'sharing');
-                    onFieldChange('rooms', 'แชร์ห้องกับผู้อื่น');
                   }} 
                 />
               </label>
@@ -174,22 +187,7 @@ const AccommodationSection = ({
             </FadeInExpand>
           )}
 
-          {/* Room Selection */}
-          {formData.stayType === 'alone' && (
-            <FadeInExpand>
-              <InputField
-                label={language === 'th' ? "จำนวนห้อง" : "Number of Rooms"}
-                labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
-                type="select"
-                options={[...Array.from({ length: 5 }, (_, i) => i + 1)]}
-                value={formData.rooms === 'แชร์ห้องกับผู้อื่น' ? 1 : formData.rooms}
-                onChange={(e) => onFieldChange('rooms', e.target.value)}
-                icon={Home}
-                required
-                inputClassName="font-source-serif"
-              />
-            </FadeInExpand>
-          )}
+
 
           {/* Room Price Range */}
           <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-3 text-sm uppercase tracking-wider`}>
