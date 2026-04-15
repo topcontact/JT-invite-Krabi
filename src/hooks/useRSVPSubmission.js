@@ -27,7 +27,6 @@ export const useRSVPSubmission = () => {
       attending: formData.attending,
       name: formData.name,
       phone: `'${formData.phone}'`, // Force Google Sheets to treat as string
-      roomMate: formData.attending === 'yes' ? (formData.stayType || '') : '',
       adults: formData.attending === 'yes' ? formData.adults : '',
       childrenUnder7: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenUnder7 
@@ -39,12 +38,27 @@ export const useRSVPSubmission = () => {
         ? formData.childrenOver12 
         : (formData.attending === 'yes' ? '0' : ''),
       dietary: formData.attending === 'yes' ? formData.dietary : '',
+      
+      // Accommodation Section Fields
+      "Wait for Group Rate": formData.attending === 'yes' ? (formData.waitGroupRate === 'yes' ? 'Yes' : 'No') : '',
+      "First Name (English)": formData.attending === 'yes' ? (formData.firstName || '') : '',
+      "Last Name (English)": formData.attending === 'yes' ? (formData.lastName || '') : '',
+      "Number of Rooms Required": formData.attending === 'yes' ? (formData.rooms || '') : '',
+      "DO YOU HAVE PLANS TO STAY WITH A ROOMMATE?": formData.attending === 'yes' ? 
+          (formData.stayType === 'sharing' ? 'Yes' : (formData.stayType === 'alone' ? 'No' : '')) : '',
+      "Roommate Name": formData.attending === 'yes' && formData.stayType === 'sharing' 
+        ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith) : '',
+      
+      // Keep technical keys for backward compatibility with older Sheet headers
+      roomMate: formData.attending === 'yes' ? (formData.stayType || '') : '',
       waitGroupRate: formData.attending === 'yes' ? (formData.waitGroupRate || '') : '',
       firstName: formData.attending === 'yes' ? (formData.firstName || '') : '',
       lastName: formData.attending === 'yes' ? (formData.lastName || '') : '',
       rooms: formData.attending === 'yes' ? (formData.rooms || '') : '',
       roommateName: formData.attending === 'yes' && formData.stayType === 'sharing' 
         ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith) : '',
+
+      // Room Preferences
       "Room (4k-6k THB)": formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 4,000 - 6,000+ บาท / คืน") ? 'Yes' : '',
@@ -54,6 +68,8 @@ export const useRSVPSubmission = () => {
       "Room (25k-40k THB)": formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 25,000 - 40,000+ บาท / คืน") ? 'Yes' : '',
+      
+      // Stay Dates
       "Check-in": formData.attending === 'yes' ? (formData.checkIn || '') : '',
       "Check-out": formData.attending === 'yes' ? (formData.checkOut || '') : '',
       "Night Stay": formData.attending === 'yes' && nights > 0 ? nights : '',
