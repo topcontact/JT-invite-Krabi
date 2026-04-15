@@ -27,6 +27,7 @@ export const useRSVPSubmission = () => {
       attending: formData.attending,
       name: formData.name,
       phone: `'${formData.phone}'`, // Force Google Sheets to treat as string
+      stayType: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.stayType : '',
       adults: formData.attending === 'yes' ? formData.adults : '',
       childrenUnder7: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenUnder7 
@@ -41,7 +42,7 @@ export const useRSVPSubmission = () => {
       waitGroupRate: formData.attending === 'yes' ? formData.waitGroupRate : '',
       firstName: formData.attending === 'yes' ? formData.firstName : '',
       lastName: formData.attending === 'yes' ? formData.lastName : '',
-      rooms: formData.attending === 'yes' ? formData.rooms : '',
+      rooms: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.rooms : '',
       roommateName: formData.attending === 'yes' && (formData.stayType === 'sharing' || formData.rooms === 'Share room' || formData.rooms === 'แชร์ห้องกับผู้อื่น')
         ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith)
         : '',

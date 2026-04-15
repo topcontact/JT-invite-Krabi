@@ -12,7 +12,7 @@
  * ⚠️ สำคัญ: แถวที่ 1 ของ Sheet ต้องมี Header ตรงกับชื่อด้านล่างนี้
  * (เรียงลำดับยังไงก็ได้ ระบบจะจับคู่ให้อัตโนมัติ):
  * 
- * Timestamp | inviteType | attending | name | phone | adults |
+ * Timestamp | inviteType | attending | name | phone | stayType | adults |
  * childrenUnder7 | children7To12 | childrenOver12 | dietary |
  * waitGroupRate | firstName | lastName | rooms | roommateName |
  * roomRange4kTo6k | roomRange6kTo10k | roomRange25kTo40k |

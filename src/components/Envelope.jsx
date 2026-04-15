@@ -19,7 +19,7 @@ const Envelope = ({ onOpen }) => {
     if (isHidden) return null;
 
     return (
-        <div 
+        <div
             className={`fixed inset-0 z-50 flex items-center justify-center transition-transform duration-1000 ease-in-out ${isOpen ? '-translate-y-full' : 'translate-y-0'}`}
             style={{ backgroundColor: '#ede2e1' }}
         >
