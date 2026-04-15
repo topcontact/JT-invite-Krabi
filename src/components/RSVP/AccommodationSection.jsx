@@ -121,39 +121,27 @@ const AccommodationSection = ({
               {language === 'th' ? "คุณมีแพลนจะเข้าพักกับรูมเมทหรือไม่?" : "DO YOU HAVE PLANS TO STAY WITH A ROOMMATE?"} <span className="text-red-500">*</span>
             </label>
             <div className="space-y-3 pt-2">
-              <label className="flex items-center gap-3 cursor-pointer">
+              <label 
+                className="flex items-center gap-3 cursor-pointer"
+                onClick={() => onFieldChange('stayType', 'alone')}
+              >
                 <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${formData.stayType === 'alone' ? 'bg-white border-white' : ''}`}>
                   {formData.stayType === 'alone' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
                 </span>
                 <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} leading-snug`}>
                   {language === 'th' ? "ไม่มี" : "No"}
                 </span>
-                <input 
-                  type="radio" 
-                  name="stayType" 
-                  className="hidden" 
-                  checked={formData.stayType === 'alone'} 
-                  onChange={() => {
-                    onFieldChange('stayType', 'alone');
-                  }} 
-                />
               </label>
-              <label className="flex items-center gap-3 cursor-pointer">
+              <label 
+                className="flex items-center gap-3 cursor-pointer"
+                onClick={() => onFieldChange('stayType', 'sharing')}
+              >
                 <span className={`w-5 h-5 rounded-full border-2 border-white/60 flex items-center justify-center flex-shrink-0 ${formData.stayType === 'sharing' ? 'bg-white border-white' : ''}`}>
                   {formData.stayType === 'sharing' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
                 </span>
                 <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} leading-snug`}>
                   {language === 'th' ? "มี" : "Yes"}
                 </span>
-                <input 
-                  type="radio" 
-                  name="stayType" 
-                  className="hidden" 
-                  checked={formData.stayType === 'sharing'} 
-                  onChange={() => {
-                    onFieldChange('stayType', 'sharing');
-                  }} 
-                />
               </label>
             </div>
           </div>

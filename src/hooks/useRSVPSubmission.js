@@ -43,9 +43,7 @@ export const useRSVPSubmission = () => {
       firstName: formData.attending === 'yes' ? formData.firstName : '',
       lastName: formData.attending === 'yes' ? formData.lastName : '',
       rooms: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.rooms : '',
-      roommateName: formData.attending === 'yes' && (formData.stayType === 'sharing' || formData.rooms === 'Share room' || formData.rooms === 'แชร์ห้องกับผู้อื่น')
-        ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith)
-        : '',
+      roommateName: formData.attending === 'yes' && formData.stayType === 'sharing' ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith) : '',
       roomRange4kTo6k: formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 4,000 - 6,000+ บาท / คืน") ? 'Yes' : '',

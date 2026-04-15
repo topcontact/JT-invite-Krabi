@@ -235,7 +235,7 @@ const TicketModal = ({ isOpen, onClose, onConfirm, data, isSubmitting }) => {
                             <BedDouble className="w-4 h-4 text-blue mt-0.5 shrink-0" />
                             <div className="leading-snug">
                               <p className="text-[10px] font-bold uppercase tracking-wider text-navy/60 mb-0.5">Room range interested</p>
-                              <p className="mb-1">Rooms: {data?.rooms === 'Share room' ? `Sharing room (${data?.isShareNotSure ? 'Not sure now' : data?.shareWith})` : data?.rooms}</p>
+                              <p className="mb-1">Rooms: {data?.rooms} {data?.stayType === 'sharing' ? `(Sharing with: ${data?.isShareNotSure ? 'Not sure now' : data?.shareWith})` : ''}</p>
                               {data?.roomRange && data?.roomRange.length > 0 && (
                                 <div className="mb-1 text-xs pb-2">
                                   <p>Price:</p>
