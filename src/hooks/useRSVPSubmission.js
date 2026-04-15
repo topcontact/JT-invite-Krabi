@@ -22,28 +22,28 @@ export const useRSVPSubmission = () => {
     const nights = calculateNights(formData.checkIn, formData.checkOut);
 
     return {
-      "Invite Type": 'krabi',
-      "Event": 'Krabi',
-      "Attending": formData.attending,
-      "Nickname": formData.name,
-      "Phone": `'${formData.phone}'`, // Force Google Sheets to treat as string
-      "Adults": formData.attending === 'yes' ? formData.adults : '',
-      "Children (<7 yrs)": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+      inviteType: 'krabi',
+      event: 'Krabi',
+      attending: formData.attending,
+      name: formData.name,
+      phone: `'${formData.phone}'`, // Force Google Sheets to treat as string
+      roomMate: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.stayType : '',
+      adults: formData.attending === 'yes' ? formData.adults : '',
+      childrenUnder7: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenUnder7 
         : (formData.attending === 'yes' ? '0' : ''),
-      "Children (7-12 yrs)": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+      children7To12: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.children7To12 
         : (formData.attending === 'yes' ? '0' : ''),
-      "Children (>12 yrs)": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+      childrenOver12: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenOver12 
         : (formData.attending === 'yes' ? '0' : ''),
-      "Dietary/Needs": formData.attending === 'yes' ? formData.dietary : '',
-      "Wait Group Rate": formData.attending === 'yes' ? formData.waitGroupRate : '',
-      "First Name": formData.attending === 'yes' ? formData.firstName : '',
-      "Last Name": formData.attending === 'yes' ? formData.lastName : '',
-      "Rooms": formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.rooms : '',
-      "roomMate": formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.stayType : '',
-      "roommateName": formData.attending === 'yes' && formData.stayType === 'sharing' ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith) : '',
+      dietary: formData.attending === 'yes' ? formData.dietary : '',
+      waitGroupRate: formData.attending === 'yes' ? formData.waitGroupRate : '',
+      firstName: formData.attending === 'yes' ? formData.firstName : '',
+      lastName: formData.attending === 'yes' ? formData.lastName : '',
+      rooms: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.rooms : '',
+      roommateName: formData.attending === 'yes' && formData.stayType === 'sharing' ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith) : '',
       "Room (4k-6k THB)": formData.attending === 'yes' && 
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 4,000 - 6,000+ บาท / คืน") ? 'Yes' : '',
