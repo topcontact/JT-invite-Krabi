@@ -49,7 +49,18 @@ var HEADER_ALIASES = {
   "checkIn": "Check-in",
   "checkOut": "Check-out",
   "nightStay": "Night Stay",
-  "message": "Message"
+  "message": "Message",
+  
+  // Children Aliases
+  "Under 7 yrs": "Under 7 yrs",
+  "ต่ำกว่า 7 ปี": "ต่ำกว่า 7 ปี",
+  "7-12 yrs": "7 - 12 yrs",
+  "7 - 12 yrs": "7 - 12 yrs",
+  "7-12 ปี": "7 - 12 ปี",
+  "7 - 12 ปี": "7 - 12 ปี",
+  "Over 12 yrs": "Over 12 yrs",
+  "12+ yrs": "12+ yrs",
+  "12 ปีขึ้นไป": "12 ปีขึ้นไป"
 };
 
 function doPost(e) {

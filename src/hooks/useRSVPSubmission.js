@@ -30,15 +30,50 @@ export const useRSVPSubmission = () => {
       "ชื่อเล่น": formData.name,
       phone: `'${formData.phone}'`, // Force Google Sheets to treat as string
       adults: formData.attending === 'yes' ? formData.adults : '',
+      
+      // Children Section
       childrenUnder7: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenUnder7 
         : (formData.attending === 'yes' ? '0' : ''),
+      "Under 7 yrs": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenUnder7 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "Children Under 7": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenUnder7 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "ต่ำกว่า 7 ปี": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenUnder7 
+        : (formData.attending === 'yes' ? '0' : ''),
+        
       children7To12: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.children7To12 
         : (formData.attending === 'yes' ? '0' : ''),
+      "7 - 12 yrs": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.children7To12 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "Children 7-12": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.children7To12 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "7 - 12 ปี": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.children7To12 
+        : (formData.attending === 'yes' ? '0' : ''),
+        
       childrenOver12: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenOver12 
         : (formData.attending === 'yes' ? '0' : ''),
+      "Over 12 yrs": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenOver12 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "12+ yrs": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenOver12 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "Children Over 12": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenOver12 
+        : (formData.attending === 'yes' ? '0' : ''),
+      "12 ปีขึ้นไป": formData.attending === 'yes' && formData.hasChildren === 'yes' 
+        ? formData.childrenOver12 
+        : (formData.attending === 'yes' ? '0' : ''),
+      
       dietary: formData.attending === 'yes' ? formData.dietary : '',
       
       // Accommodation Section Fields
@@ -75,7 +110,21 @@ export const useRSVPSubmission = () => {
       "Check-in": formData.attending === 'yes' ? (formData.checkIn || '') : '',
       "Check-out": formData.attending === 'yes' ? (formData.checkOut || '') : '',
       "Night Stay": formData.attending === 'yes' && nights > 0 ? nights : '',
-      "Message": formData.message || ''
+      "Message": formData.message || '',
+      
+      // Totals
+      partySize: formData.attending === 'yes' 
+        ? (parseInt(formData.adults || 0) + 
+           (formData.hasChildren === 'yes' 
+             ? (parseInt(formData.childrenUnder7 || 0) + parseInt(formData.children7To12 || 0) + parseInt(formData.childrenOver12 || 0)) 
+             : 0))
+        : '',
+      "Total Guests": formData.attending === 'yes' 
+        ? (parseInt(formData.adults || 0) + 
+           (formData.hasChildren === 'yes' 
+             ? (parseInt(formData.childrenUnder7 || 0) + parseInt(formData.children7To12 || 0) + parseInt(formData.childrenOver12 || 0)) 
+             : 0))
+        : ''
     };
   }, []);
 
