@@ -27,7 +27,7 @@ export const useRSVPSubmission = () => {
       attending: formData.attending,
       name: formData.name,
       phone: `'${formData.phone}'`, // Force Google Sheets to treat as string
-      stayType: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.stayType : '',
+      roomMate: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.stayType : '',
       adults: formData.attending === 'yes' ? formData.adults : '',
       childrenUnder7: formData.attending === 'yes' && formData.hasChildren === 'yes' 
         ? formData.childrenUnder7 
