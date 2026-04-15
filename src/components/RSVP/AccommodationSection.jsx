@@ -80,18 +80,20 @@ const AccommodationSection = ({
           {/* Name Fields with English Validation */}
           <Shake trigger={nameShake}>
             <InputField
-              label={language === 'th' ? "ชื่อจริง (ภาษาอังกฤษ)" : "First Name (English)"}
+              label={language === 'th' ? "ชื่อจริง (ภาษาอังกฤษเท่านั้น)" : "First Name (English only)"}
               labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
               value={formData.firstName}
               onChange={(e) => onNameChange('firstName', e.target.value)}
+              placeholder={language === 'th' ? "e.g. John" : "e.g. John"}
               icon={User}
               required
             />
             <InputField
-              label={language === 'th' ? "นามสกุล (ภาษาอังกฤษ)" : "Last Name (English)"}
+              label={language === 'th' ? "นามสกุล (ภาษาอังกฤษเท่านั้น)" : "Last Name (English only)"}
               labelClassName={language === 'th' ? "font-krub" : "font-source-serif font-[300] antialiased"}
               value={formData.lastName}
               onChange={(e) => onNameChange('lastName', e.target.value)}
+              placeholder={language === 'th' ? "e.g. Smith" : "e.g. Smith"}
               icon={User}
               required
             />

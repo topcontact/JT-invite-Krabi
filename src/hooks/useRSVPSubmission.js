@@ -26,6 +26,8 @@ export const useRSVPSubmission = () => {
       event: 'Krabi',
       attending: formData.attending,
       name: formData.name,
+      "Nickname": formData.name,
+      "ชื่อเล่น": formData.name,
       phone: `'${formData.phone}'`, // Force Google Sheets to treat as string
       adults: formData.attending === 'yes' ? formData.adults : '',
       childrenUnder7: formData.attending === 'yes' && formData.hasChildren === 'yes' 

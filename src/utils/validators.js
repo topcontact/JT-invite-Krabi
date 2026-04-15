@@ -108,6 +108,31 @@ export const validateAttendance = (formData) => {
 };
 
 /**
+ * Validate English names for group rate
+ * @param {object} formData - Form data object
+ * @returns {{valid: boolean, message: string}}
+ */
+export const validateEnglishNames = (formData) => {
+  if (formData.attending === 'yes' && formData.waitGroupRate === 'yes') {
+    if (!formData.firstName?.trim() || !formData.lastName?.trim()) {
+      return {
+        valid: false,
+        message: "Please enter your First Name and Last Name in English for the hotel group rate."
+      };
+    }
+    
+    const englishRegex = /^[a-zA-Z\s.-]+$/;
+    if (!englishRegex.test(formData.firstName) || !englishRegex.test(formData.lastName)) {
+      return {
+        valid: false,
+        message: "First Name and Last Name must contain only English characters."
+      };
+    }
+  }
+  return { valid: true, message: '' };
+};
+
+/**
  * Run all validations
  * @param {object} formData - Form data object
  * @returns {{valid: boolean, message: string}}
@@ -122,10 +147,11 @@ export const validateRSVPForm = (formData) => {
     const childrenResult = validateChildren(formData);
     if (!childrenResult.valid) return childrenResult;
     
-    const roomShareResult = validateRoomShare(formData);
-    if (!roomShareResult.valid) return roomShareResult;
-    
     if (formData.waitGroupRate === 'yes') {
+      // Add English Name validation
+      const englishNamesResult = validateEnglishNames(formData);
+      if (!englishNamesResult.valid) return englishNamesResult;
+
       const stayTypeResult = validateStayType(formData);
       if (!stayTypeResult.valid) return stayTypeResult;
 
@@ -134,6 +160,9 @@ export const validateRSVPForm = (formData) => {
       
       const datesResult = validateDates(formData);
       if (!datesResult.valid) return datesResult;
+
+      const roomShareResult = validateRoomShare(formData);
+      if (!roomShareResult.valid) return roomShareResult;
     }
   }
   
