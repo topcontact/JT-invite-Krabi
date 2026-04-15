@@ -40,23 +40,24 @@ export const useRSVPSubmission = () => {
         : (formData.attending === 'yes' ? '0' : ''),
       dietary: formData.attending === 'yes' ? formData.dietary : '',
       waitGroupRate: formData.attending === 'yes' ? formData.waitGroupRate : '',
-      firstName: formData.attending === 'yes' ? formData.firstName : '',
-      lastName: formData.attending === 'yes' ? formData.lastName : '',
+      firstName: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.firstName : '',
+      lastName: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.lastName : '',
       rooms: formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.rooms : '',
-      roommateName: formData.attending === 'yes' && formData.stayType === 'sharing' ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith) : '',
-      "Room (4k-6k THB)": formData.attending === 'yes' && 
+      roommateName: formData.attending === 'yes' && formData.waitGroupRate === 'yes' && formData.stayType === 'sharing' 
+        ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith) : '',
+      "Room (4k-6k THB)": formData.attending === 'yes' && formData.waitGroupRate === 'yes' &&
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 4,000 - 6,000+ บาท / คืน") ? 'Yes' : '',
-      "Room (6k-10k THB)": formData.attending === 'yes' && 
+      "Room (6k-10k THB)": formData.attending === 'yes' && formData.waitGroupRate === 'yes' &&
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 6,000 - 10,000+ บาท / คืน") ? 'Yes' : '',
-      "Room (25k-40k THB)": formData.attending === 'yes' && 
+      "Room (25k-40k THB)": formData.attending === 'yes' && formData.waitGroupRate === 'yes' &&
         Array.isArray(formData.roomRange) && 
         formData.roomRange.includes("ประมาณ 25,000 - 40,000+ บาท / คืน") ? 'Yes' : '',
-      "Check-in": formData.attending === 'yes' ? formData.checkIn : '',
-      "Check-out": formData.attending === 'yes' ? formData.checkOut : '',
-      "Night Stay": formData.attending === 'yes' && nights > 0 ? nights : '',
-      "Message": formData.attending === 'no' ? (formData.message || '') : ''
+      "Check-in": formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.checkIn : '',
+      "Check-out": formData.attending === 'yes' && formData.waitGroupRate === 'yes' ? formData.checkOut : '',
+      "Night Stay": formData.attending === 'yes' && formData.waitGroupRate === 'yes' && nights > 0 ? nights : '',
+      "Message": formData.message || ''
     };
   }, []);
 

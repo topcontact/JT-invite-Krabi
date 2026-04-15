@@ -12,14 +12,32 @@
  * ⚠️ สำคัญ: แถวที่ 1 ของ Sheet ต้องมี Header ตรงกับชื่อด้านล่างนี้
  * (เรียงลำดับยังไงก็ได้ ระบบจะจับคู่ให้อัตโนมัติ):
  * 
- * Timestamp | inviteType | attending | name | phone | stayType | adults |
+ * Timestamp | inviteType | attending | name | phone | roomMate | adults |
  * childrenUnder7 | children7To12 | childrenOver12 | dietary |
  * waitGroupRate | firstName | lastName | rooms | roommateName |
- * roomRange4kTo6k | roomRange6kTo10k | roomRange25kTo40k |
- * checkIn | checkOut | nightStay | message
+ * Room (4k-6k THB) | Room (6k-10k THB) | Room (25k-40k THB) |
+ * Check-in | Check-out | Night Stay | Message
  */
 
 var SHEET_NAME = "Sheet1"; // ⚠️ เปลี่ยนชื่อนี้ให้ตรงกับชื่อแท็บ Sheet ของคุณ
+
+/**
+ * Alias map: หาก Header ใน Sheet ใช้ชื่อเก่า (programmatic)
+ * ระบบจะแปลงให้ตรงกับ key ที่ frontend ส่งมาอัตโนมัติ
+ * 
+ * Key = ชื่อ Header เก่าใน Sheet
+ * Value = ชื่อ key ที่ frontend ส่งมาจริง
+ */
+var HEADER_ALIASES = {
+  "stayType": "roomMate",
+  "roomRange4kTo6k": "Room (4k-6k THB)",
+  "roomRange6kTo10k": "Room (6k-10k THB)",
+  "roomRange25kTo40k": "Room (25k-40k THB)",
+  "checkIn": "Check-in",
+  "checkOut": "Check-out",
+  "nightStay": "Night Stay",
+  "message": "Message"
+};
 
 function doPost(e) {
   try {
@@ -32,7 +50,8 @@ function doPost(e) {
     var rawData = JSON.parse(e.postData.contents);
 
     // ดึง Header จากแถวที่ 1
-    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var rawHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+    var headers = rawHeaders.map(function(h) { return String(h).trim(); });
 
     // สร้าง Array ข้อมูลให้ตรงกับลำดับ Header
     var rowData = [];
@@ -41,10 +60,16 @@ function doPost(e) {
 
       if (headerName === "Timestamp") {
         rowData.push(new Date());
-      } else if (rawData[headerName] !== undefined && rawData[headerName] !== null) {
-        rowData.push(rawData[headerName]);
       } else {
-        rowData.push("");
+        // ลองหา key ตรงๆ ก่อน ถ้าไม่เจอให้ลอง alias
+        var value = rawData[headerName];
+        if (value === undefined || value === null) {
+          var aliasKey = HEADER_ALIASES[headerName];
+          if (aliasKey) {
+            value = rawData[aliasKey];
+          }
+        }
+        rowData.push(value !== undefined && value !== null ? value : "");
       }
     }
 

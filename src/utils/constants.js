@@ -43,6 +43,7 @@ export const INITIAL_FORM_DATA = {
   roomRange: [],
   checkIn: '',
   checkOut: '',
+  message: '',
 };
 
 // Navigation Items Configuration
