@@ -48,32 +48,51 @@ function doPost(e) {
 
     // แปลงข้อมูลที่ส่งมาเป็น JSON
     var rawData = JSON.parse(e.postData.contents);
+    
+    // สร้าง Mapping แบบ normalize (ตัวเล็กหมด ไม่มีช่องว่าง) เพื่อลดความผิดพลาดจากคน
+    var normalizedData = {};
+    for (var k in rawData) {
+      var normK = k.toString().toLowerCase().replace(/\s/g, "");
+      normalizedData[normK] = rawData[k];
+    }
 
     // ดึง Header จากแถวที่ 1
     var rawHeaders = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-    var headers = rawHeaders.map(function(h) { return String(h).trim(); });
-
-    // สร้าง Array ข้อมูลให้ตรงกับลำดับ Header
+    
+    // สร้าง Array ข้อมูลโดยไล่ตามลำดับ Header ใน Sheet
     var rowData = [];
-    for (var i = 0; i < headers.length; i++) {
-      var headerName = headers[i];
+    for (var i = 0; i < rawHeaders.length; i++) {
+        var fullHeader = String(rawHeaders[i]).trim();
+        var hNorm = fullHeader.toLowerCase().replace(/\s/g, "");
 
-      if (headerName === "Timestamp") {
-        rowData.push(new Date());
-      } else {
-        // ลองหา key ตรงๆ ก่อน ถ้าไม่เจอให้ลอง alias
-        var value = rawData[headerName];
-        if (value === undefined || value === null) {
-          var aliasKey = HEADER_ALIASES[headerName];
-          if (aliasKey) {
-            value = rawData[aliasKey];
-          }
+        if (hNorm === "timestamp") {
+            rowData.push(new Date());
+            continue;
         }
-        rowData.push(value !== undefined && value !== null ? value : "");
-      }
+
+        // 1. ลองหาจาก JSON data โดยตรง (แบบ normalize)
+        var value = normalizedData[hNorm];
+
+        // 2. ถ้าไม่พบ ลองหาผ่าน Alias Map (แบบ normalize เหมือนกัน)
+        if (value === undefined || value === null) {
+            for (var aliasSource in HEADER_ALIASES) {
+                if (aliasSource.toLowerCase().replace(/\s/g, "") === hNorm) {
+                    var aliasTarget = HEADER_ALIASES[aliasSource].toLowerCase().replace(/\s/g, "");
+                    value = normalizedData[aliasTarget];
+                    break;
+                }
+            }
+        }
+
+        // 3. ถ้ายังไม่พบจริงๆ ลองหาจาก Key เดิมๆ แบบเป๊ะๆ (กันพลาด)
+        if (value === undefined || value === null) {
+            value = rawData[fullHeader] || "";
+        }
+
+        rowData.push(value);
     }
 
-    // เขียนข้อมูลลงแถวถัดไป (ไม่ทับข้อมูลเดิม)
+    // เขียนข้อมูลลง Sheet
     sheet.appendRow(rowData);
 
     return ContentService.createTextOutput(
