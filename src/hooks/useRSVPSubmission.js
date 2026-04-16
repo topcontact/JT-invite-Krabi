@@ -93,7 +93,7 @@ export const useRSVPSubmission = () => {
       "First Name (English)": formData.attending === 'yes' ? (formData.firstName || '') : '',
       "Last Name (English)": formData.attending === 'yes' ? (formData.lastName || '') : '',
       "Number of Rooms Required": formData.attending === 'yes' ? (formData.rooms || '') : '',
-      "DO YOU HAVE PLANS TO STAY WITH A ROOMMATE?": formData.attending === 'yes' ? 
+      "Would you like to share a room with other guests?": formData.attending === 'yes' ? 
           (formData.stayType === 'sharing' ? 'Yes' : (formData.stayType === 'alone' ? 'No' : '')) : '',
       "Roommate Name": formData.attending === 'yes' && formData.stayType === 'sharing' 
         ? (formData.isShareNotSure ? 'Not sure now' : formData.shareWith) : '',

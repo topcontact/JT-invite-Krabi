@@ -120,7 +120,7 @@ const AccommodationSection = ({
           {/* Stay Type Selection */}
           <div className="mb-4">
             <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-1 text-sm uppercase tracking-wider`}>
-              {language === 'th' ? "คุณมีแพลนจะเข้าพักกับรูมเมทหรือไม่?" : "DO YOU HAVE PLANS TO STAY WITH A ROOMMATE?"} <span className="text-red-500">*</span>
+              {language === 'th' ? "คุณต้องการแชร์ห้องพักกับแขกท่านอื่นหรือไม่?" : "Would you like to share a room with other guests?"} <span className="text-red-500">*</span>
             </label>
             <div className="space-y-3 pt-2">
               <label 
