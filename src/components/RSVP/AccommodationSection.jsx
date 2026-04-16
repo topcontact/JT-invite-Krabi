@@ -223,9 +223,8 @@ const AccommodationSection = ({
                 value={formData.checkIn}
                 onChange={(e) => onFieldChange('checkIn', e.target.value)}
                 onFocus={(e) => {
-                  if (!e.target.value) {
-                    e.target.value = CHECKIN_MIN_DATE;
-                    e.target.value = '';
+                  if (!formData.checkIn) {
+                    onFieldChange('checkIn', CHECKIN_MIN_DATE);
                   }
                 }}
                 className="!mb-0"

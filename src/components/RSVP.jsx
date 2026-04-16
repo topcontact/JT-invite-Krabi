@@ -383,9 +383,8 @@ const RSVP = () => {
                                                         value={formData.krabi.checkIn}
                                                         onChange={(e) => updateKrabi('checkIn', e.target.value)}
                                                         onFocus={(e) => {
-                                                            if (!e.target.value) {
-                                                                e.target.value = '2026-11-01';
-                                                                e.target.value = '';
+                                                            if (!formData.krabi.checkIn) {
+                                                                updateKrabi('checkIn', '2026-11-01');
                                                             }
                                                         }}
                                                         className="!mb-0"
