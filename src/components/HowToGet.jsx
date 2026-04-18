@@ -13,18 +13,18 @@ const HowToGet = () => {
             title: language === 'th' ? "เที่ยวบินไปกระบี่" : "Flight to Krabi",
             description: language === 'th' ? "บินตรงสู่สนามบินนานาชาติกระบี่ (KBV) จากกรุงเทพฯ" : "Fly directly to Krabi International Airport (KBV) from Bangkok.",
             note: language === 'th'
-                ? "มีเที่ยวบินให้บริการจากทั้งสนามบินดอนเมือง\nและสนามบินสุวรรณภูมิ\nค่าโดยสารไป-กลับโดยประมาณ:\n4,000 – 7,000 บาท"
-                : "Flights are available from both \nDon Mueang and Suvarnabhumi airports.\nEstimated round-trip fare: \n4,000 – 7,000 THB",
+                ? "มีเที่ยวบินให้บริการจากทั้งสนามบินดอนเมือง\nและสนามบินสุวรรณภูมิ\nค่าโดยสารไป-กลับโดยประมาณ:\n4,000 – 7,000 บาท\n\nแนะนำให้จองเที่ยวบินที่มาถึงก่อนเวลา\n13:00 น."
+                : "Flights are available from both \nDon Mueang and Suvarnabhumi airports.\nEstimated round-trip fare: \n4,000 – 7,000 THB\n\nWe recommend booking a flight that arrives before 1:00 PM.",
             delay: 0.1,
             bgImage: "/FlightPic.jpg"
         },
         {
             icon: Car,
             title: language === 'th' ? "ต่อรถไปท่าเรือ" : "Transfer to Pier",
-            description: language === 'th' ? "นั่งแท็กซี่หรือรถตู้ที่นัดหมายไว้จากสนามบินไปท่าเรืออ่าวน้ำเมา (สะพานแขวน) หรืออ่าวนาง" : "Take a taxi or pre-arranged van from the airport to Ao Nam Mao Pier (Short bridge) or Ao Nang.",
+            description: language === 'th' ? "นั่งแท็กซี่หรือรถตู้ที่นัดหมายไว้จากสนามบินไปท่าเรืออ่าวน้ำเมา (สะพานสั้น) หรืออ่าวนาง" : "Take a taxi or pre-arranged van from the airport to Ao Nam Mao Pier (Short bridge) or Ao Nang.",
             note: language === 'th'
-                ? "เรามีบริการรถตู้รับ-ส่งจากสนามบินกระบี่ไปท่าเรือ\nในวันที่ 3 และ 4 ธันวาคม\nรถออกก่อนเวลา 12:00 น.\nใช้เวลาเดินทาง 40 นาทีไปยังท่าเรือ"
-                : "We provide van transfers from KBV Airport to the pier \non December 3rd and 4th,\nDeparting before 12:00 PM. \n(approx. 40 min)",
+                ? "เรามีบริการรถตู้รับ-ส่งในวันที่ 3 และ 4 ธันวาคม\nรถออกเวลา 13:00 น.\n(ใช้เวลาเดินทางประมาณ 40 นาที)\nโปรดแจ้งให้เราทราบหากท่านต้องการใช้บริการรถรับ-ส่ง"
+                : "We provide van transfers on\nDecember 3 and 4,\ndeparting at 1:00 PM\n(approx. 40 minutes).\nPlease let us know if you would like to\nuse the shuttle service.",
             delay: 0.3,
             bgImage: "/VanTransferpIC.jpg"
         },
@@ -33,8 +33,8 @@ const HowToGet = () => {
             title: language === 'th' ? "เรือไปไร่เลย์" : "Boat to Railay",
             description: language === 'th' ? "นั่งเรือหางยาว (ประมาณ 15-20 นาที) จากท่าเรือไปไร่เลย์" : "Longtail boat ride from the pier to Railay.",
             note: language === 'th'
-                ? "แขกที่ใช้บริการรถตู้รับ-ส่งของเราสามารถขึ้นเรือไปยังไร่เลย์ได้โดยตรง (ประมาณ 15-20 นาที)"
-                : "Guests using our van transfer can board the boat to Railay directly (approx. 15-20 min).",
+                ? "แขกที่ใช้บริการรถตู้รับ-ส่งของเราสามารถขึ้นเรือไปยังไร่เลย์ได้โดยตรง\n(ประมาณ 15-20 นาที)"
+                : "Guests using our van transfer can board the boat to Railay directly\n(approx. 15-20 min).",
             delay: 0.5,
             bgImage: "/LongtailPic.jpg"
         }

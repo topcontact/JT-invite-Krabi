@@ -25,8 +25,8 @@ const TransferCard = ({ icon: Icon, title, description, note, delay, bgImage }) 
                 <p className={`text-gray-100 ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-base md:text-lg flex items-start justify-center mb-6 whitespace-pre-line leading-relaxed flex-grow`}>
                     {description}
                 </p>
-                <div className={`mt-auto text-sm md:text-base ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-lg p-5 rounded-3xl whitespace-pre-line flex text-left w-full items-center justify-center leading-relaxed h-[140px] md:h-[180px]`}>
-                    <span className="w-full text-center">{note}</span>
+                <div className={`mt-auto text-sm md:text-base ${language === 'th' ? 'font-krub' : 'font-source-serif'} font-[300] antialiased text-white bg-white/10 backdrop-blur-md border border-white/20 shadow-lg px-2 py-8 rounded-3xl whitespace-pre-line flex flex-col text-left w-full items-center justify-center leading-relaxed min-h-[140px] md:h-[260px]`}>
+                    <span className="w-full text-center flex-grow flex items-center justify-center">{note}</span>
                 </div>
             </div>
         </FadeIn>
