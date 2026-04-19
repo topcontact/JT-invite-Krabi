@@ -130,6 +130,9 @@ function doPost(e) {
 
     // เขียนข้อมูลลง Sheet
     sheet.appendRow(rowData);
+    
+    // ส่งข้อความแจ้งเตือนทาง Telegram
+    sendTelegramNotification(rawData);
 
     return ContentService.createTextOutput(
       JSON.stringify({ result: "success", data: rawData })
@@ -146,3 +149,50 @@ function doOptions(e) {
   return ContentService.createTextOutput("")
     .setMimeType(ContentService.MimeType.TEXT);
 }
+
+/**
+ * ฟังก์ชันสำหรับส่งข้อความแจ้งเตือนทาง Telegram
+ */
+function sendTelegramNotification(data) {
+  // 🔴 นำ Token และ Chat ID มาใส่ตรงนี้นะครับ
+  var TELEGRAM_BOT_TOKEN = ""; // ตัวอย่าง: "123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  var TELEGRAM_CHAT_ID = "";   // ตัวอย่าง: "12345678" หรือ "-10012345678"
+
+  if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+    return; // ถ้ายังไม่ได้ใส่ token จะข้ามไป
+  }
+
+  // สร้างข้อความที่จะส่ง
+  var message = "🎉 <b>มีการตอบรับ RSVP ใหม่!</b>\n\n";
+  message += "<b>ชื่อ:</b> " + (data.name || "-") + "\n";
+  message += "<b>การเข้าร่วม:</b> " + (data.attending || "-") + "\n";
+  message += "<b>ผู้ติดตาม (ผู้ใหญ่):</b> " + (data.adults || "0") + "\n";
+  if (data.phone) {
+    message += "<b>เบอร์ติดต่อ:</b> " + data.phone + "\n";
+  }
+  if (data.message) {
+    message += "<b>ข้อความถึงบ่าวสาว:</b> " + data.message + "\n";
+  }
+
+  var telegramUrl = "https://api.telegram.org/bot" + TELEGRAM_BOT_TOKEN + "/sendMessage";
+  var payload = {
+    "chat_id": TELEGRAM_CHAT_ID,
+    "text": message,
+    "parse_mode": "HTML"
+  };
+
+  var options = {
+    "method": "post",
+    "contentType": "application/json",
+    "payload": JSON.stringify(payload),
+    "muteHttpExceptions": true // เพื่อไม่ให้ script พังถ้า telegram ยิงไม่ผ่าน
+  };
+
+  try {
+    UrlFetchApp.fetch(telegramUrl, options);
+  } catch (e) {
+    // ปล่อยผ่านถ้ามี error ในการส่ง telegram เพื่อไม่ให้กระทบกับการบันทึกข้อมูล
+    Logger.log("Telegram Error: " + e.toString());
+  }
+}
+
