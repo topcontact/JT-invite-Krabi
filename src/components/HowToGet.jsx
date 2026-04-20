@@ -23,8 +23,8 @@ const HowToGet = () => {
             title: language === 'th' ? "ต่อรถไปท่าเรือ" : "Transfer to Pier",
             description: language === 'th' ? "นั่งแท็กซี่หรือรถตู้ที่นัดหมายไว้จากสนามบินไปท่าเรืออ่าวน้ำเมา (สะพานสั้น) หรืออ่าวนาง" : "Take a taxi or pre-arranged van from the airport to Ao Nam Mao Pier (Short bridge) or Ao Nang.",
             note: language === 'th'
-                ? "เรามีบริการรถตู้รับ-ส่งในวันที่ 3 และ 4 ธันวาคม\nรถออกเวลา 13:00 น.\n(ใช้เวลาเดินทางประมาณ 40 นาที)\nโปรดแจ้งให้เราทราบหากท่านต้องการใช้บริการรถรับ-ส่ง"
-                : "We provide van transfers on\nDecember 3 and 4,\ndeparting at 1:00 PM\n(approx. 40 minutes).\nPlease let us know if you would like to\nuse the shuttle service.",
+                ? "เรามีบริการรถตู้รับ-ส่งในวันที่ 3 และ 4 ธันวาคม\nออกเดินทางจากสนามบินกระบี่ เวลา 13:00 น. (ใช้เวลาประมาณ 40 นาที)\n\nสำหรับขากลับ มีบริการรถตู้รับ-ส่งในวันที่ 5 และ 6 ธันวาคม\nออกเดินทางจากท่าเรืออ่าวน้ำเมา เวลา 13:00 น.\n\nโปรดแจ้งให้เราทราบหากท่านต้องการใช้บริการรถรับ-ส่ง\nสำหรับขาไปหรือขากลับ"
+                : "We provide van transfers on December 3 and 4,\ndeparting from Krabi Airport at 1:00 PM (approx. 40 minutes).\n\nFor the return journey, van transfers will be available\non December 5 and 6, departing from Ao Nam Mao Pier at 1:00 PM.\n\nPlease let us know if you would like to\nuse the shuttle service for your arrival or departure.",
             delay: 0.3,
             bgImage: "/VanTransferpIC.jpg"
         },
