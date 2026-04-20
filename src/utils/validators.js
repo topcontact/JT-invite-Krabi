@@ -142,6 +142,15 @@ export const validateRSVPForm = (formData) => {
   const attendanceResult = validateAttendance(formData);
   if (!attendanceResult.valid) return attendanceResult;
   
+  // Validate phone
+  const phoneDigits = formData.phone ? formData.phone.replace(/\D/g, '') : '';
+  if (phoneDigits.length !== 10) {
+    return {
+      valid: false,
+      message: "Please enter a valid 10-digit mobile phone number. (กรุณาระบุเบอร์โทรศัพท์ให้ครบ 10 หลัก)"
+    };
+  }
+  
   // Only validate other fields if attending
   if (formData.attending === 'yes') {
     const childrenResult = validateChildren(formData);
