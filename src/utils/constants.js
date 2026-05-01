@@ -9,7 +9,7 @@ export const SCRIPT_URL = "/api/rsvp";
 // Event Dates
 export const EVENT_DATE = "2026-12-04";
 export const EVENT_DATE_FORMATTED = "December 4, 2026";
-export const RSVP_DEADLINE = "April 30, 2026";
+export const RSVP_DEADLINE = "May 31, 2026";
 
 // Room Price Ranges
 export const ROOM_RANGES = [

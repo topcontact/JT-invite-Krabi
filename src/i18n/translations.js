@@ -16,14 +16,14 @@ export const translations = {
     // Hero Section
     hero: {
       saveTheDate: 'SAVE THE DATE',
-      rsvpBy: 'Kindly RSVP by April 30, 2026.',
+      rsvpBy: 'Kindly RSVP by May 31, 2026.',
     },
     
     // Ceremonies Section
     ceremonies: {
       krabiTitle: 'KRABI CEREMONY',
       krabiDate: '04 . 12 . 26',
-      krabiResponse: 'KINDLY RESPOND BY APRIL 30, 2026',
+      krabiResponse: 'KINDLY RESPOND BY MAY 31, 2026',
       bangkokTitle: 'BANGKOK CEREMONY',
       bangkokDate: '20 . 11 . 26',
       bangkokResponse: '(MORE DETAILS TO FOLLOW)',
@@ -49,7 +49,7 @@ export const translations = {
       title: 'RSVP',
       eventVenue: 'The Grotto Restaurant, Rayavadee Hotel, Krabi',
       eventDate: 'Friday, December 4, 2026',
-      respondBy: '* Kindly Respond by April 30, 2026 *',
+      respondBy: '* Kindly Respond by May 31, 2026 *',
       joyfullyAccept: 'Joyfully Accept',
       regretfullyDecline: 'Regretfully Decline',
       
@@ -140,14 +140,14 @@ export const translations = {
     // Hero Section
     hero: {
       saveTheDate: 'บันทึกวัน',
-      rsvpBy: 'กรุณาตอบกลับภายในวันที่ 30 เมษายน 2569',
+      rsvpBy: 'กรุณาตอบกลับภายในวันที่ 31 พฤษภาคม 2569',
     },
     
     // Ceremonies Section
     ceremonies: {
       krabiTitle: 'พิธีกระบี่',
       krabiDate: '04 . 12 . 26',
-      krabiResponse: 'กรุณาตอบกลับภายในวันที่ 30 เมษายน 2569',
+      krabiResponse: 'กรุณาตอบกลับภายในวันที่ 31 พฤษภาคม 2569',
       bangkokTitle: 'พิธีกรุงเทพ',
       bangkokDate: '20 . 11 . 26',
       bangkokResponse: '(รายละเอียดเพิ่มเติมจะแจ้งให้ทราบ)',

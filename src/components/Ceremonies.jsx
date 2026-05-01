@@ -17,7 +17,7 @@ const Ceremonies = () => {
                     <div className="mt-4 md:mt-10 flex flex-col items-start md:items-end gap-4 md:gap-10 w-full pl-0">
                         <div className="md:h-[80px] flex items-end md:justify-end">
                             <p className="font-source-serif font-[300] antialiased text-[3.6vw] md:text-[19.2px] lg:text-[22.4px] xl:text-[25.6px] uppercase tracking-widest leading-none text-left md:text-right whitespace-nowrap">
-                                KINDLY RESPOND BY APRIL 30, 2026
+                                KINDLY RESPOND BY MAY 31, 2026
                             </p>
                         </div>
 

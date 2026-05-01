@@ -28,7 +28,7 @@ const RSVPHeader = ({ t }) => (
       </p>
 
       <p className="font-source-serif font-[300] antialiased text-[3.6vw] min-[480px]:text-[17px] md:text-[19px] uppercase tracking-wide mb-8 whitespace-nowrap">
-        * Kindly Respond by April 30, 2026 *
+        * Kindly Respond by May 31, 2026 *
       </p>
     </div>
   </div>

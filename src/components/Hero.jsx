@@ -28,7 +28,7 @@ const Hero = () => {
 
     const t = {
         location: language === 'th' ? "โรงแรม รายาวดี, หาดไร่เลย์, กระบี่" : "Rayavadee, Railay Beach, Krabi",
-        rsvpBy: language === 'th' ? "กรุณาตอบกลับภายในวันที่ 30 เมษายน 2569" : "Kindly RSVP by April 30, 2026.",
+        rsvpBy: language === 'th' ? "กรุณาตอบกลับภายในวันที่ 31 พฤษภาคม 2569" : "Kindly RSVP by May 31, 2026.",
         menuLocation: language === 'th' ? "สถานที่" : "Location",
         menuProgram: language === 'th' ? "กำหนดการ" : "Program",
         menuStay: language === 'th' ? "ที่พักแนะนำ" : "Where to Stay"
