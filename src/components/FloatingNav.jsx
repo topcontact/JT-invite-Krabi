@@ -27,22 +27,11 @@ const FloatingNav = () => {
             }
             setActiveSection(current);
 
-            // Show after scrolling past 60% of viewport height
-            if (currentScrollY > window.innerHeight * 0.6) {
-                // Hide navbar entirely while in the ceremonies section
-                if (current === 'ceremonies') {
-                    setIsVisible(false);
-                } else {
-                    if (currentScrollY > lastScrollY.current + 2) {
-                        // Scrolling DOWN - Hide Navbar
-                        setIsVisible(false);
-                    } else if (currentScrollY < lastScrollY.current - 2) {
-                        // Scrolling UP - Show Navbar
-                        setIsVisible(true);
-                    }
-                }
+            // Show navbar after scrolling past the top hero section
+            if (currentScrollY > window.innerHeight * 0.2) {
+                setIsVisible(true);
             } else {
-                // At the top - Hide Navbar
+                // At the top - Hide Navbar to let the Hero section shine
                 setIsVisible(false);
             }
 
@@ -78,14 +67,21 @@ const FloatingNav = () => {
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             // Check if active (rough check)
+                            const isActive = activeSection === item.id || 
+                                             (item.id === 'location' && activeSection === 'getting-there');
+
                             return (
                                 <a
                                     key={item.id}
                                     href={`#${item.id}`}
-                                    className="flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1 text-navy/80 md:hover:text-blue md:hover:bg-white/30 active:bg-white/30 md:hover:scale-105"
+                                    className={`flex flex-col items-center gap-1 transition-all duration-300 w-16 md:w-20 rounded-xl py-1.5 md:hover:scale-105 ${
+                                        isActive 
+                                            ? 'text-[#4A6984] bg-white/60 shadow-sm font-medium' 
+                                            : 'text-navy/70 md:hover:text-[#4A6984] md:hover:bg-white/30 active:bg-white/30'
+                                    }`}
                                 >
                                     <Icon className="w-4 h-4 md:w-5 md:h-5" />
-                                    <span className={`text-[9px] md:text-[10px] ${language === 'th' ? 'font-krub' : 'font-sans tracking-widest uppercase'}`}>{item.label}</span>
+                                    <span className={`text-[9px] md:text-[10px] ${language === 'th' ? 'font-krub' : 'font-sans tracking-widest uppercase'} ${isActive ? 'font-semibold' : ''}`}>{item.label}</span>
                                 </a>
                             );
                         })}

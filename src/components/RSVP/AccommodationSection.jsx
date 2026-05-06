@@ -42,8 +42,20 @@ const AccommodationSection = ({
       {/* Accommodation Description */}
       <p className={`mb-5 text-white/70 text-sm leading-relaxed ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'}`}>
         {language === 'th' 
-          ? "เพื่อให้การพักผ่อนของท่านเป็นไปอย่างราบรื่นและสะดวกสบาย เราจะดำเนินการจัดราคาพิเศษสำหรับกลุ่ม (Group rate) และแจ้งรายละเอียดให้ท่านทราบเพื่อยืนยันอีกครั้ง" 
-          : "To ensure a seamless and comfortable stay, we will arrange a special group rate and share the details with you for confirmation."}
+          ? (
+            <>
+              เราขอรวบรวมจำนวนห้องพักของผู้ร่วมงาน เพื่อต่อรองราคาพิเศษสำหรับกลุ่ม (Group rate) และ จะแจ้งรายละเอียดให้ท่านทราบเพื่อยืนยันอีกครั้ง 
+              <br />
+              โปรดแจ้งด้านล่างหากต้องการ หรือ ท่านมีที่พักที่เลือกไว้แล้ว สามารถจองที่พักด้วยตัวเองได้เลย
+            </>
+          )
+          : (
+            <>
+              We are gathering the number of rooms needed by our guests to negotiate a special group rate, and we will share the details with you for confirmation.
+              <br />
+              Please indicate your preference below. If you already have an accommodation in mind, feel free to book it on your own.
+            </>
+          )}
       </p>
 
       <div className="p-5 bg-white/10 rounded-xl border border-white/20">
@@ -120,7 +132,11 @@ const AccommodationSection = ({
           {/* Stay Type Selection */}
           <div className="mb-4">
             <label className={`block text-white/80 ${language === 'th' ? 'font-krub' : 'font-source-serif font-[300] antialiased'} mb-1 text-sm uppercase tracking-wider`}>
-              {language === 'th' ? "คุณต้องการแชร์ห้องพักกับแขกท่านอื่นหรือไม่?" : "Would you like to share a room with other guests?"} <span className="text-red-500">*</span>
+              {language === 'th' ? (
+                <>หากคุณมาร่วมงานคนเดียว<br />คุณต้องการแชร์ห้องพักกับแขกท่านอื่นหรือไม่?</>
+              ) : (
+                <>If you are attending alone,<br />would you like to share a room with other guests?</>
+              )} <span className="text-red-500">*</span>
             </label>
             <div className="space-y-3 pt-2">
               <label 
@@ -131,7 +147,7 @@ const AccommodationSection = ({
                   {formData.stayType === 'alone' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
                 </span>
                 <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} leading-snug`}>
-                  {language === 'th' ? "ไม่มี" : "No"}
+                  {language === 'th' ? "ไม่ต้องการ" : "No"}
                 </span>
               </label>
               <label 
@@ -142,7 +158,7 @@ const AccommodationSection = ({
                   {formData.stayType === 'sharing' && <span className="w-2.5 h-2.5 rounded-full bg-[#1079a6]"></span>}
                 </span>
                 <span className={`text-white/90 ${language === 'th' ? 'font-krub font-[400]' : 'font-source-serif font-[300] antialiased'} leading-snug`}>
-                  {language === 'th' ? "มี" : "Yes"}
+                  {language === 'th' ? "ต้องการ" : "Yes"}
                 </span>
               </label>
             </div>
@@ -152,8 +168,8 @@ const AccommodationSection = ({
           {formData.stayType === 'sharing' && (
             <FadeInExpand className="mb-4 space-y-3 pt-2">
               <InputField
-                label={language === 'th' ? "ให้ใส่ชื่อ:" : "Name:"}
-                placeholder={language === 'th' ? "ระบุชื่อ (Enter name)" : "Enter name"}
+                label={language === 'th' ? "โปรดระบุชื่อผู้ร่วมห้อง:" : "Name:"}
+                placeholder={language === 'th' ? "ระบุชื่อ" : "Enter name"}
                 value={formData.shareWith}
                 onChange={(e) => onFieldChange('shareWith', e.target.value)}
                 icon={Users}
